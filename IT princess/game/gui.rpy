@@ -26,17 +26,17 @@ define config.check_conflicting_properties = True
 ## Цвета текста в интерфейсе.
 
 ## Акцентный цвет используется в заголовках и подчёркнутых текстах.
-define gui.accent_color = '#cc0066'
+define gui.accent_color = '#2471A3'
 
 ## Цвет, используемый в текстовой кнопке, когда она не выбрана и не наведена.
-define gui.idle_color = '#707070'
+define gui.idle_color = '#17202A'
 
 ## Small_color используется в маленьком тексте, который должен быть ярче/темнее,
 ## для того, чтобы выделяться.
 define gui.idle_small_color = '#606060'
 
 ## Цвет, используемых в кнопках и панелях, когда они наведены.
-define gui.hover_color = '#cc0066'
+define gui.hover_color = '#2471A3'
 
 ## Цвет, используемый текстовой кнопкой, когда она выбрана, но не наведена.
 ## Кнопка может быть выбрана, если это текущий экран или текущее значение
@@ -48,8 +48,8 @@ define gui.insensitive_color = '#7070707f'
 
 ## Цвета, используемые для частей панелей, которые не заполняются. Они
 ## используются не напрямую, а только при воссоздании файлов изображений.
-define gui.muted_color = '#e066a3'
-define gui.hover_muted_color = '#ea99c1'
+define gui.muted_color = '#2471A3'
+define gui.hover_muted_color = '#2471A3'
 
 ## Цвета, используемые в тексте диалогов и выборов.
 define gui.text_color = '#404040'
@@ -59,13 +59,13 @@ define gui.interface_text_color = '#404040'
 ## Шрифты и их размеры #########################################################
 
 ## Шрифт, используемый внутриигровым текстом.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "Spectral-MediumItalic.ttf"
 
 ## Шрифт, используемый именами персонажей.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "golos-ui_bold.ttf"
 
 ## Шрифт, используемый текстом вне игры.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "golos-ui_bold.ttf"
 
 ## Размер нормального текста диалога.
 define gui.text_size = 33
