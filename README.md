@@ -31,5 +31,5 @@
 - [Ссылка на гугл папку](https://drive.google.com/drive/folders/1liBDn9f96WUDsG6_FlHFskQaxXptE8x_?usp=sharing)
 
 
-<p style="text-align: center; font-weight:bold">Made with</p>
-<p style="text-align: center">❤️</p>
+<p align="center">Made with</p>
+<p align="center">❤️</p>
