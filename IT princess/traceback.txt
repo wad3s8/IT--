@@ -1,34 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 30, in script call
-    call scene2_class
-  File "game/script.rpy", line 53, in script
-    scene bg blac with Fade(5)
-TypeError: Fade() missing 2 required positional arguments: 'hold_time' and 'in_time'
+  File "game/script.rpy", line 31, in script call
+    call scene3_sleep
+  File "game/script.rpy", line 66, in script
+    henry 'ААААААААААААААААА'
+Exception: Sayer 'henry' is not defined.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 30, in script call
-    call scene2_class
-  File "game/script.rpy", line 53, in script
-    scene bg blac with Fade(5)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1678, in execute
-    renpy.exports.with_statement(trans, paired=paired)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\exports.py", line 1758, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 2978, in do_with
-    return self.interact(trans_pause=True,
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3582, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3976, in interact_core
-    trans = instantiate_transition(None, old_root, layers_root)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3922, in instantiate_transition
-    trans = self.ongoing_transition[layer](
-TypeError: Fade() missing 2 required positional arguments: 'hold_time' and 'in_time'
+  File "game/script.rpy", line 31, in script call
+    call scene3_sleep
+  File "game/script.rpy", line 66, in script
+    henry 'ААААААААААААААААА'
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 890, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 783, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'henry' is not defined.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.1.3.23091805
 IT princess_name_game 1.0
-Sun Nov 26 18:00:08 2023
+Sun Nov 26 18:18:41 2023

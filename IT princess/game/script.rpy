@@ -28,6 +28,7 @@ transform jump_tr(dist=15, t=0.5):
 label start:
     call scene1_school # Диалог в школе (сцена 1)
     call scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep # Генри летит спать
     return
 
 label scene1_school:
@@ -51,9 +52,17 @@ label scene2_class:
     show teacher at center with moveinbottom
     teacher '"Отец мой Андрей Петрович Гринёв в молодости своей..." - монотонно начал читать учитель'
     scene bg black with Fade(2,0,0)
-    scene scene2_blur with Dissolve(1)
+    scene scene2_blur with Dissolve(1) # блюр 10
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
     'Генри не выспавшись уже начал засыпать на задней парте'
+    return
+
+label scene3_sleep:
+    scene scene3 with dissolve
+    hide textbox
+    show henry at right with moveinleft
+    hide henry with easeinright
+    Henry 'ААААААААААААААААА'
     return
 
