@@ -26,10 +26,9 @@ transform jump_tr(dist=15, t=0.5):
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country # Генри впервые в новом мире
+    call scene1_school # Диалог в школе (сцена 1)
+    call scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep # Генри летит спать
     return
 
 label scene1_school:
@@ -67,8 +66,3 @@ label scene3_sleep:
     Henry 'ААААААААААААААААА'
     return
 
-label scene4_new_country:
-    show scene4 with dissolve
-    show henry at center with moveinbottom
-    Henry 'Куда я попал? Где я очутился?'
-    Henry 'Что мне делать?'
