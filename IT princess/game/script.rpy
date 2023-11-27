@@ -35,6 +35,7 @@ label start:
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest # Разговор с дракончиком об оружии
     return
 
 label scene1_school:
@@ -105,3 +106,14 @@ label scene5_forest:
         'Не обратить внимание':
             $ has_dragon = False
     return
+
+label scene6_wizard_forest:
+    scene scene6 with dissolve
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    show dragon at right, leap
+    dragon 'Чтобы выжить в этой стране, необходимо найти оружие'
+    show henry at left, leap
+    Henry 'Ты знаешь, где его можно достать?'
+    show dragon at right, leap
+    dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
