@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 54: end of line expected.
-    scene scene2_blur with Dissolve(1), show teacher_blur
-                                      ^
+File "game/script.rpy", line 106: end of line expected.
+    if has_dragon==0: return
+                      ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Sun Nov 26 18:06:34 2023
+Sun Nov 26 22:38:32 2023
