@@ -36,6 +36,7 @@ label start:
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
     call scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave # Генри находит мечи и молот
     return
 
 label scene1_school:
@@ -117,3 +118,33 @@ label scene6_wizard_forest:
     Henry 'Ты знаешь, где его можно достать?'
     show dragon at right, leap
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
+    return
+
+label scene7_cave:
+    scene scene7 with dissolve
+    show chest_close at top with moveinbottom
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    show henry at left, leap
+    Henry 'Смотри!'
+    Henry 'Это же сундук'
+    Henry 'Давай откроем его'
+    show henry at center with easeinright
+    show henry at left with easeinleft
+    hide chest_close
+    show chest_open at top with dissolve
+    show sword at topleft with zoomin
+    show hammer at topright with zoomin
+    show henry at left, leap
+    Henry 'Что это за буквы на мече и молоте?'
+    show dragon at right, leap
+    dragon 'Я не владею этими знаниями'
+    show henry at left, leap
+    Henry 'Кажется, я понимаю, что здесь написано'
+    Henry 'Из этого я точно знаю Python, C#'
+    show dragon at right, leap
+    dragon 'Это что-то из твоего мира?'
+    show henry at left, leap
+    Henry 'Да, это языки программирования'
+    return
+
