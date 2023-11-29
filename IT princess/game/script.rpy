@@ -14,6 +14,7 @@ define non = Character('???', color = '#E74C3C')
 
 # TODO
 # 210 строчка, Генри лупит пауков
+# использовать координаты для изображений
 
 # Объявление переменных
 $ has_dragon = False
@@ -30,32 +31,33 @@ transform jump_tr(dist=15, t=0.5):
 #1080*1920
 #Вы указали: 500x1000 (c соблюдением пропорций)
 #Получилось: 284x1000, 172.39 Кб
+# shift+D режим разработчика
 
 # Начало игры
 label start:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest # Встреча с троллем
     return
 
 label scene1_school:
     scene scene1 with dissolve
     show henry at left with moveinbottom
     show maks at right with moveinbottom
-    show maks at right, leap
+    show maks at leap
     Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
-    show henry at left, leap
+    show henry at leap
     Henry 'Если честно, я еще не решил, чем хочу заниматься'
-    show maks at right, leap
+    show maks at leap
     Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
-    show henry at left, leap
+    show henry at leap
     Henry 'А это интересно, но в этой сфере столько направлений и специальностей...'
-    show maks at right, leap
+    show maks at leap
     Maks 'Ладно, что-то мы заболтались, пошли на урок'
     return
 
@@ -88,7 +90,7 @@ label scene4_new_country:
 label scene5_forest:
     scene scene5 with dissolve
     show henry at center with moveinbottom
-    show henry at center, leap
+    show henry at leap
     Henry 'Хммммм...'
     Henry 'Что это за синий свет в лесу?'
     menu meet_dragon:
@@ -103,9 +105,9 @@ label scene5_forest:
             show henry at left with easeinleft
             hide dragon_in_chains with easeinbottom
             show dragon at right with moveinbottom
-            show henry at left, leap
+            show henry at leap
             Henry 'Кто ты такой?'
-            show dragon at right, leap
+            show dragon at leap
             non 'Спасибо за помощь. Меня зовут Спайндикс'
             dragon 'Я помогу тебе разобраться в этом мире'
         'Не обратить внимание':
@@ -116,11 +118,11 @@ label scene6_wizard_forest:
     scene scene6 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Чтобы выжить в этой стране, необходимо найти оружие'
-    show henry at left, leap
+    show henry at leap
     Henry 'Ты знаешь, где его можно достать?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
     return
 
@@ -129,7 +131,7 @@ label scene7_cave:
     show chest_close at top with moveinbottom
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
-    show henry at left, leap
+    show henry at leap
     Henry 'Смотри!'
     Henry 'Это же сундук'
     Henry 'Давай откроем его'
@@ -139,16 +141,16 @@ label scene7_cave:
     show chest_open at top with dissolve
     show sword at topleft with zoomin
     show hammer at topright with zoomin
-    show henry at left, leap
+    show henry at leap
     Henry 'Что это за буквы на мече и молоте?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Я не владею этими знаниями'
-    show henry at left, leap
+    show henry at leap
     Henry 'Кажется, я понимаю, что здесь написано'
     Henry 'Из этого я точно знаю Python, C#'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Это что-то из твоего мира?'
-    show henry at left, leap
+    show henry at leap
     Henry 'Да, это языки программирования'
     hide sword
     hide hammer
@@ -156,48 +158,48 @@ label scene7_cave:
     return
 
 label scene8_fairy_forest:
-    show henry at left, leap
+    show henry at leap
     Henry 'Куда мы идём дальше?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Давай пойдём к магу Алистеру, он поможет нам'
     scene scene8 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     Henry 'Что это за чудесный лес?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Это лес Мальдонии, место, где живут феи'
-    show henry at left, leap
+    show henry at leap
     Henry 'Как выглядят феи? И где же они все?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
     dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
     dragon 'Я предлагаю поторопиться, тролли очень опасны'
     'Позади послышался звук, похожий на гром'
     show troll_mini at truecenter
-    show henry at left, leap
+    show henry at leap
     Henry 'Что это такое?'
-    show dragon at right, leap
+    show dragon at leap
     dragon 'Похоже на звук приближения тролля'
     hide troll_mini
     show troll at truecenter with zoomin
-    show troll at truecenter, leap
+    show troll at leap
     troll 'Кто вы такие ? Что вы забыли здесь?'
-    show henry at left, leap
+    show henry at leap
     Henry 'Здравствуйте, извините нас пожалуйста, мы уже уходим'
-    show troll at truecenter, leap
+    show troll at leap
     troll 'Какие мы вежливые. Этот подарок тебе'
     hide dragon with easeinbottom
     hide troll
     show troll_average at right with moveinbottom
     show present_close at top with moveinbottom
-    show henry at left, leap
+    show henry at leap
     Henry 'Что это за коробочка? Что внутри?'
-    show troll_average at right, leap
+    show troll_average at leap
     troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
     menu:
         'Как поступить Генри?'
         'Принять подарок от тролля':
-            show henry at left, leap
+            show henry at leap
             Henry 'Спасибо за подарок'
             hide present_close
             show present_open at top with dissolve
@@ -207,23 +209,17 @@ label scene8_fairy_forest:
             show spiders2 at topleft with easeinleft
             show spiders3 at top with dissolve
             show spiders2 at left with easeinbottom
-            show henry at left, leap
+            show henry at leap
             Henry 'ААААААААААА'
             Henry 'Пауки!'
-            show troll_average at right, leap
+            show troll_average at leap
             troll 'Ах ты...'
             troll 'Не трожь моих пауков! А не то...'
             hide present_open
             show troll_average at center with easeinleft
-            show henry at left, leap
+            show henry at leap
             Henry 'АААААААААА'
             show dragon at right with moveinbottom
-            show dragon at right, leap
+            show dragon at leap
             dragon 'Бежим!!!'
-
-
         'Проигнорировать предложение':
-            return
-
-
-    
