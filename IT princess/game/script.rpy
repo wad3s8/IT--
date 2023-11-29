@@ -4,13 +4,16 @@ define Henry = Character('Генри', color = '#1F618D')
 define Maks = Character('Макс', color = '#797D7F')
 define Izabella = Character('Изабелла')
 define dragon = Character('Спайнкндс', color = '#2471A3')
-define troll = Character('Тролль')
+define troll = Character('Тролль', color = '#1E8449')
 define gnoms = Character('Гаети')
 define mag = Character('Алистер')
 define koldun = Character('Алистер')
 define autor = Character('Автор')
 define general = Character('Главнокомандующий')
 define non = Character('???', color = '#E74C3C')
+
+# TODO
+# 210 строчка, Генри лупит пауков
 
 # Объявление переменных
 $ has_dragon = False
@@ -30,13 +33,14 @@ transform jump_tr(dist=15, t=0.5):
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave # Генри находит мечи и молот
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest
     return
 
 label scene1_school:
@@ -146,5 +150,80 @@ label scene7_cave:
     dragon 'Это что-то из твоего мира?'
     show henry at left, leap
     Henry 'Да, это языки программирования'
+    hide sword
+    hide hammer
+    hide chest_open
     return
 
+label scene8_fairy_forest:
+    show henry at left, leap
+    Henry 'Куда мы идём дальше?'
+    show dragon at right, leap
+    dragon 'Давай пойдём к магу Алистеру, он поможет нам'
+    scene scene8 with dissolve
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    Henry 'Что это за чудесный лес?'
+    show dragon at right, leap
+    dragon 'Это лес Мальдонии, место, где живут феи'
+    show henry at left, leap
+    Henry 'Как выглядят феи? И где же они все?'
+    show dragon at right, leap
+    dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
+    dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
+    dragon 'Я предлагаю поторопиться, тролли очень опасны'
+    'Позади послышался звук, похожий на гром'
+    show troll_mini at truecenter
+    show henry at left, leap
+    Henry 'Что это такое?'
+    show dragon at right, leap
+    dragon 'Похоже на звук приближения тролля'
+    hide troll_mini
+    show troll at truecenter with zoomin
+    show troll at truecenter, leap
+    troll 'Кто вы такие ? Что вы забыли здесь?'
+    show henry at left, leap
+    Henry 'Здравствуйте, извините нас пожалуйста, мы уже уходим'
+    show troll at truecenter, leap
+    troll 'Какие мы вежливые. Этот подарок тебе'
+    hide dragon with easeinbottom
+    hide troll
+    show troll_average at right with moveinbottom
+    show present_close at top with moveinbottom
+    show henry at left, leap
+    Henry 'Что это за коробочка? Что внутри?'
+    show troll_average at right, leap
+    troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
+    menu:
+        'Как поступить Генри?'
+        'Принять подарок от тролля':
+            show henry at left, leap
+            Henry 'Спасибо за подарок'
+            hide present_close
+            show present_open at top with dissolve
+            show spiders at top with dissolve
+            show spiders at topright with easeinright
+            show spiders2 at top with dissolve
+            show spiders2 at topleft with easeinleft
+            show spiders3 at top with dissolve
+            show spiders2 at left with easeinbottom
+            show henry at left, leap
+            Henry 'ААААААААААА'
+            Henry 'Пауки!'
+            show troll_average at right, leap
+            troll 'Ах ты...'
+            troll 'Не трожь моих пауков! А не то...'
+            hide present_open
+            show troll_average at center with easeinleft
+            show henry at left, leap
+            Henry 'АААААААААА'
+            show dragon at right with moveinbottom
+            show dragon at right, leap
+            dragon 'Бежим!!!'
+
+
+        'Проигнорировать предложение':
+            return
+
+
+    
