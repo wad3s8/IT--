@@ -5,7 +5,7 @@ define Maks = Character('Макс', color = '#797D7F')
 define Izabella = Character('Изабелла')
 define dragon = Character('Спайнкндс', color = '#2471A3')
 define troll = Character('Тролль', color = '#1E8449')
-define gnoms = Character('Гаети')
+define gnoms = Character('Гаети', color = '#117A65')
 define mag = Character('Алистер')
 define koldun = Character('Алистер')
 define autor = Character('Автор')
@@ -36,14 +36,14 @@ transform jump_tr(dist=15, t=0.5):
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest # Встреча с троллем
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave # Генри находит мечи и молот
+    # call scene8_fairy_forest # Встреча с троллем
     return
 
 label scene1_school:
@@ -224,3 +224,14 @@ label scene8_fairy_forest:
             show dragon at leap
             dragon 'Бежим!!!'
         'Проигнорировать предложение':
+            hide present_close
+            show henry at leap
+            Henry 'Извините, но я откажусь, нам нужно идти'
+            show troll_average at center with easeinleft
+            show troll_average at leap
+            troll 'Нет! Ты не уйдёшь!'
+            show henry at leap
+            Henry 'АААААААААА'
+            show dragon at right with moveinbottom
+            dragon 'Бежим!!!'
+    return
