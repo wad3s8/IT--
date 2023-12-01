@@ -15,6 +15,7 @@ define non = Character('???', color = '#E74C3C')
 # TODO
 # 210 строчка, Генри лупит пауков
 # использовать координаты для изображений
+# испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
 
 # Объявление переменных
 $ has_dragon = False
@@ -315,7 +316,7 @@ label scene9_gnoms:
     show henry at leap
     Henry 'Что же делать?'
     menu:
-        'Что мне выбрать?'
+        Henry 'Что мне выбрать?'
         'Попробовать ответить на все вопросы Гаети':
             show henry at leap
             Henry 'Меня зовут Генри, я не из вашего мира'
@@ -336,4 +337,32 @@ label scene9_gnoms:
                 xalign 1.45
                 yalign 1.45
             with moveinright
-            'ddd'
+        'Взять себя в руки и бежать':
+            show henry:
+                xalign 1.25
+                yalign 1.25
+            with moveinright
+            show dragon:
+                xalign 1.45
+                yalign 1.45
+            with moveinright
+    scene scene9d with ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
+    show henry at left with moveinleft
+    show dragon at right with moveinleft
+    show henry at leap
+    Henry 'Знаешь, в моем мире все устроено немного не так...'
+    Henry 'И Гаети мне кое-кого напомнили'
+    show dragon at leap
+    dragon 'Кого напомнли?'
+    show henry at leap
+    Henry 'Они напоминают мне моих родителей и учителей'
+    Henry 'Мне также все твердят : «Выбрал вуз?», «сдай ЕГЭ», «поступи на бюджет»'
+    show dragon at leap
+    dragon 'Да, действительно, сходство с Гаети есть'
+    show henry at leap
+    Henry 'Из этой ситуации я сделал вывод, что родители иногда правы, они желают нам добр, поэтому к ним нужно прислушиваться'
+    show dragon at leap
+    dragon 'То есть учиться в вашем мир не нужно?'
+    show henry at leap
+    Henry 'Конечно нужно, но нужно знать меру во всём'
+    
