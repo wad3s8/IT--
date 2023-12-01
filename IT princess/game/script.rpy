@@ -44,6 +44,7 @@ label start:
     # call scene6_wizard_forest # Разговор с дракончиком об оружии
     # call scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest # Встреча с троллем
+    call scene9_gnoms # Встреча с гномами
     return
 
 label scene1_school:
@@ -76,8 +77,10 @@ label scene2_class:
 label scene3_sleep:
     scene scene3 with dissolve
     hide textbox
-    show henry at right with moveinleft
-    hide henry with easeinright
+    show henry:
+        xalign 1.25
+        yalign 1.25
+    with moveinright
     Henry 'ААААААААААААААААА'
     return
 
@@ -235,3 +238,102 @@ label scene8_fairy_forest:
             show dragon at right with moveinbottom
             dragon 'Бежим!!!'
     return
+
+label scene9_gnoms:
+    scene scene9 with dissolve
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    show dragon at leap
+    dragon 'Вроде бы убежали'
+    show henry at leap
+    Henry 'Да, это было опасно'
+    Henry 'Слушай, я понял, нельзя сдаваться и думать о провале перед своими экзаменами'
+    show dragon at leap
+    dragon 'Это ты о чём?'
+    show henry at leap
+    Henry 'Да так...'
+    Henry 'Где мы сейчас находимся?'
+    show dragon at leap
+    dragon 'Мы попали в долину, которая называется Энчастия'
+    show henry at leap
+    Henry 'А что это за существа бегут к нам?'
+    show dragon at leap
+    dragon 'Гаети. Это маленькие существа, которые здесь обитают'
+    show gnom1_mini:
+        xalign 0.5
+        yalign 0.64
+    with zoomin
+    show gnom2_mini:
+        xalign 0.4
+        yalign 0.6
+    with zoomin
+    show gnom3_mini:
+        xalign 0.3
+        yalign 0.5
+    with zoomin
+    show gnom4 at left with moveinbottom
+    show gnom5:
+        xalign 0.18
+        yalign 0.47
+    with moveinbottom
+    show gnom6:
+        xalign 0.714
+        yalign 0.616
+    with moveinbottom
+    show henry at leap
+    Henry 'Здравствуйте, дорогие жители'
+    show gnom5 at leap
+    gnoms 'Кто ты такой?'
+    show gnom6 at leap
+    gnoms 'Ты не похож на здешних жителей'
+    show gnom4 at leap
+    gnoms 'Что ты здесь забыл?'
+    hide gnom5
+    show gnom3:
+        xalign 0.18
+        yalign 0.47
+    with moveinbottom
+    hide gnom3_mini
+    show gnom5_mini:
+        xalign 0.3
+        yalign 0.5
+    with zoomin
+    hide gnom6
+    show gnom1:
+        xalign 0.714
+        yalign 0.616
+    with moveinbottom
+    hide gnom1_mini
+    show gnom6_mini:
+        xalign 0.5
+        yalign 0.64
+    with zoomin
+    show gnom3 at leap
+    gnoms 'Ты хочешь пойти с нами?'
+    show gnom1 at leap
+    gnoms 'Ты должен пойти с нами'
+    show henry at leap
+    Henry 'Что же делать?'
+    menu:
+        'Что мне выбрать?'
+        'Попробовать ответить на все вопросы Гаети':
+            show henry at leap
+            Henry 'Меня зовут Генри, я не из вашего мира'
+            Henry 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
+            show gnom1 at leap
+            gnoms 'Пошли с нами'
+            show gnom3 at leap
+            gnoms 'Тебе точно нужно идти с нами'
+            show gnom4 at leap
+            gnoms 'Ты идёшь с нами'
+            show henry at leap
+            Henry 'Извините, мне нужно идти'
+            show henry:
+                xalign 1.25
+                yalign 1.25
+            with moveinright
+            show dragon:
+                xalign 1.45
+                yalign 1.45
+            with moveinright
+            'ddd'
