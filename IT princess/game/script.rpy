@@ -17,6 +17,8 @@ define non = Character('???', color = '#E74C3C')
 # использовать координаты для изображений
 # испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
 # вместо hide использовать выход за пределы экрана
+# переход сцены 8 на 9 с заглушкой
+# выбор молота и меча для сражения с пауками
 
 # Объявление переменных
 $ has_dragon = False
@@ -43,11 +45,11 @@ label start:
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest # Встреча с троллем
-    call scene9_gnoms # Встреча с гномами
-    call scene10_megastore # Разговор с магом
+    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    call scene10_megastore from _call_scene10_megastore # Разговор с магом
     return
 
 label scene1_school:
@@ -355,16 +357,17 @@ label scene9_gnoms:
     Henry 'Знаешь, в моем мире все устроено немного не так...'
     Henry 'И Гаети мне кое-кого напомнили'
     show dragon at leap
-    dragon 'Кого напомнли?'
+    dragon 'Кого напомнили?'
     show henry at leap
     Henry 'Они напоминают мне моих родителей и учителей'
     Henry 'Мне также все твердят : «Выбрал вуз?», «сдай ЕГЭ», «поступи на бюджет»'
     show dragon at leap
     dragon 'Да, действительно, сходство с Гаети есть'
     show henry at leap
-    Henry 'Из этой ситуации я сделал вывод, что родители иногда правы, они желают нам добр, поэтому к ним нужно прислушиваться'
+    Henry 'Из этой ситуации я сделал вывод, что родители иногда правы, они желают нам добра, поэтому к ним нужно прислушиваться'
+    Henry 'Они всегда заботятся о нас. Требуют, чтобы мы отдыхали, не перетруждались'
     show dragon at leap
-    dragon 'То есть учиться в вашем мир не нужно?'
+    dragon 'То есть учиться в вашем мире не нужно?'
     show henry at leap
     Henry 'Конечно нужно, но нужно знать меру во всём'
     return
