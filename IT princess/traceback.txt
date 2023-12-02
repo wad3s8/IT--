@@ -1,34 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 47, in script call
-    call scene9_gnoms # Встреча с гномами
-  File "game/script.rpy", line 332, in script
-    with moveinright(5)
-  File "game/script.rpy", line 332, in <module>
-    with moveinright(5)
-Exception: MoveTransition can only be applied to one or all layers, not int.
+  File "game/script.rpy", line 49, in script call
+    call scene10_megastore
+  File "game/script.rpy", line 387, in script
+    show henry at le
+  File "game/script.rpy", line 387, in <module>
+    show henry at le
+NameError: name 'le' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 47, in script call
-    call scene9_gnoms # Встреча с гномами
-  File "game/script.rpy", line 332, in script
-    with moveinright(5)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1671, in execute
-    trans = renpy.python.py_eval(self.expr)
+  File "game/script.rpy", line 49, in script call
+    call scene10_megastore
+  File "game/script.rpy", line 387, in script
+    show henry at le
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1428, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1387, in show_imspec
+    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1387, in <listcomp>
+    at_list = [ renpy.python.py_eval(i) for i in at_list ]
   File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\python.py", line 1153, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\python.py", line 1146, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 332, in <module>
-    with moveinright(5)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 498, in MoveTransition
-    raise Exception("MoveTransition can only be applied to one or all layers, not %s." % type(old_widget).__name__)
-Exception: MoveTransition can only be applied to one or all layers, not int.
+  File "game/script.rpy", line 387, in <module>
+    show henry at le
+NameError: name 'le' is not defined
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.1.3.23091805
 IT princess_name_game 1.0
-Thu Nov 30 20:58:05 2023
+Fri Dec  1 23:07:20 2023

@@ -6,7 +6,7 @@ define Izabella = Character('Изабелла')
 define dragon = Character('Спайнкндс', color = '#2471A3')
 define troll = Character('Тролль', color = '#1E8449')
 define gnoms = Character('Гаети', color = '#117A65')
-define mag = Character('Алистер')
+define mag = Character('Алистер', color ='#F39C12')
 define koldun = Character('Алистер')
 define autor = Character('Автор')
 define general = Character('Главнокомандующий')
@@ -16,6 +16,7 @@ define non = Character('???', color = '#E74C3C')
 # 210 строчка, Генри лупит пауков
 # использовать координаты для изображений
 # испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
+# вместо hide использовать выход за пределы экрана
 
 # Объявление переменных
 $ has_dragon = False
@@ -37,15 +38,16 @@ transform jump_tr(dist=15, t=0.5):
 
 # Начало игры
 label start:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave # Генри находит мечи и молот
-    # call scene8_fairy_forest # Встреча с троллем
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest # Встреча с троллем
     call scene9_gnoms # Встреча с гномами
+    call scene10_megastore # Разговор с магом
     return
 
 label scene1_school:
@@ -78,9 +80,9 @@ label scene2_class:
 label scene3_sleep:
     scene scene3 with dissolve
     hide textbox
+    show henry at right with moveinleft
     show henry:
-        xalign 1.25
-        yalign 1.25
+        xalign 2.5
     with moveinright
     Henry 'ААААААААААААААААА'
     return
@@ -365,4 +367,36 @@ label scene9_gnoms:
     dragon 'То есть учиться в вашем мир не нужно?'
     show henry at leap
     Henry 'Конечно нужно, но нужно знать меру во всём'
-    
+    return
+
+label scene10_megastore:
+    scene scene10 with dissolve
+    show dragon at right with moveinbottom
+    show henry at left with moveinbottom
+    show dragon at leap
+    dragon 'Вот мы и пришли'
+    dragon 'Вот там лавка Алистера'
+    show henry at leap
+    Henry 'Давай зайдём'
+    scene scene10_1 with dissolve
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    show mag at center with moveinbottom
+    show mag at leap
+    mag 'Приветствую вас, что вы хотели в моей лавке?'
+    show henry at leap
+    Henry 'Здравствуйте, мне нужно попасть в мой мир'
+    show dragon:
+        xalign 1.5
+    with moveinright
+    show mag at right with moveinright
+    show mag at leap
+    mag 'Ой, с этим я тебе помочь не могу'
+    show henry at leap
+    Henry 'Что же мне тогда делать? Как здесь выжить?'
+    show mag at leap
+    mag 'Ты бы мог пригодиться в этом мире'
+    show henry at leap
+    Henry 'Что же ты можешь мне предложить?'
+    show mag at leap
+    mag 'Есть несколько вариантов'
