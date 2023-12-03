@@ -19,6 +19,8 @@ define non = Character('???', color = '#E74C3C')
 # вместо hide использовать выход за пределы экрана
 # переход сцены 8 на 9 с заглушкой
 # выбор молота и меча для сражения с пауками
+# сделать выбор без реплики
+# использовать window hide
 
 # Объявление переменных
 $ has_dragon = False
@@ -40,15 +42,15 @@ transform jump_tr(dist=15, t=0.5):
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     call scene10_megastore from _call_scene10_megastore # Разговор с магом
     return
 
@@ -403,3 +405,51 @@ label scene10_megastore:
     Henry 'Что же ты можешь мне предложить?'
     show mag at leap
     mag 'Есть несколько вариантов'
+    menu choose_scene10:
+        'Ты можешь пасти единорогов':
+            scene scene10_2 with dissolve
+            show henry at left with moveinbottom
+            show mag at right with moveinbottom
+            show unicorn_mini_zerkalo:
+                xalign 0.3
+                yalign 0.5889
+            with zoomin
+            show unicorn:
+                xalign 0.423
+                yalign 0.43
+            with zoomin
+            show henry at leap
+            Henry 'И как же мне к ним подойти?'
+            show mag at leap
+            mag 'Ты должен показать единорогу силу'
+            window hide
+            show henry:
+                xalign 1.5
+            with moveinright
+            show henry_mini:
+                xalign 0.55
+                yalign 0.43
+            with moveinright
+            show unicorn:
+                xalign 0.3
+            with easeinleft
+            show henry_mini:
+                xalign 0.4
+            with moveinleft
+            hide unicorn
+            show unicorn_zerkalo:
+                xalign 0.3
+                yalign 0.43
+            with dissolve
+            show unicorn_zerkalo:
+                xalign 1.5
+            with moveinright
+            show unicorn_mini_zerkalo:
+                xalign 1.5
+            with moveinright
+            show henry_mini:
+                xalign 1.5
+            with moveinright
+            show henry at left with moveinleft
+            show henry at leap
+            Henry 'Да, к ЕГЭ мне было готовиться легче'
