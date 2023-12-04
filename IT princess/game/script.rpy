@@ -453,3 +453,31 @@ label scene10_megastore:
             show henry at left with moveinleft
             show henry at leap
             Henry 'Да, к ЕГЭ мне было готовиться легче'
+        'Ты можешь состоять в армии короля':
+            scene scene10_3 with dissolve
+            show henry at left with moveinbottom
+            show mag at right with moveinbottom
+            show general at center with moveinbottom
+            show mag at leap
+            mag 'Ты можешь состоять в армии короля'
+            show general at leap
+            general 'Бойцы, вы должны быть готовы ко всему'
+            general 'Недавно нам объявили войну Марийцы'
+            show mag:
+                xalign 1.8
+            with moveinright
+            show general at right with moveinright
+            show general at leap
+            general 'С этого момента вы будете жить в замке'
+            general 'Итак, ваше первое задание на сегодня...'
+            general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
+            show henry at leap
+            Henry 'Нее...'
+            Henry 'Это не для меня'
+            show henry at leap
+            Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+            show general at leap
+            general 'Что это ты бормочешь?'
+            show henry at leap
+            Henry 'Да так... Мысли вслух'
+            
