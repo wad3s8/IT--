@@ -405,79 +405,139 @@ label scene10_megastore:
     Henry 'Что же ты можешь мне предложить?'
     show mag at leap
     mag 'Есть несколько вариантов'
-    menu choose_scene10:
-        'Ты можешь пасти единорогов':
-            scene scene10_2 with dissolve
+    $ first_choose = False
+    $ second_choose = False
+    $ third_choose = False
+    window hide
+    call choose_scene10 # Сцена выбора цикличная
+    scene scene10_1 with dissolve
+    show henry at left with moveinbottom
+    show mag at right with moveinbottom
+    show henry at leap
+    Henry 'Да, трудно в этом мире, что же мне делать?'
+    return
+
+menu choose_scene10:
+    'Ты можешь пасти единорогов':
+        if first_choose:
+            show mag at leap
+            mag 'Ты уже спрашивал меня про это'
+            call choose_scene10
+            return
+        scene scene10_2 with dissolve
+        show henry at left with moveinbottom
+        show mag at right with moveinbottom
+        show unicorn_mini_zerkalo:
+            xalign 0.3
+            yalign 0.5889
+        with zoomin
+        show unicorn:
+            xalign 0.423
+            yalign 0.43
+        with zoomin
+        show henry at leap
+        Henry 'И как же мне к ним подойти?'
+        show mag at leap
+        mag 'Ты должен показать единорогу силу'
+        window hide
+        show henry:
+            xalign 1.5
+        with moveinright
+        show henry_mini:
+            xalign 0.55
+            yalign 0.43
+        with moveinright
+        show unicorn:
+            xalign 0.3
+        with easeinleft
+        show henry_mini:
+            xalign 0.4
+        with moveinleft
+        hide unicorn
+        show unicorn_zerkalo:
+            xalign 0.3
+            yalign 0.43
+        with dissolve
+        show unicorn_zerkalo:
+            xalign 1.5
+        with moveinright
+        show unicorn_mini_zerkalo:
+            xalign 1.5
+        with moveinright
+        show henry_mini:
+            xalign 1.5
+        with moveinright
+        show henry at left with moveinleft
+        show henry at leap
+        Henry 'Да, к ЕГЭ мне было готовиться легче'
+        $ first_choose = True
+        if first_choose & second_choose & third_choose == True:
+            return
+        else:
+            scene scene10_1 with dissolve
             show henry at left with moveinbottom
             show mag at right with moveinbottom
-            show unicorn_mini_zerkalo:
-                xalign 0.3
-                yalign 0.5889
-            with zoomin
-            show unicorn:
-                xalign 0.423
-                yalign 0.43
-            with zoomin
-            show henry at leap
-            Henry 'И как же мне к ним подойти?'
+            call choose_scene10
+            return
+    'Ты можешь состоять в армии короля':
+        if second_choose:
             show mag at leap
-            mag 'Ты должен показать единорогу силу'
-            window hide
-            show henry:
-                xalign 1.5
-            with moveinright
-            show henry_mini:
-                xalign 0.55
-                yalign 0.43
-            with moveinright
-            show unicorn:
-                xalign 0.3
-            with easeinleft
-            show henry_mini:
-                xalign 0.4
-            with moveinleft
-            hide unicorn
-            show unicorn_zerkalo:
-                xalign 0.3
-                yalign 0.43
-            with dissolve
-            show unicorn_zerkalo:
-                xalign 1.5
-            with moveinright
-            show unicorn_mini_zerkalo:
-                xalign 1.5
-            with moveinright
-            show henry_mini:
-                xalign 1.5
-            with moveinright
-            show henry at left with moveinleft
-            show henry at leap
-            Henry 'Да, к ЕГЭ мне было готовиться легче'
-        'Ты можешь состоять в армии короля':
-            scene scene10_3 with dissolve
+            mag 'Ты уже спрашивал меня про это'
+            call choose_scene10
+            return
+        scene scene10_3 with dissolve
+        show henry at left with moveinbottom
+        show mag at right with moveinbottom
+        show general at center with moveinbottom
+        show mag at leap
+        mag 'Ты можешь состоять в армии короля'
+        show general at leap
+        general 'Бойцы, вы должны быть готовы ко всему'
+        general 'Недавно нам объявили войну Марийцы'
+        show mag:
+            xalign 1.8
+        with moveinright
+        show general at right with moveinright
+        show general at leap
+        general 'С этого момента вы будете жить в замке'
+        general 'Итак, ваше первое задание на сегодня...'
+        general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
+        show henry at leap
+        Henry 'Нее...'
+        Henry 'Это не для меня'
+        show henry at leap
+        Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+        show general at leap
+        general 'Что это ты бормочешь?'
+        show henry at leap
+        Henry 'Да так... Мысли вслух'
+        $ second_choose = True
+        if first_choose & second_choose & third_choose == True:
+            return
+        else:
+            scene scene10_1 with dissolve
             show henry at left with moveinbottom
             show mag at right with moveinbottom
-            show general at center with moveinbottom
+            call choose_scene10
+            return
+    'Ты можешь стать моим учеником':
+        if third_choose:
             show mag at leap
-            mag 'Ты можешь состоять в армии короля'
-            show general at leap
-            general 'Бойцы, вы должны быть готовы ко всему'
-            general 'Недавно нам объявили войну Марийцы'
-            show mag:
-                xalign 1.8
-            with moveinright
-            show general at right with moveinright
-            show general at leap
-            general 'С этого момента вы будете жить в замке'
-            general 'Итак, ваше первое задание на сегодня...'
-            general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
-            show henry at leap
-            Henry 'Нее...'
-            Henry 'Это не для меня'
-            show henry at leap
-            Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
-            show general at leap
-            general 'Что это ты бормочешь?'
-            show henry at leap
-            Henry 'Да так... Мысли вслух'
-            
+            mag 'Ты уже спрашивал меня про это'
+            call choose_scene10
+            return
+        show mag at leap
+        mag 'Тебе нужно будет днём и ночью выполнять мои поручения'
+        mag 'Также нужно будет рисковать своей жизнью, чтобы доставать необходимые ингредиенты для зелий'
+        show henry at leap
+        Henry 'Извини, но такое мне тоже не подходит'
+        Henry 'В IT у меня был бы удобный график работы'
+        $ third_choose = True
+        if first_choose & second_choose & third_choose == True:
+            return
+        else:
+            scene scene10_1 with dissolve
+            show henry at left with moveinbottom
+            show mag at right with moveinbottom
+            call choose_scene10
+            return
