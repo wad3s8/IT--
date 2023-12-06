@@ -11,6 +11,9 @@ define koldun = Character('Азазелло', color = '#922B21')
 define autor = Character('Автор')
 define general = Character('Главнокомандующий', color = '#2C3E50')
 define computer = Character('Компьютер', color = '#1A5276')
+define hagen = Character('Хаген', color = '#5DADE2')
+define hinki = Character('Хинки', color = '#28B463')
+define riobs = Character('Риобс', color = '#1E8449')
 define non = Character('???', color = '#E74C3C')
 
 # TODO
@@ -22,6 +25,8 @@ define non = Character('???', color = '#E74C3C')
 # выбор молота и меча для сражения с пауками
 # сделать выбор без реплики
 # использовать window hide
+# with config.exit_transition
+# MoveTransition(2.0, leave = moveinright)
 
 # Объявление переменных
 $ has_dragon = False
@@ -63,7 +68,8 @@ label start:
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     # call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    call scene11_coldun # Встреча с колдуном
+    # call scene11_coldun # Встреча с колдуном
+    call scene12_hagen # Встреча с Хагеном
     return
 
 label scene1_school:
@@ -741,3 +747,113 @@ menu choose_scene11:
         show macbook at leap
         computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
         return
+
+label scene12_hagen:
+    show henry at leap
+    Henry 'Кто-то идёт, чьи это шаги?'
+    show computer:
+        xalign 1.5
+    with moveinright
+    show hagen at right with moveinbottom
+    show hagen at leap
+    hagen 'Что ты здесь забыл?'
+    show henry at leap
+    Henry 'Извините, я просто изучаю профессию, используя ваш компьютер'
+    show hagen at leap
+    hagen 'Это мое измерение и моя ветка времени, здесь всё решаю я'
+    show henry at leap
+    Henry 'А вы не могли бы отправить меня домой?'
+    show hagen at leap
+    hagen 'Пока ты в моем мире, ты будешь работать на меня'
+    hagen 'Познакомся с коллегами они введу тебя в курс дела'
+    show henry at leap
+    Henry 'Хорошо , а куда мне идти?'
+    show hagen at leap
+    hagen 'Прямо по коридору и направо'
+    scene scene12 with dissolve
+    show henry at left with moveinleft
+    Henry 'Интересно получится ли у меня работать здесь?'
+    show henry:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    scene scene12_1 with dissolve
+    show henry at left with moveinleft
+    show hinki at right with moveinbottom
+    show hinki at leap
+    hinki 'Ой , а кто это у нас тут ? Что ты здесь забыл?'
+    show riobs at center with moveinbottom
+    show riobs at leap
+    riobs ' Хинки, будь помягче с новеньким'
+    show riobs at leap
+    riobs 'Приветствую тебя, как тебя зовут?'
+    show henry at leap
+    Henry 'Привет, меня зовут Генри'
+    show riobs at leap
+    riobs 'Мы сейчас работаем над одним проектом'
+    show hinki at leap
+    hinki 'Я не думаю, что ты можешь нам чем-нибудь помочь'
+    show henry at leap
+    Henry 'Я бы мог попробовать себя в роли Backend — разработчика'
+    show hinki at leap
+    hinki 'Ха-ха-ха, ты хоть знаешь, что такое веб-сервер?'
+    show henry at leap
+    Henry 'Сервер, принимающий HTTP-запросы от клиентов, обычно веб-браузеров, и выдающий им HTTP-ответы, как правило, вместе с HTML-страницей, изображением, файлом, медиа-потоком или другими данными'
+    show hinki at leap
+    hinki 'У нас даже уборщик знает, что это такое. Знаешь ли ты что такое HTTP?'
+    show henry at leap
+    Henry 'Это протокол, который использует для передачи содержимого TCP, поэтому HTTP считается надежным протоколом для обмена содержимым. Также HTTP — самый популярный протокол'
+    show henry at leap
+    Henry 'Сам не знаю, как мне удалось это запомнить'
+    show hinki at leap
+    hinki 'Ладно, может ты что-то знаешь. У меня есть последний вопрос'
+    hinki 'Как веб-страницы взаимодействуют с серверами?'
+    show henry at leap
+    Henry 'Веб-браузеры взаимодействуют с веб-серверами при помощи протокола передачи гипертекста (HTTP). При взаимодействии, браузер отправляет на сервер HTTP-запрос'
+    show henry at leap
+    Henry 'А также, необходимо знать, что путь (URL), который определяет целевой сервер и ресурс (например, HTML-файл, конкретная точка данных на сервере или запускаемый инструмент)'
+    show riobs at leap
+    riobs 'Хинки, ну отцепись от парнишки. Я думаю, он уже доказал, что может писать проект с нами'
+    show hinki at leap
+    hinki 'Хм... Ладно, пусть попробует'
+    show riobs at leap
+    riobs 'Итак, мы работаем над проектом “Gold Ball”. Заказчик проводил городские оффлайн-турниры по киберфутболу'
+    show riobs at leap
+    riobs 'Чтобы охватить игроков по всей стране и масштабировать проект на СНГ, клиент заказал разработку веб-сервиса для автоматизации проведения соревнований'
+    show hinki at leap
+    hinki 'Проведя анализ, мы спроектировали механику турниров, логику распределения игроков по турнирной сетке, статистику и систему рейтинга'
+    show hinki at leap
+    hinki 'Оценив полученные данные, приняли решение в пользу фреймворка Ruby on Rails'
+    show hinki at leap
+    hinki 'Он подходит, чтобы реализовать описанный функционал, а его шаблонизатор хорошо справляется с типовыми страницами турниров и матчей'
+    show hinki at leap
+    hinki 'Ты что-нибудь понимаешь?'
+    show henry at leap
+    Henry 'Я примерно понял, что нужно сделать'
+    show riobs at leap
+    riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
+    show riobs at leap
+    riobs 'Хинки, ты можешь показать комнату Генри?'
+    show hinki at leap
+    hinki 'Неохотно, но соглашусь'
+    scene scene12 with dissolve
+    show henry at left with moveinleft
+    show hinki at left with moveinleft
+    show hinki at leap
+    hinki 'Идём за мной'
+    window hide
+    show hinki:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    show henry:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    scene scene12_2 with dissolve
+    show henry at left with moveinleft
+    show hinki at center with moveinleft
+    show hinki at leap
+    hinki 'Здесь ты можешь отдохнуть'
+    show henry at leap
+    Henry 'Спасибо, что проводил'
+    show hinki at leap
+    hinki 'Не обольщайся, меня просто попросил мой коллега'
+    
