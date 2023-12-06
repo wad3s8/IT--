@@ -10,6 +10,7 @@ define mag = Character('Алистер', color ='#F39C12')
 define koldun = Character('Азазелло', color = '#922B21')
 define autor = Character('Автор')
 define general = Character('Главнокомандующий', color = '#2C3E50')
+define computer = Character('Компьютер', color = '#1A5276')
 define non = Character('???', color = '#E74C3C')
 
 # TODO
@@ -34,6 +35,16 @@ transform leap(z=1.05, t=.5):
 transform jump_tr(dist=15, t=0.5):
     linear t/2 yoffset - dist
     linear t/2 yoffset 0
+
+#Бег
+transform migga_running:
+    anchor(0,0) pos(0,0)
+    linear 0.1 pos(-9, -7)
+    linear 0.1 pos(0,0)
+    linear 0.1 pos(9, -7)
+    linear 0.1 pos(0,0)
+    repeat
+
 #1080*1920
 #Вы указали: 500x1000 (c соблюдением пропорций)
 #Получилось: 284x1000, 172.39 Кб
@@ -576,11 +587,19 @@ label scene11_coldun:
     with moveinbottom
     koldun 'Перед тобой три зеркала, выбирай понравившееся'
     window hide
+    $ first_zerkalo = False
+    $ second_zerkalo = False
     call choose_scene11
     return
 
 menu choose_scene11:
     'Зеркало 1':
+        if first_zerkalo:
+            show koldun at leap
+            koldun 'Ты уже смотрел, что там'
+            call choose_scene11
+            return
+        $ first_zerkalo = True
         scene scene11_1 with dissolve
         show henry at left with moveinbottom
         show syringe1left:
@@ -635,4 +654,90 @@ menu choose_scene11:
         show syringe3right:
             xalign 1.5
         with moveinright
+        scene scene11 with dissolve
+        show henry at left with moveinbottom
+        show koldun at right with moveinbottom
+        call choose_scene11
+        return
+    'Зеркало 2':
+        if second_zerkalo:
+            show koldun at leap
+            koldun 'Ты уже смотрел, что здесь'
+            call choose_scene11
+            return
+        $ second_zerkalo = True
+        scene scene11_2 with dissolve
+        show henry at left with moveinbottom
+        show henry at leap
+        Henry 'Сколько же тут книг?'
+        window hide
+        show book1:
+            xalign 0.64696
+            yalign 0,174
+        with zoomin
+        show book2:
+            xalign 0.74
+            yalign 0.497
+        with zoomin
+        show book1:
+            xalign 0.2
+        with moveinleft
+        show book2:
+            xalign 0.2
+        with moveinleft
+        show henry at right with moveinright
+        show book1:
+            xalign 0.8
+        with moveinright
+        show book2:
+            xalign 0.8
+        with moveinright
+        show henry at left with moveinleft
+        show henry at leap
+        Henry 'Они кружат мне голову'
+        window hide
+        show book1:
+            xalign 0.2
+        with moveinleft
+        show book2:
+            xalign 0.2
+        with moveinleft
+        show henry:
+            xalign 1.5
+        with moveinright
+        show book1:
+            xalign 1.5
+        with moveinright
+        show book2:
+            xalign 1.5
+        with moveinright
+        scene scene11 with dissolve
+        show henry at left with moveinbottom
+        show koldun at right with moveinbottom
+        call choose_scene11
+        return
+    'Зеркало 3':
+        scene scene11_3 with dissolve
+        show henry at left with moveinbottom
+        show henry at leap
+        Henry 'Может я смогу написать какую-нибудь программу на компьютере?'
+        Henry 'backend-разработчик, кто это такой?'
+        show macbook:
+            xalign 0.9
+            yalign 0.51296
+        with moveinbottom
+        show macbook at leap
+        computer 'Специалист, который занимается серверной частью сайтов, мобильных и десктопных приложений и игр'
+        show henry at leap
+        Henry 'А чем же он занимается?'
+        show macbook at leap
+        computer 'Он создает базы данных и управляет ими, проводит интеграции с внешними сервисами и занимается всем, что находится «под капотом» сайта'
+        show henry at leap
+        Henry 'Как же интересно, но какие плюсы у этой профессии?'
+        show macbook at leap
+        computer 'Востребованность профессии, работа из любой точки планеты, возможность выбирать направление, перспективы, высокая зарплата'
+        show henry at leap
+        Henry 'А где же этому можно научиться ?'
+        show macbook at leap
+        computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
         return
