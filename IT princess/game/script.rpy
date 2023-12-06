@@ -7,9 +7,9 @@ define dragon = Character('Спайнкндс', color = '#2471A3')
 define troll = Character('Тролль', color = '#1E8449')
 define gnoms = Character('Гаети', color = '#117A65')
 define mag = Character('Алистер', color ='#F39C12')
-define koldun = Character('Алистер')
+define koldun = Character('Азазелло', color = '#922B21')
 define autor = Character('Автор')
-define general = Character('Главнокомандующий')
+define general = Character('Главнокомандующий', color = '#2C3E50')
 define non = Character('???', color = '#E74C3C')
 
 # TODO
@@ -51,7 +51,8 @@ label start:
     # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    call scene11_coldun # Встреча с колдуном
     return
 
 label scene1_school:
@@ -412,9 +413,12 @@ label scene10_megastore:
     call choose_scene10 # Сцена выбора цикличная
     scene scene10_1 with dissolve
     show henry at left with moveinbottom
-    show mag at right with moveinbottom
+    show dragon at right with moveinbottom
     show henry at leap
     Henry 'Да, трудно в этом мире, что же мне делать?'
+    show dragon at leap
+    dragon 'У меня есть ещё одно предложение'
+    dragon 'Мы можем отправиться на гору Нан Курнир, там живёт один колдун. Но сразу скажу, он немного сумасшедший'
     return
 
 menu choose_scene10:
@@ -541,3 +545,94 @@ menu choose_scene10:
             show mag at right with moveinbottom
             call choose_scene10
             return
+
+label scene11_coldun:
+    scene scene11 with dissolve
+    show henry at left with moveinbottom
+    show dragon at right with moveinbottom
+    show koldun at center with moveinbottom
+    show koldun at leap
+    koldun 'Давно у меня не было гостей, зачем пожаловали?'
+    show henry at leap
+    Henry 'Мне нужно попасть в свой мир'
+    show koldun at leap
+    koldun 'Я давно подозревал, что есть другие миры'
+    koldun 'Однако я не могу тебя туда отправить, но могу показать кое-что другое'
+    show dragon:
+        xalign 1.5
+    with moveinright
+    show koldun at right with moveinright
+    show zerkalo1:
+        xalign 0.2
+        yalign 0.51
+    with moveinbottom
+    show zerkalo2:
+        xalign 0.41
+        yalign 0.51
+    with moveinbottom
+    show zerkalo3:
+        xalign 0.62
+        yalign 0.51
+    with moveinbottom
+    koldun 'Перед тобой три зеркала, выбирай понравившееся'
+    window hide
+    call choose_scene11
+    return
+
+menu choose_scene11:
+    'Зеркало 1':
+        scene scene11_1 with dissolve
+        show henry at left with moveinbottom
+        show syringe1left:
+            xalign 0.78385
+            yalign 0.14259
+        with zoomin
+        show syringe2left:
+            xalign 0.6392
+            yalign 0.38
+        with zoomin
+        show syringe3left:
+            xalign 0.82
+            yalign 0.514
+        with zoomin
+        show syringe1left:
+            xalign 0.2
+        with moveinleft
+        show syringe2left:
+            xalign 0.2
+        with moveinleft
+        show syringe3left:
+            xalign 0.2
+        with moveinleft
+        show henry at leap
+        Henry 'ААААА'
+        Henry 'Они летают'
+        window hide
+        show henry:
+            xalign 1.5
+        with moveinright
+        hide syringe1left
+        hide syringe2left
+        hide syringe3left
+        show syringe1right:
+            xalign 0.2
+            yalign 0.14259
+        with zoomin
+        show syringe2right:
+            xalign 0.2
+            yalign 0.38
+        with zoomin
+        show syringe3right:
+            xalign 0.2
+            yalign 0.514
+        with zoomin
+        show syringe1right:
+            xalign 1.5
+        with moveinright
+        show syringe2right:
+            xalign 1.5
+        with moveinright
+        show syringe3right:
+            xalign 1.5
+        with moveinright
+        return
