@@ -28,7 +28,7 @@
 
 **Артефакты Аналитика:**
 
-- [Ссылка на Figma](https://www.figma.com/file/Qb41A1Y5qGybLkAUCGJpu4/Untitled?type=design&node-id=0%3A1&mode=design&t=sFEffb8tSKU9GZup-1)
+- [Ссылка на Figma]([https://www.figma.com/file/Qb41A1Y5qGybLkAUCGJpu4/Untitled?type=design&node-id=0%3A1&mode=design&t=sFEffb8tSKU9GZup-1)](https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU)https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU).
 
 <p align="center">Made with</p>
 <p align="center">❤️</p>
