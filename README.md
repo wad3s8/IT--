@@ -28,7 +28,7 @@
 
 **Артефакты Аналитика:**
 
-- [Ссылка на гугл док с аналитикой]((https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU)https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU).
+- [Ссылка на гугл док с аналитикой](https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU).
 
 <p align="center">Made with</p>
 <p align="center">❤️</p>
