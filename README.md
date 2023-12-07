@@ -28,7 +28,7 @@
 
 **Артефакты Аналитика:**
 
-- [Ссылка на гугл папку][(https://drive.google.com/drive/folders/1liBDn9f96WUDsG6_FlHFskQaxXptE8x_?usp=sharing)](https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU)https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU
+- [Ссылка на гугл папку].[(https://drive.google.com/drive/folders/1liBDn9f96WUDsG6_FlHFskQaxXptE8x_?usp=sharing)](https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU)https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU
 
 
 <p align="center">Made with</p>
