@@ -58,32 +58,38 @@ transform migga_running:
 
 # Начало игры
 label start:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    # call scene11_coldun # Встреча с колдуном
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    call scene11_coldun # Встреча с колдуном
     call scene12_hagen # Встреча с Хагеном
     return
 
 label scene1_school:
+    play music peremena fadein 1.0 fadeout 1.0
     scene scene1 with dissolve
     show henry at left with moveinbottom
     show maks at right with moveinbottom
+    play sound hmmm1
     show maks at leap
     Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
+    play sound hmmm3
     show henry at leap
     Henry 'Если честно, я еще не решил, чем хочу заниматься'
     show maks at leap
     Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
+    play sound surprise1
     show henry at leap
     Henry 'А это интересно, но в этой сфере столько направлений и специальностей...'
+    stop music
+    play sound bell
     show maks at leap
     Maks 'Ладно, что-то мы заболтались, пошли на урок'
     return
