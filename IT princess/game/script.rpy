@@ -15,6 +15,7 @@ define hagen = Character('Хаген', color = '#5DADE2')
 define hinki = Character('Хинки', color = '#28B463')
 define riobs = Character('Риобс', color = '#1E8449')
 define non = Character('???', color = '#E74C3C')
+define n = Character(None, kind = nvl)
 
 # TODO
 # 210 строчка, Генри лупит пауков
@@ -27,6 +28,7 @@ define non = Character('???', color = '#E74C3C')
 # использовать window hide
 # with config.exit_transition
 # MoveTransition(2.0, leave = moveinright)
+# pos(00,00)
 
 # Объявление переменных
 $ has_dragon = False
@@ -70,6 +72,8 @@ label start:
     call scene10_megastore from _call_scene10_megastore # Разговор с магом
     call scene11_coldun # Встреча с колдуном
     call scene12_hagen # Встреча с Хагеном
+    if not the_end:
+        call scene13_end # Разговор обо сне с другом
     return
 
 label scene1_school:
@@ -757,8 +761,8 @@ menu choose_scene11:
 label scene12_hagen:
     show henry at leap
     Henry 'Кто-то идёт, чьи это шаги?'
-    show computer:
-        xalign 1.5
+    show macbook:
+        xalign 2.0
     with moveinright
     show hagen at right with moveinbottom
     show hagen at leap
@@ -862,4 +866,50 @@ label scene12_hagen:
     Henry 'Спасибо, что проводил'
     show hinki at leap
     hinki 'Не обольщайся, меня просто попросил мой коллега'
-    
+    show hinki:
+        xalign 1.5
+    with moveinright
+    $ the_end = False
+    menu:
+        Henry 'Может мне и вправду поспать или подумать над проектом?'
+        'Поспать':
+            $ the_end = True
+            scene bg black with dissolve
+            window hide
+            n '''Генри проснулся во время урока,
+            не помня свои приключения'''
+            nvl clear
+            n '''КОНЕЦ!!!'''
+        'Подумать над проектом':
+            show henry at center with moveinright
+            show henry at leap
+            Henry 'Меня так заинтересовал проект, может подумать над ним?'
+            Henry 'Хотя я сегодян очень сильно устал'
+            Henry 'Необходимо набраться сил перед завтрашним днём'
+            show henry at leap
+            Henry 'Пойду спать'
+    return
+
+label scene13_end:
+    show scene2_blur with dissolve
+    scene bg black with Fade(2,0,0)
+    scene scene2_blur with Dissolve(1)
+    Maks 'Пшшш... Генри!'
+    Maks 'Генри, вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
+    scene bg black with Fade(2,0,0)
+    scene scene2 with Dissolve(1)
+    Henry 'Ладно, пошли давай'
+    scene scene1 with dissolve
+    show henry at left with moveinbottom
+    show maks at right with moveinbottom
+    show maks at leap
+    Maks 'Ты видел, что в УрФУ проходит День открытых дверей, пойдём?'
+    show henry at leap
+    Henry 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
+    show henry at leap
+    Henry 'Я поступлю на программную инженерию и стану backend-разработчиком'
+    scene bg black with dissolve
+    window hide
+    n '''КОНЕЦ!!!'''
+    nvl clear
+    return
