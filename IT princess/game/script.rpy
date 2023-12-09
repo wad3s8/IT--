@@ -70,10 +70,10 @@ label start:
     call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    call scene11_coldun # Встреча с колдуном
-    call scene12_hagen # Встреча с Хагеном
+    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     if not the_end:
-        call scene13_end # Разговор обо сне с другом
+        call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
 label scene1_school:
@@ -437,7 +437,7 @@ label scene10_megastore:
     $ second_choose = False
     $ third_choose = False
     window hide
-    call choose_scene10 # Сцена выбора цикличная
+    call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
     scene scene10_1 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
@@ -453,7 +453,7 @@ menu choose_scene10:
         if first_choose:
             show mag at leap
             mag 'Ты уже спрашивал меня про это'
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_1
             return
         scene scene10_2 with dissolve
         show henry at left with moveinbottom
@@ -508,13 +508,13 @@ menu choose_scene10:
             scene scene10_1 with dissolve
             show henry at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_2
             return
     'Ты можешь состоять в армии короля':
         if second_choose:
             show mag at leap
             mag 'Ты уже спрашивал меня про это'
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_3
             return
         scene scene10_3 with dissolve
         show henry at left with moveinbottom
@@ -549,13 +549,13 @@ menu choose_scene10:
             scene scene10_1 with dissolve
             show henry at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_4
             return
     'Ты можешь стать моим учеником':
         if third_choose:
             show mag at leap
             mag 'Ты уже спрашивал меня про это'
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_5
             return
         show mag at leap
         mag 'Тебе нужно будет днём и ночью выполнять мои поручения'
@@ -570,7 +570,7 @@ menu choose_scene10:
             scene scene10_1 with dissolve
             show henry at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10
+            call choose_scene10 from _call_choose_scene10_6
             return
 
 label scene11_coldun:
@@ -605,7 +605,7 @@ label scene11_coldun:
     window hide
     $ first_zerkalo = False
     $ second_zerkalo = False
-    call choose_scene11
+    call choose_scene11 from _call_choose_scene11
     return
 
 menu choose_scene11:
@@ -613,7 +613,7 @@ menu choose_scene11:
         if first_zerkalo:
             show koldun at leap
             koldun 'Ты уже смотрел, что там'
-            call choose_scene11
+            call choose_scene11 from _call_choose_scene11_1
             return
         $ first_zerkalo = True
         scene scene11_1 with dissolve
@@ -673,13 +673,13 @@ menu choose_scene11:
         scene scene11 with dissolve
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
-        call choose_scene11
+        call choose_scene11 from _call_choose_scene11_2
         return
     'Зеркало 2':
         if second_zerkalo:
             show koldun at leap
             koldun 'Ты уже смотрел, что здесь'
-            call choose_scene11
+            call choose_scene11 from _call_choose_scene11_3
             return
         $ second_zerkalo = True
         scene scene11_2 with dissolve
@@ -730,7 +730,7 @@ menu choose_scene11:
         scene scene11 with dissolve
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
-        call choose_scene11
+        call choose_scene11 from _call_choose_scene11_4
         return
     'Зеркало 3':
         scene scene11_3 with dissolve
