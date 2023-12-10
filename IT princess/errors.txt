@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 773: positional argument follows keyword argument
-    MoveTransition(delay = 2, moveinright)
-                                          ^
+File "game/script.rpy", line 105: play requires a file
+    play sound 
+               ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Wed Dec  6 23:32:05 2023
+Sun Dec 10 17:47:59 2023

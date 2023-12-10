@@ -95,41 +95,53 @@ label scene1_school:
     stop music
     play sound bell
     show maks at leap
+    play sound gasp
     Maks 'Ладно, что-то мы заболтались, пошли на урок'
+    stop sound fadeout 1.0
+    stop music fadeout 1.0
     return
 
 label scene2_class:
     scene scene2 with dissolve
     show teacher at center with moveinbottom
     teacher '"Отец мой Андрей Петрович Гринёв в молодости своей..." - монотонно начал читать учитель'
+    play sound yawn1
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1) # блюр 10
+    play sound yawn1
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
     'Генри не выспавшись уже начал засыпать на задней парте'
+    stop sound fadeout 1.0
     return
 
 label scene3_sleep:
     scene scene3 with dissolve
+    play sound krik1
     hide textbox
     show henry at right with moveinleft
     show henry:
         xalign 2.5
     with moveinright
     Henry 'ААААААААААААААААА'
+    stop sound fadeout 1.0
     return
 
 label scene4_new_country:
     scene scene4 with dissolve
     show henry at center with moveinbottom
+    play sound hmmm6
     Henry 'Куда я попал? Где я очутился?'
     Henry 'Что мне делать?'
+    stop sound fadeout 1.0
     return
 
 label scene5_forest:
     scene scene5 with dissolve
+    play music birds_sing fadein 1.0
     show henry at center with moveinbottom
     show henry at leap
+    play sound hmmm11
     Henry 'Хммммм...'
     Henry 'Что это за синий свет в лесу?'
     menu meet_dragon:
@@ -140,6 +152,7 @@ label scene5_forest:
             show dragon_in_chains at topright with moveinbottom
             Henry 'Это же дракон, он попал в ловушку, нужно ему помочь'
             show henry at center with easeinright
+            play sound chain1
             'Генри бросается к дракону и распутывает цепи'
             show henry at left with easeinleft
             hide dragon_in_chains with easeinbottom
@@ -147,6 +160,7 @@ label scene5_forest:
             show henry at leap
             Henry 'Кто ты такой?'
             show dragon at leap
+            play sound hmmm2
             non 'Спасибо за помощь. Меня зовут Спайндикс'
             dragon 'Я помогу тебе разобраться в этом мире'
         'Не обратить внимание':
@@ -158,22 +172,32 @@ label scene6_wizard_forest:
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show dragon at leap
+    play sound hmmm5
     dragon 'Чтобы выжить в этой стране, необходимо найти оружие'
+    stop sound fadeout 1.0
     show henry at leap
+    play sound hmmm9
     Henry 'Ты знаешь, где его можно достать?'
+    stop sound fadeout 1.0
     show dragon at leap
+    play sound surprise1
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
+    stop sound fadeout 1.0
+    stop music fadeout 1.0
     return
 
 label scene7_cave:
     scene scene7 with dissolve
+    play music water_down fadein 1.0
     show chest_close at top with moveinbottom
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show henry at leap
+    play sound hmmm10
     Henry 'Смотри!'
     Henry 'Это же сундук'
     Henry 'Давай откроем его'
+    play sound chest
     show henry at center with easeinright
     show henry at left with easeinleft
     hide chest_close
@@ -185,8 +209,10 @@ label scene7_cave:
     show dragon at leap
     dragon 'Я не владею этими знаниями'
     show henry at leap
+    play sound surprise1
     Henry 'Кажется, я понимаю, что здесь написано'
     Henry 'Из этого я точно знаю Python, C#'
+    stop sound fadeout 1.0
     show dragon at leap
     dragon 'Это что-то из твоего мира?'
     show henry at leap
@@ -201,7 +227,9 @@ label scene8_fairy_forest:
     Henry 'Куда мы идём дальше?'
     show dragon at leap
     dragon 'Давай пойдём к магу Алистеру, он поможет нам'
+    stop music fadeout 1.0
     scene scene8 with dissolve
+    play music river fadein 1.0 volume 0.5
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     Henry 'Что это за чудесный лес?'
@@ -213,6 +241,7 @@ label scene8_fairy_forest:
     dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
     dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
     dragon 'Я предлагаю поторопиться, тролли очень опасны'
+    play sound thunder volume 1.5
     'Позади послышался звук, похожий на гром'
     show troll_mini at truecenter
     show henry at leap
@@ -222,6 +251,7 @@ label scene8_fairy_forest:
     hide troll_mini
     show troll at truecenter with zoomin
     show troll at leap
+    play sound hmmm9
     troll 'Кто вы такие ? Что вы забыли здесь?'
     show henry at leap
     Henry 'Здравствуйте, извините нас пожалуйста, мы уже уходим'
@@ -240,24 +270,33 @@ label scene8_fairy_forest:
         'Принять подарок от тролля':
             show henry at leap
             Henry 'Спасибо за подарок'
+            play sound chest
             hide present_close
             show present_open at top with dissolve
+            play sound spider_legs volume 1.25
             show spiders at top with dissolve
             show spiders at topright with easeinright
             show spiders2 at top with dissolve
             show spiders2 at topleft with easeinleft
             show spiders3 at top with dissolve
             show spiders2 at left with easeinbottom
+            stop sound fadeout 1.0
             show henry at leap
+            stop sound fadeout 1.0
+            play sound krik2
             Henry 'ААААААААААА'
+            stop sound fadeout 1.0
             Henry 'Пауки!'
             show troll_average at leap
+            play sound hmmm8
             troll 'Ах ты...'
             troll 'Не трожь моих пауков! А не то...'
             hide present_open
             show troll_average at center with easeinleft
             show henry at leap
+            play sound krik2
             Henry 'АААААААААА'
+            stop sound fadeout 1.0
             show dragon at right with moveinbottom
             show dragon at leap
             dragon 'Бежим!!!'
@@ -267,14 +306,19 @@ label scene8_fairy_forest:
             Henry 'Извините, но я откажусь, нам нужно идти'
             show troll_average at center with easeinleft
             show troll_average at leap
+            play sound hmmm9
             troll 'Нет! Ты не уйдёшь!'
             show henry at leap
+            play sound krik2
             Henry 'АААААААААА'
+            stop sound fadeout 1.0
             show dragon at right with moveinbottom
             dragon 'Бежим!!!'
+    stop music fadeout 1.0
     return
 
 label scene9_gnoms:
+    play music birds_sing fadein 1.0
     scene scene9 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
@@ -290,8 +334,10 @@ label scene9_gnoms:
     Henry 'Где мы сейчас находимся?'
     show dragon at leap
     dragon 'Мы попали в долину, которая называется Энчастия'
+    play sound gaeti_run
     show henry at leap
     Henry 'А что это за существа бегут к нам?'
+    stop sound fadeout 1.0
     show dragon at leap
     dragon 'Гаети. Это маленькие существа, которые здесь обитают'
     show gnom1_mini:
@@ -318,10 +364,13 @@ label scene9_gnoms:
     show henry at leap
     Henry 'Здравствуйте, дорогие жители'
     show gnom5 at leap
+    play sound hmmm9
     gnoms 'Кто ты такой?'
     show gnom6 at leap
+    play sound hmmm9
     gnoms 'Ты не похож на здешних жителей'
     show gnom4 at leap
+    play sound hmmm9
     gnoms 'Что ты здесь забыл?'
     hide gnom5
     show gnom3:
@@ -348,14 +397,17 @@ label scene9_gnoms:
     show gnom1 at leap
     gnoms 'Ты должен пойти с нами'
     show henry at leap
+    play sound hmmm7
     Henry 'Что же делать?'
     menu:
         Henry 'Что мне выбрать?'
         'Попробовать ответить на все вопросы Гаети':
             show henry at leap
+            play sound hmmm1
             Henry 'Меня зовут Генри, я не из вашего мира'
             Henry 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
             show gnom1 at leap
+            play sound hmmm9
             gnoms 'Пошли с нами'
             show gnom3 at leap
             gnoms 'Тебе точно нужно идти с нами'
@@ -384,26 +436,31 @@ label scene9_gnoms:
     show henry at left with moveinleft
     show dragon at right with moveinleft
     show henry at leap
+    play sound hmmm2
     Henry 'Знаешь, в моем мире все устроено немного не так...'
     Henry 'И Гаети мне кое-кого напомнили'
     show dragon at leap
     dragon 'Кого напомнили?'
     show henry at leap
+    play sound hmmm1
     Henry 'Они напоминают мне моих родителей и учителей'
     Henry 'Мне также все твердят : «Выбрал вуз?», «сдай ЕГЭ», «поступи на бюджет»'
     show dragon at leap
     dragon 'Да, действительно, сходство с Гаети есть'
     show henry at leap
+    play sound surprise1
     Henry 'Из этой ситуации я сделал вывод, что родители иногда правы, они желают нам добра, поэтому к ним нужно прислушиваться'
     Henry 'Они всегда заботятся о нас. Требуют, чтобы мы отдыхали, не перетруждались'
     show dragon at leap
     dragon 'То есть учиться в вашем мире не нужно?'
     show henry at leap
     Henry 'Конечно нужно, но нужно знать меру во всём'
+    stop music fadeout 1.0
     return
 
 label scene10_megastore:
     scene scene10 with dissolve
+    play sound bazar fadein 1.0
     show dragon at right with moveinbottom
     show henry at left with moveinbottom
     show dragon at leap
@@ -411,11 +468,13 @@ label scene10_megastore:
     dragon 'Вот там лавка Алистера'
     show henry at leap
     Henry 'Давай зайдём'
+    stop music fadeout 1.0
     scene scene10_1 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show mag at center with moveinbottom
     show mag at leap
+    play sound hmmm9
     mag 'Приветствую вас, что вы хотели в моей лавке?'
     show henry at leap
     Henry 'Здравствуйте, мне нужно попасть в мой мир'
@@ -424,6 +483,7 @@ label scene10_megastore:
     with moveinright
     show mag at right with moveinright
     show mag at leap
+    play sound hmmm8
     mag 'Ой, с этим я тебе помочь не могу'
     show henry at leap
     Henry 'Что же мне тогда делать? Как здесь выжить?'
@@ -442,7 +502,9 @@ label scene10_megastore:
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show henry at leap
+    play sound hmmm6
     Henry 'Да, трудно в этом мире, что же мне делать?'
+    stop sound fadeout 1.0
     show dragon at leap
     dragon 'У меня есть ещё одно предложение'
     dragon 'Мы можем отправиться на гору Нан Курнир, там живёт один колдун. Но сразу скажу, он немного сумасшедший'
@@ -452,10 +514,12 @@ menu choose_scene10:
     'Ты можешь пасти единорогов':
         if first_choose:
             show mag at leap
+            play sound hmmm9
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_1
             return
         scene scene10_2 with dissolve
+        play music birds_sing fadein 1.0
         show henry at left with moveinbottom
         show mag at right with moveinbottom
         show unicorn_mini_zerkalo:
@@ -478,6 +542,7 @@ menu choose_scene10:
             xalign 0.55
             yalign 0.43
         with moveinright
+        play sound horse
         show unicorn:
             xalign 0.3
         with easeinleft
@@ -492,6 +557,7 @@ menu choose_scene10:
         show unicorn_zerkalo:
             xalign 1.5
         with moveinright
+        stop sound fadeout 1.0
         show unicorn_mini_zerkalo:
             xalign 1.5
         with moveinright
@@ -501,6 +567,7 @@ menu choose_scene10:
         show henry at left with moveinleft
         show henry at leap
         Henry 'Да, к ЕГЭ мне было готовиться легче'
+        stop music fadeout 1.0
         $ first_choose = True
         if first_choose & second_choose & third_choose == True:
             return
@@ -513,16 +580,19 @@ menu choose_scene10:
     'Ты можешь состоять в армии короля':
         if second_choose:
             show mag at leap
+            play sound hmmm9
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_3
             return
         scene scene10_3 with dissolve
+        play music hero fadein 1.0
         show henry at left with moveinbottom
         show mag at right with moveinbottom
         show general at center with moveinbottom
         show mag at leap
         mag 'Ты можешь состоять в армии короля'
         show general at leap
+        play sound krik3
         general 'Бойцы, вы должны быть готовы ко всему'
         general 'Недавно нам объявили войну Марийцы'
         show mag:
@@ -530,6 +600,7 @@ menu choose_scene10:
         with moveinright
         show general at right with moveinright
         show general at leap
+        play sound hmmm9
         general 'С этого момента вы будете жить в замке'
         general 'Итак, ваше первое задание на сегодня...'
         general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
@@ -537,11 +608,15 @@ menu choose_scene10:
         Henry 'Нее...'
         Henry 'Это не для меня'
         show henry at leap
+        play sound hmmm8
         Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+        stop sound fadeout 1.0
         show general at leap
+        play sound hmmm9
         general 'Что это ты бормочешь?'
         show henry at leap
         Henry 'Да так... Мысли вслух'
+        stop music fadeout 1.0
         $ second_choose = True
         if first_choose & second_choose & third_choose == True:
             return
@@ -554,6 +629,7 @@ menu choose_scene10:
     'Ты можешь стать моим учеником':
         if third_choose:
             show mag at leap
+            play sound hmmm9
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_5
             return
@@ -561,6 +637,7 @@ menu choose_scene10:
         mag 'Тебе нужно будет днём и ночью выполнять мои поручения'
         mag 'Также нужно будет рисковать своей жизнью, чтобы доставать необходимые ингредиенты для зелий'
         show henry at leap
+        play sound hmmm7
         Henry 'Извини, но такое мне тоже не подходит'
         Henry 'В IT у меня был бы удобный график работы'
         $ third_choose = True
@@ -575,6 +652,7 @@ menu choose_scene10:
 
 label scene11_coldun:
     scene scene11 with dissolve
+    play music water_down fadein 1.0
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show koldun at center with moveinbottom
@@ -605,6 +683,7 @@ label scene11_coldun:
     window hide
     $ first_zerkalo = False
     $ second_zerkalo = False
+    stop music fadeout 1.0
     call choose_scene11 from _call_choose_scene11
     return
 
@@ -612,6 +691,7 @@ menu choose_scene11:
     'Зеркало 1':
         if first_zerkalo:
             show koldun at leap
+            play sound hmmm9
             koldun 'Ты уже смотрел, что там'
             call choose_scene11 from _call_choose_scene11_1
             return
@@ -640,7 +720,9 @@ menu choose_scene11:
             xalign 0.2
         with moveinleft
         show henry at leap
+        play sound krik2
         Henry 'ААААА'
+        stop sound fadeout 1.0
         Henry 'Они летают'
         window hide
         show henry:
@@ -671,6 +753,17 @@ menu choose_scene11:
             xalign 1.5
         with moveinright
         scene scene11 with dissolve
+        show zerkalo1:
+            xalign 0.2
+            yalign 0.51
+        with moveinbottom
+        show zerkalo2:
+            xalign 0.41
+            yalign 0.51
+        with moveinbottom
+        show zerkalo3:
+            xalign 0.62
+            yalign 0.51
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
         call choose_scene11 from _call_choose_scene11_2
@@ -678,6 +771,7 @@ menu choose_scene11:
     'Зеркало 2':
         if second_zerkalo:
             show koldun at leap
+            play sound hmmm9
             koldun 'Ты уже смотрел, что здесь'
             call choose_scene11 from _call_choose_scene11_3
             return
@@ -710,6 +804,7 @@ menu choose_scene11:
         with moveinright
         show henry at left with moveinleft
         show henry at leap
+        play sound hmmm12
         Henry 'Они кружат мне голову'
         window hide
         show book1:
@@ -728,14 +823,27 @@ menu choose_scene11:
             xalign 1.5
         with moveinright
         scene scene11 with dissolve
+        show zerkalo1:
+            xalign 0.2
+            yalign 0.51
+        with moveinbottom
+        show zerkalo2:
+            xalign 0.41
+            yalign 0.51
+        with moveinbottom
+        show zerkalo3:
+            xalign 0.62
+            yalign 0.51
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
         call choose_scene11 from _call_choose_scene11_4
         return
     'Зеркало 3':
         scene scene11_3 with dissolve
+        play music computer_work fadein 1.0
         show henry at left with moveinbottom
         show henry at leap
+        play sound hmmm1
         Henry 'Может я смогу написать какую-нибудь программу на компьютере?'
         Henry 'backend-разработчик, кто это такой?'
         show macbook:
@@ -780,17 +888,20 @@ label scene12_hagen:
     Henry 'Хорошо , а куда мне идти?'
     show hagen at leap
     hagen 'Прямо по коридору и направо'
+    stop music fadeout 1.0
     scene scene12 with dissolve
+    play music koridor fadein 1.0
     show henry at left with moveinleft
     Henry 'Интересно получится ли у меня работать здесь?'
     show henry:
         xalign 1.5
     with MoveTransition(2.0, leave = moveinright)
+    stop music fadeout 1.0
     scene scene12_1 with dissolve
     show henry at left with moveinleft
     show hinki at right with moveinbottom
     show hinki at leap
-    hinki 'Ой , а кто это у нас тут ? Что ты здесь забыл?'
+    hinki 'Ой, а кто это у нас тут ? Что ты здесь забыл?'
     show riobs at center with moveinbottom
     show riobs at leap
     riobs ' Хинки, будь помягче с новеньким'
@@ -846,6 +957,7 @@ label scene12_hagen:
     show hinki at leap
     hinki 'Неохотно, но соглашусь'
     scene scene12 with dissolve
+    play sound koridor fadein 1.0
     show henry at left with moveinleft
     show hinki at left with moveinleft
     show hinki at leap
@@ -857,6 +969,7 @@ label scene12_hagen:
     show henry:
         xalign 1.5
     with MoveTransition(2.0, leave = moveinright)
+    stop sound fadeout 1.0
     scene scene12_2 with dissolve
     show henry at left with moveinleft
     show hinki at center with moveinleft
@@ -894,6 +1007,7 @@ label scene13_end:
     show scene2_blur with dissolve
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
+    play sound pshhh
     Maks 'Пшшш... Генри!'
     Maks 'Генри, вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
     scene bg black with Fade(2,0,0)
@@ -905,6 +1019,7 @@ label scene13_end:
     show maks at leap
     Maks 'Ты видел, что в УрФУ проходит День открытых дверей, пойдём?'
     show henry at leap
+    play sound hmmm1
     Henry 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
     show henry at leap
     Henry 'Я поступлю на программную инженерию и стану backend-разработчиком'
