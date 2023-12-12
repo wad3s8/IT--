@@ -31,7 +31,6 @@ define n = Character(None, kind = nvl)
 # pos(00,00)
 
 # Объявление переменных
-$ has_dragon = False
 
 # Растягивание персонажа
 transform leap(z=1.05, t=.5):
@@ -63,9 +62,9 @@ label start:
     # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
     # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
     # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
@@ -142,31 +141,27 @@ label scene4_new_country:
 label scene5_forest:
     scene scene5 with dissolve
     show henry at center with moveinbottom
-    show henry at leap
     play sound hmmm11
+    show henry at leap
     Henry 'Хммммм...'
     Henry 'Что это за синий свет в лесу?'
-    menu meet_dragon:
-        Henry 'Что мне сделать?'
-        'Пойти проверить':
-            $ has_dragon = True
-            show henry at left with easeinleft
-            show dragon_in_chains at topright with moveinbottom
-            Henry 'Это же дракон, он попал в ловушку, нужно ему помочь'
-            show henry at center with easeinright
-            play sound chain1
-            'Генри бросается к дракону и распутывает цепи'
-            show henry at left with easeinleft
-            hide dragon_in_chains with easeinbottom
-            show dragon at right with moveinbottom
-            show henry at leap
-            Henry 'Кто ты такой?'
-            show dragon at leap
-            play sound hmmm2
-            non 'Спасибо за помощь. Меня зовут Спайндикс'
-            dragon 'Я помогу тебе разобраться в этом мире'
-        'Не обратить внимание':
-            $ has_dragon = False
+    Henry 'Нужно пойти поверить'
+    show henry at left with easeinleft
+    show dragon_in_chains at topright with moveinbottom
+    play sound hmmm4
+    show henry at leap
+    Henry 'Это же дракон, он попал в ловушку, нужно ему помочь'
+    show henry at center with easeinright
+    play sound chain1
+    show henry at left with easeinleft
+    hide dragon_in_chains with easeinbottom
+    show dragon at right with moveinbottom
+    show henry at leap
+    Henry 'Кто ты такой?'
+    play sound hmmm2
+    show dragon at leap
+    non 'Спасибо за помощь. Меня зовут Спайндикс'
+    dragon 'Я помогу тебе разобраться в этом мире'
     return
 
 label scene6_wizard_forest:
