@@ -64,9 +64,9 @@ label start:
     # call scene3_sleep from _call_scene3_sleep # Генри летит спать
     # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
     call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     # call scene10_megastore from _call_scene10_megastore # Разговор с магом
     # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
@@ -221,26 +221,29 @@ label scene7_cave:
     return
 
 label scene8_fairy_forest:
+    play sound hmmm1
     show henry at leap
     Henry 'Куда мы идём дальше?'
     show dragon at leap
     dragon 'Давай пойдём к магу Алистеру, он поможет нам'
     stop music fadeout 1.0
+    play music river fadein 1.0 volume 0.35
     scene scene8 with dissolve
-    play music river fadein 1.0 volume 0.5
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
+    play sound hmmm7
+    show henry at leap
     Henry 'Что это за чудесный лес?'
     show dragon at leap
     dragon 'Это лес Мальдонии, место, где живут феи'
     show henry at leap
     Henry 'Как выглядят феи? И где же они все?'
+    play sound hmmm1
     show dragon at leap
     dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
     dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
     dragon 'Я предлагаю поторопиться, тролли очень опасны'
-    play sound thunder volume 1.5
-    'Позади послышался звук, похожий на гром'
+    play sound thunder volume 2.0
     show troll_mini at truecenter
     show henry at leap
     Henry 'Что это такое?'
@@ -249,8 +252,9 @@ label scene8_fairy_forest:
     hide troll_mini
     show troll at truecenter with zoomin
     show troll at leap
-    play sound hmmm9
+    play sound hmmm9 volume 1.5
     troll 'Кто вы такие ? Что вы забыли здесь?'
+    play sound hmmm4
     show henry at leap
     Henry 'Здравствуйте, извините нас пожалуйста, мы уже уходим'
     show troll at leap
@@ -266,12 +270,13 @@ label scene8_fairy_forest:
     menu:
         'Как поступить Генри?'
         'Принять подарок от тролля':
+            play sound hmmm3
             show henry at leap
             Henry 'Спасибо за подарок'
-            play sound chest
+            play sound present volume 1.3
             hide present_close
             show present_open at top with dissolve
-            play sound spider_legs volume 1.25
+            play sound spider_legs volume 1.45
             show spiders at top with dissolve
             show spiders at topright with easeinright
             show spiders2 at top with dissolve
@@ -279,20 +284,19 @@ label scene8_fairy_forest:
             show spiders3 at top with dissolve
             show spiders2 at left with easeinbottom
             stop sound fadeout 1.0
-            show henry at leap
-            stop sound fadeout 1.0
             play sound krik2
+            show henry at leap
             Henry 'ААААААААААА'
             stop sound fadeout 1.0
             Henry 'Пауки!'
+            play sound hmmm8 volume 1.3
             show troll_average at leap
-            play sound hmmm8
             troll 'Ах ты...'
             troll 'Не трожь моих пауков! А не то...'
             hide present_open
             show troll_average at center with easeinleft
-            show henry at leap
             play sound krik2
+            show henry at leap
             Henry 'АААААААААА'
             stop sound fadeout 1.0
             show dragon at right with moveinbottom
@@ -300,14 +304,15 @@ label scene8_fairy_forest:
             dragon 'Бежим!!!'
         'Проигнорировать предложение':
             hide present_close
+            play sound hmmm2
             show henry at leap
             Henry 'Извините, но я откажусь, нам нужно идти'
             show troll_average at center with easeinleft
+            play sound hmmm9 volume 1.5
             show troll_average at leap
-            play sound hmmm9
             troll 'Нет! Ты не уйдёшь!'
-            show henry at leap
             play sound krik2
+            show henry at leap
             Henry 'АААААААААА'
             stop sound fadeout 1.0
             show dragon at right with moveinbottom
