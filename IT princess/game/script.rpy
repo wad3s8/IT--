@@ -60,24 +60,24 @@ transform migga_running:
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
-    call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
-    if not the_end:
-        call scene13_end from _call_scene13_end # Разговор обо сне с другом
+    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    # call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
+    # if not the_end:
+    #     call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
 label scene1_school:
-    play music peremena fadein 1.0 fadeout 1.0
+    play music peremena fadein 1.0
     scene scene1 with dissolve
     show henry at left with moveinbottom
     show maks at right with moveinbottom
@@ -95,7 +95,6 @@ label scene1_school:
     stop music
     play sound bell
     show maks at leap
-    play sound gasp
     Maks 'Ладно, что-то мы заболтались, пошли на урок'
     stop sound fadeout 1.0
     stop music fadeout 1.0
@@ -104,6 +103,8 @@ label scene1_school:
 label scene2_class:
     scene scene2 with dissolve
     show teacher at center with moveinbottom
+    show teacher at leap
+    play sound hmmm9
     teacher '"Отец мой Андрей Петрович Гринёв в молодости своей..." - монотонно начал читать учитель'
     play sound yawn1
     scene bg black with Fade(2,0,0)
@@ -111,14 +112,14 @@ label scene2_class:
     play sound yawn1
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
-    'Генри не выспавшись уже начал засыпать на задней парте'
+    'Генри, не выспавшись, уже начал засыпать на задней парте'
     stop sound fadeout 1.0
     return
 
 label scene3_sleep:
-    scene scene3 with dissolve
     play sound krik1
-    hide textbox
+    scene scene3 with dissolve
+    window hide
     show henry at right with moveinleft
     show henry:
         xalign 2.5
@@ -128,9 +129,11 @@ label scene3_sleep:
     return
 
 label scene4_new_country:
+    play music birds_sing fadein 1.0
     scene scene4 with dissolve
     show henry at center with moveinbottom
     play sound hmmm6
+    show henry at leap
     Henry 'Куда я попал? Где я очутился?'
     Henry 'Что мне делать?'
     stop sound fadeout 1.0
@@ -138,7 +141,6 @@ label scene4_new_country:
 
 label scene5_forest:
     scene scene5 with dissolve
-    play music birds_sing fadein 1.0
     show henry at center with moveinbottom
     show henry at leap
     play sound hmmm11
