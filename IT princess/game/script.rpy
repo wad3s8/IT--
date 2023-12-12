@@ -168,16 +168,15 @@ label scene6_wizard_forest:
     scene scene6 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
-    show dragon at leap
     play sound hmmm5
+    show dragon at leap
     dragon 'Чтобы выжить в этой стране, необходимо найти оружие'
     stop sound fadeout 1.0
-    show henry at leap
     play sound hmmm9
+    show henry at leap
     Henry 'Ты знаешь, где его можно достать?'
-    stop sound fadeout 1.0
+    play sound hmmm2
     show dragon at leap
-    play sound surprise1
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
     stop sound fadeout 1.0
     stop music fadeout 1.0
