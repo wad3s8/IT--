@@ -65,9 +65,9 @@ label start:
     # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
     # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     # call scene10_megastore from _call_scene10_megastore # Разговор с магом
     # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
     # call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
@@ -327,17 +327,20 @@ label scene9_gnoms:
     show dragon at right with moveinbottom
     show dragon at leap
     dragon 'Вроде бы убежали'
+    play sound gasp
     show henry at leap
     Henry 'Да, это было опасно'
     Henry 'Слушай, я понял, нельзя сдаваться и думать о провале перед своими экзаменами'
+    play sound hmmm2
     show dragon at leap
     dragon 'Это ты о чём?'
+    play sound hmmm7
     show henry at leap
     Henry 'Да так...'
     Henry 'Где мы сейчас находимся?'
     show dragon at leap
     dragon 'Мы попали в долину, которая называется Энчастия'
-    play sound gaeti_run
+    play sound gaeti_run volume 1.5
     show henry at leap
     Henry 'А что это за существа бегут к нам?'
     stop sound fadeout 1.0
@@ -364,16 +367,17 @@ label scene9_gnoms:
         xalign 0.714
         yalign 0.616
     with moveinbottom
+    play sound hmmm12
     show henry at leap
     Henry 'Здравствуйте, дорогие жители'
+    play sound hmmm9
     show gnom5 at leap
-    play sound hmmm9
     gnoms 'Кто ты такой?'
+    play sound hmmm9
     show gnom6 at leap
-    play sound hmmm9
     gnoms 'Ты не похож на здешних жителей'
-    show gnom4 at leap
     play sound hmmm9
+    show gnom4 at leap
     gnoms 'Что ты здесь забыл?'
     hide gnom5
     show gnom3:
@@ -395,27 +399,32 @@ label scene9_gnoms:
         xalign 0.5
         yalign 0.64
     with zoomin
+    play sound hmmm9
     show gnom3 at leap
     gnoms 'Ты хочешь пойти с нами?'
+    play sound hmmm9
     show gnom1 at leap
     gnoms 'Ты должен пойти с нами'
-    show henry at leap
     play sound hmmm7
+    show henry at leap
     Henry 'Что же делать?'
     menu:
         Henry 'Что мне выбрать?'
         'Попробовать ответить на все вопросы Гаети':
-            show henry at leap
             play sound hmmm1
+            show henry at leap
             Henry 'Меня зовут Генри, я не из вашего мира'
             Henry 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
-            show gnom1 at leap
             play sound hmmm9
+            show gnom1 at leap
             gnoms 'Пошли с нами'
+            play sound hmmm9
             show gnom3 at leap
             gnoms 'Тебе точно нужно идти с нами'
+            play sound hmmm9
             show gnom4 at leap
             gnoms 'Ты идёшь с нами'
+            play sound hmmm4
             show henry at leap
             Henry 'Извините, мне нужно идти'
             show henry:
@@ -435,23 +444,23 @@ label scene9_gnoms:
                 xalign 1.45
                 yalign 1.45
             with moveinright
-    scene scene9d with ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
+    scene scene9d with slideawayleft
     show henry at left with moveinleft
     show dragon at right with moveinleft
-    show henry at leap
     play sound hmmm2
+    show henry at leap
     Henry 'Знаешь, в моем мире все устроено немного не так...'
     Henry 'И Гаети мне кое-кого напомнили'
     show dragon at leap
     dragon 'Кого напомнили?'
-    show henry at leap
     play sound hmmm1
+    show henry at leap
     Henry 'Они напоминают мне моих родителей и учителей'
     Henry 'Мне также все твердят : «Выбрал вуз?», «сдай ЕГЭ», «поступи на бюджет»'
     show dragon at leap
     dragon 'Да, действительно, сходство с Гаети есть'
-    show henry at leap
     play sound surprise1
+    show henry at leap
     Henry 'Из этой ситуации я сделал вывод, что родители иногда правы, они желают нам добра, поэтому к ним нужно прислушиваться'
     Henry 'Они всегда заботятся о нас. Требуют, чтобы мы отдыхали, не перетруждались'
     show dragon at leap
