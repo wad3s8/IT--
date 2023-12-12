@@ -63,9 +63,9 @@ label start:
     # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     # call scene3_sleep from _call_scene3_sleep # Генри летит спать
     # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
     call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     # call scene10_megastore from _call_scene10_megastore # Разговор с магом
@@ -183,13 +183,13 @@ label scene6_wizard_forest:
     return
 
 label scene7_cave:
+    play music water_down fadein 1.0 volume 0.8
     scene scene7 with dissolve
-    play music water_down fadein 1.0
     show chest_close at top with moveinbottom
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
+    play sound hmmm10 volume 0.6
     show henry at leap
-    play sound hmmm10
     Henry 'Смотри!'
     Henry 'Это же сундук'
     Henry 'Давай откроем его'
@@ -202,13 +202,15 @@ label scene7_cave:
     show hammer at topright with zoomin
     show henry at leap
     Henry 'Что это за буквы на мече и молоте?'
+    stop sound fadeout 1.0
     show dragon at leap
     dragon 'Я не владею этими знаниями'
-    show henry at leap
     play sound surprise1
+    show henry at leap
     Henry 'Кажется, я понимаю, что здесь написано'
     Henry 'Из этого я точно знаю Python, C#'
     stop sound fadeout 1.0
+    play sound hmmm11
     show dragon at leap
     dragon 'Это что-то из твоего мира?'
     show henry at leap
