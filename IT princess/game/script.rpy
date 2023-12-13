@@ -1077,19 +1077,25 @@ label scene13_end:
     Maks 'Генри, вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
     scene bg black with Fade(2,0,0)
     scene scene2 with Dissolve(1)
+    play sound hmmm9
     Henry 'Ладно, пошли давай'
+    play music peremena fadein 1.0
     scene scene1 with dissolve
     show henry at left with moveinbottom
     show maks at right with moveinbottom
+    play sound hmmm8
     show maks at leap
     Maks 'Ты видел, что в УрФУ проходит День открытых дверей, пойдём?'
-    show henry at leap
     play sound hmmm1
+    show henry at leap
     Henry 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
     show henry at leap
     Henry 'Я поступлю на программную инженерию и стану backend-разработчиком'
+    stop music fadeout 0.5
+    play sound end fadein 1.0
     scene bg black with dissolve
     window hide
     n '''КОНЕЦ!!!'''
     nvl clear
+    stop sound fadeout 1.0
     return
