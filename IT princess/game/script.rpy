@@ -69,10 +69,10 @@ label start:
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     # call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
-    # call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
-    # if not the_end:
-    #     call scene13_end from _call_scene13_end # Разговор обо сне с другом
+    # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
+    if not the_end:
+        call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
 label scene1_school:
@@ -904,31 +904,39 @@ menu choose_scene11:
         return
 
 label scene12_hagen:
+    play sound steps
     show henry at leap
     Henry 'Кто-то идёт, чьи это шаги?'
     show macbook:
         xalign 2.0
     with moveinright
+    stop sound fadeout 1.0
     show hagen at right with moveinbottom
+    play sound hmmm9
     show hagen at leap
     hagen 'Что ты здесь забыл?'
+    play sound hmmm2
     show henry at leap
     Henry 'Извините, я просто изучаю профессию, используя ваш компьютер'
     show hagen at leap
     hagen 'Это мое измерение и моя ветка времени, здесь всё решаю я'
     show henry at leap
     Henry 'А вы не могли бы отправить меня домой?'
+    play sound hmmm8
     show hagen at leap
     hagen 'Пока ты в моем мире, ты будешь работать на меня'
     hagen 'Познакомся с коллегами они введу тебя в курс дела'
+    play sound hmmm12
     show henry at leap
     Henry 'Хорошо , а куда мне идти?'
     show hagen at leap
     hagen 'Прямо по коридору и направо'
     stop music fadeout 1.0
-    scene scene12 with dissolve
     play music koridor fadein 1.0
+    scene scene12 with dissolve
     show henry at left with moveinleft
+    play sound hmmm3
+    show henry at leap
     Henry 'Интересно получится ли у меня работать здесь?'
     show henry:
         xalign 1.5
@@ -937,42 +945,54 @@ label scene12_hagen:
     scene scene12_1 with dissolve
     show henry at left with moveinleft
     show hinki at right with moveinbottom
+    play sound hihi
     show hinki at leap
     hinki 'Ой, а кто это у нас тут ? Что ты здесь забыл?'
     show riobs at center with moveinbottom
+    play sound hmmm8
     show riobs at leap
     riobs ' Хинки, будь помягче с новеньким'
     show riobs at leap
     riobs 'Приветствую тебя, как тебя зовут?'
+    play sound hmmm1
     show henry at leap
     Henry 'Привет, меня зовут Генри'
     show riobs at leap
     riobs 'Мы сейчас работаем над одним проектом'
+    play sound whmm1
     show hinki at leap
     hinki 'Я не думаю, что ты можешь нам чем-нибудь помочь'
     show henry at leap
     Henry 'Я бы мог попробовать себя в роли Backend — разработчика'
+    play sound hihi
     show hinki at leap
     hinki 'Ха-ха-ха, ты хоть знаешь, что такое веб-сервер?'
+    play sound hmmm6
     show henry at leap
     Henry 'Сервер, принимающий HTTP-запросы от клиентов, обычно веб-браузеров, и выдающий им HTTP-ответы, как правило, вместе с HTML-страницей, изображением, файлом, медиа-потоком или другими данными'
+    play sound whmm2
     show hinki at leap
     hinki 'У нас даже уборщик знает, что это такое. Знаешь ли ты что такое HTTP?'
+    play sound hmmm1
     show henry at leap
     Henry 'Это протокол, который использует для передачи содержимого TCP, поэтому HTTP считается надежным протоколом для обмена содержимым. Также HTTP — самый популярный протокол'
     show henry at leap
     Henry 'Сам не знаю, как мне удалось это запомнить'
+    play sound whmm3
     show hinki at leap
     hinki 'Ладно, может ты что-то знаешь. У меня есть последний вопрос'
     hinki 'Как веб-страницы взаимодействуют с серверами?'
+    play sound hmmm5
     show henry at leap
     Henry 'Веб-браузеры взаимодействуют с веб-серверами при помощи протокола передачи гипертекста (HTTP). При взаимодействии, браузер отправляет на сервер HTTP-запрос'
     show henry at leap
     Henry 'А также, необходимо знать, что путь (URL), который определяет целевой сервер и ресурс (например, HTML-файл, конкретная точка данных на сервере или запускаемый инструмент)'
     show riobs at leap
     riobs 'Хинки, ну отцепись от парнишки. Я думаю, он уже доказал, что может писать проект с нами'
+    play sound whmm4
     show hinki at leap
     hinki 'Хм... Ладно, пусть попробует'
+    play sound hmmm11
     show riobs at leap
     riobs 'Итак, мы работаем над проектом “Gold Ball”. Заказчик проводил городские оффлайн-турниры по киберфутболу'
     show riobs at leap
@@ -983,6 +1003,7 @@ label scene12_hagen:
     hinki 'Оценив полученные данные, приняли решение в пользу фреймворка Ruby on Rails'
     show hinki at leap
     hinki 'Он подходит, чтобы реализовать описанный функционал, а его шаблонизатор хорошо справляется с типовыми страницами турниров и матчей'
+    play sound whmm5
     show hinki at leap
     hinki 'Ты что-нибудь понимаешь?'
     show henry at leap
@@ -991,12 +1012,14 @@ label scene12_hagen:
     riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
     show riobs at leap
     riobs 'Хинки, ты можешь показать комнату Генри?'
+    play sound whmm6
     show hinki at leap
     hinki 'Неохотно, но соглашусь'
-    scene scene12 with dissolve
     play sound koridor fadein 1.0
+    scene scene12 with dissolve
     show henry at left with moveinleft
     show hinki at left with moveinleft
+    play sound whmm7
     show hinki at leap
     hinki 'Идём за мной'
     window hide
@@ -1012,8 +1035,10 @@ label scene12_hagen:
     show hinki at center with moveinleft
     show hinki at leap
     hinki 'Здесь ты можешь отдохнуть'
+    play sound hmmm4
     show henry at leap
-    Henry 'Спасибо, что проводил'
+    Henry 'Спасибо, что проводила'
+    play sound whmm8
     show hinki at leap
     hinki 'Не обольщайся, меня просто попросил мой коллега'
     show hinki:
@@ -1023,6 +1048,7 @@ label scene12_hagen:
     menu:
         Henry 'Может мне и вправду поспать или подумать над проектом?'
         'Поспать':
+            play sound end fadein 1.0
             $ the_end = True
             scene bg black with dissolve
             window hide
@@ -1030,11 +1056,13 @@ label scene12_hagen:
             не помня свои приключения'''
             nvl clear
             n '''КОНЕЦ!!!'''
+            stop sound fadeout 1.0
         'Подумать над проектом':
             show henry at center with moveinright
+            play sound gasp
             show henry at leap
             Henry 'Меня так заинтересовал проект, может подумать над ним?'
-            Henry 'Хотя я сегодян очень сильно устал'
+            Henry 'Хотя я сегодня очень сильно устал'
             Henry 'Необходимо набраться сил перед завтрашним днём'
             show henry at leap
             Henry 'Пойду спать'
