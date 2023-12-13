@@ -67,9 +67,9 @@ label start:
     # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
     # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
     # call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     # if not the_end:
     #     call scene13_end from _call_scene13_end # Разговор обо сне с другом
@@ -471,36 +471,40 @@ label scene9_gnoms:
     return
 
 label scene10_megastore:
+    play music bazar fadein 1.0
     scene scene10 with dissolve
-    play sound bazar fadein 1.0
     show dragon at right with moveinbottom
     show henry at left with moveinbottom
+    play sound hmmm4
     show dragon at leap
     dragon 'Вот мы и пришли'
     dragon 'Вот там лавка Алистера'
     show henry at leap
     Henry 'Давай зайдём'
     stop music fadeout 1.0
+    play sound door_bell
     scene scene10_1 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show mag at center with moveinbottom
-    show mag at leap
     play sound hmmm9
+    show mag at leap
     mag 'Приветствую вас, что вы хотели в моей лавке?'
+    play sound hmmm4
     show henry at leap
     Henry 'Здравствуйте, мне нужно попасть в мой мир'
     show dragon:
         xalign 1.5
     with moveinright
     show mag at right with moveinright
-    show mag at leap
     play sound hmmm8
+    show mag at leap
     mag 'Ой, с этим я тебе помочь не могу'
     show henry at leap
     Henry 'Что же мне тогда делать? Как здесь выжить?'
     show mag at leap
     mag 'Ты бы мог пригодиться в этом мире'
+    play sound hmmm12
     show henry at leap
     Henry 'Что же ты можешь мне предложить?'
     show mag at leap
@@ -513,10 +517,11 @@ label scene10_megastore:
     scene scene10_1 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
-    show henry at leap
     play sound hmmm6
+    show henry at leap
     Henry 'Да, трудно в этом мире, что же мне делать?'
     stop sound fadeout 1.0
+    play sound hmmm2
     show dragon at leap
     dragon 'У меня есть ещё одно предложение'
     dragon 'Мы можем отправиться на гору Нан Курнир, там живёт один колдун. Но сразу скажу, он немного сумасшедший'
@@ -525,13 +530,13 @@ label scene10_megastore:
 menu choose_scene10:
     'Ты можешь пасти единорогов':
         if first_choose:
-            show mag at leap
             play sound hmmm9
+            show mag at leap
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_1
             return
-        scene scene10_2 with dissolve
         play music birds_sing fadein 1.0
+        scene scene10_2 with dissolve
         show henry at left with moveinbottom
         show mag at right with moveinbottom
         show unicorn_mini_zerkalo:
@@ -542,6 +547,7 @@ menu choose_scene10:
             xalign 0.423
             yalign 0.43
         with zoomin
+        play sound hmmm10
         show henry at leap
         Henry 'И как же мне к ним подойти?'
         show mag at leap
@@ -577,6 +583,7 @@ menu choose_scene10:
             xalign 1.5
         with moveinright
         show henry at left with moveinleft
+        play sound gasp
         show henry at leap
         Henry 'Да, к ЕГЭ мне было готовиться легче'
         stop music fadeout 1.0
@@ -591,40 +598,42 @@ menu choose_scene10:
             return
     'Ты можешь состоять в армии короля':
         if second_choose:
-            show mag at leap
             play sound hmmm9
+            show mag at leap
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_3
             return
-        scene scene10_3 with dissolve
         play music hero fadein 1.0
+        scene scene10_3 with dissolve
         show henry at left with moveinbottom
         show mag at right with moveinbottom
         show general at center with moveinbottom
+        play sound hmmm9
         show mag at leap
         mag 'Ты можешь состоять в армии короля'
-        show general at leap
         play sound krik3
+        show general at leap
         general 'Бойцы, вы должны быть готовы ко всему'
         general 'Недавно нам объявили войну Марийцы'
         show mag:
             xalign 1.8
         with moveinright
         show general at right with moveinright
-        show general at leap
         play sound hmmm9
+        show general at leap
         general 'С этого момента вы будете жить в замке'
         general 'Итак, ваше первое задание на сегодня...'
         general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
+        play sound hmmm4
         show henry at leap
         Henry 'Нее...'
         Henry 'Это не для меня'
-        show henry at leap
         play sound hmmm8
+        show henry at leap
         Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
         stop sound fadeout 1.0
-        show general at leap
         play sound hmmm9
+        show general at leap
         general 'Что это ты бормочешь?'
         show henry at leap
         Henry 'Да так... Мысли вслух'
@@ -645,11 +654,12 @@ menu choose_scene10:
             mag 'Ты уже спрашивал меня про это'
             call choose_scene10 from _call_choose_scene10_5
             return
+        play sound hmmm8
         show mag at leap
         mag 'Тебе нужно будет днём и ночью выполнять мои поручения'
         mag 'Также нужно будет рисковать своей жизнью, чтобы доставать необходимые ингредиенты для зелий'
-        show henry at leap
         play sound hmmm7
+        show henry at leap
         Henry 'Извини, но такое мне тоже не подходит'
         Henry 'В IT у меня был бы удобный график работы'
         $ third_choose = True
