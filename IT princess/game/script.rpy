@@ -68,7 +68,7 @@ label start:
     # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
     call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
     # call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     # if not the_end:
@@ -673,21 +673,25 @@ menu choose_scene10:
             return
 
 label scene11_coldun:
-    scene scene11 with dissolve
     play music water_down fadein 1.0
+    scene scene11 with dissolve
     show henry at left with moveinbottom
     show dragon at right with moveinbottom
     show koldun at center with moveinbottom
+    play sound hmmm9
     show koldun at leap
     koldun 'Давно у меня не было гостей, зачем пожаловали?'
+    play sound hmmm3
     show henry at leap
     Henry 'Мне нужно попасть в свой мир'
+    play sound hmmm1
     show koldun at leap
     koldun 'Я давно подозревал, что есть другие миры'
     koldun 'Однако я не могу тебя туда отправить, но могу показать кое-что другое'
     show dragon:
         xalign 1.5
     with moveinright
+    play sound magic
     show koldun at right with moveinright
     show zerkalo1:
         xalign 0.2
@@ -712,12 +716,13 @@ label scene11_coldun:
 menu choose_scene11:
     'Зеркало 1':
         if first_zerkalo:
-            show koldun at leap
             play sound hmmm9
+            show koldun at leap
             koldun 'Ты уже смотрел, что там'
             call choose_scene11 from _call_choose_scene11_1
             return
         $ first_zerkalo = True
+        play music hospital
         scene scene11_1 with dissolve
         show henry at left with moveinbottom
         show syringe1left:
@@ -741,8 +746,8 @@ menu choose_scene11:
         show syringe3left:
             xalign 0.2
         with moveinleft
-        show henry at leap
         play sound krik2
+        show henry at leap
         Henry 'ААААА'
         stop sound fadeout 1.0
         Henry 'Они летают'
@@ -774,7 +779,9 @@ menu choose_scene11:
         show syringe3right:
             xalign 1.5
         with moveinright
+        stop music fadeout 1.0
         scene scene11 with dissolve
+        play music water_down fadein 1.0
         show zerkalo1:
             xalign 0.2
             yalign 0.51
@@ -788,12 +795,13 @@ menu choose_scene11:
             yalign 0.51
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
+        stop music fadeout 1.0
         call choose_scene11 from _call_choose_scene11_2
         return
     'Зеркало 2':
         if second_zerkalo:
-            show koldun at leap
             play sound hmmm9
+            show koldun at leap
             koldun 'Ты уже смотрел, что здесь'
             call choose_scene11 from _call_choose_scene11_3
             return
@@ -803,6 +811,7 @@ menu choose_scene11:
         show henry at leap
         Henry 'Сколько же тут книг?'
         window hide
+        play sound book volume 1.5
         show book1:
             xalign 0.64696
             yalign 0,174
@@ -825,8 +834,8 @@ menu choose_scene11:
             xalign 0.8
         with moveinright
         show henry at left with moveinleft
+        play sound gasp
         show henry at leap
-        play sound hmmm12
         Henry 'Они кружат мне голову'
         window hide
         show book1:
@@ -844,6 +853,7 @@ menu choose_scene11:
         show book2:
             xalign 1.5
         with moveinright
+        play music water_down fadein 1.0
         scene scene11 with dissolve
         show zerkalo1:
             xalign 0.2
@@ -864,26 +874,31 @@ menu choose_scene11:
         scene scene11_3 with dissolve
         play music computer_work fadein 1.0
         show henry at left with moveinbottom
-        show henry at leap
         play sound hmmm1
+        show henry at leap
         Henry 'Может я смогу написать какую-нибудь программу на компьютере?'
         Henry 'backend-разработчик, кто это такой?'
         show macbook:
             xalign 0.9
             yalign 0.51296
         with moveinbottom
+        play sound keyboard volume 1.5
         show macbook at leap
         computer 'Специалист, который занимается серверной частью сайтов, мобильных и десктопных приложений и игр'
+        play sound hmmm12
         show henry at leap
         Henry 'А чем же он занимается?'
+        play sound windows1
         show macbook at leap
         computer 'Он создает базы данных и управляет ими, проводит интеграции с внешними сервисами и занимается всем, что находится «под капотом» сайта'
         show henry at leap
         Henry 'Как же интересно, но какие плюсы у этой профессии?'
+        play sound windows2
         show macbook at leap
         computer 'Востребованность профессии, работа из любой точки планеты, возможность выбирать направление, перспективы, высокая зарплата'
         show henry at leap
         Henry 'А где же этому можно научиться ?'
+        play sound windows3
         show macbook at leap
         computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
         return
