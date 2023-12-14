@@ -85,7 +85,7 @@ label scene1_school:
     Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
     play sound hmmm3
     show henry at leap
-    Henry 'Если честно, я еще не решил, чем хочу заниматься'
+    Henry 'Если честно, я ещё не решил, чем хочу заниматься'
     show maks at leap
     Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
     play sound surprise1
@@ -201,7 +201,7 @@ label scene7_cave:
     show sword at topleft with zoomin
     show hammer at topright with zoomin
     show henry at leap
-    Henry 'Что это за буквы на мече и молоте?'
+    Henry 'Что это за слова на мече и молоте?'
     stop sound fadeout 1.0
     show dragon at leap
     dragon 'Я не владею этими знаниями'
@@ -235,7 +235,7 @@ label scene8_fairy_forest:
     show henry at leap
     Henry 'Что это за чудесный лес?'
     show dragon at leap
-    dragon 'Это лес Мальдонии, место, где живут феи'
+    dragon 'Это лес Мальдонии — место, где живут феи'
     show henry at leap
     Henry 'Как выглядят феи? И где же они все?'
     play sound hmmm1
@@ -253,10 +253,10 @@ label scene8_fairy_forest:
     show troll at truecenter with zoomin
     show troll at leap
     play sound hmmm9 volume 1.5
-    troll 'Кто вы такие ? Что вы забыли здесь?'
+    troll 'Кто вы такие? Что вы забыли здесь?'
     play sound hmmm4
     show henry at leap
-    Henry 'Здравствуйте, извините нас пожалуйста, мы уже уходим'
+    Henry 'Здравствуйте, извините нас, пожалуйста, мы уже уходим'
     show troll at leap
     troll 'Какие мы вежливые. Этот подарок тебе'
     hide dragon with easeinbottom
@@ -264,7 +264,7 @@ label scene8_fairy_forest:
     show troll_average at right with moveinbottom
     show present_close at top with moveinbottom
     show henry at leap
-    Henry 'Что это за коробочка? Что внутри?'
+    Henry 'Что это за коробка? Что внутри?'
     show troll_average at leap
     troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
     menu:
