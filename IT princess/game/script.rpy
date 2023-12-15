@@ -28,7 +28,7 @@ define n = Character(None, kind = nvl)
 # использовать window hide
 # with config.exit_transition
 # MoveTransition(2.0, leave = moveinright)
-# pos(00,00)
+# linear .5 xpos 710 ypos 107
 
 # Объявление переменных
 
@@ -59,13 +59,13 @@ transform migga_running:
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
     call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     call scene10_megastore from _call_scene10_megastore # Разговор с магом
@@ -262,7 +262,10 @@ label scene8_fairy_forest:
     hide dragon with easeinbottom
     hide troll
     show troll_average at right with moveinbottom
-    show present_close at top with moveinbottom
+    show present_close:
+        xpos 710
+        ypos 107
+    with moveintop
     show henry at leap
     Henry 'Что это за коробка? Что внутри?'
     show troll_average at leap
@@ -274,21 +277,89 @@ label scene8_fairy_forest:
             show henry at leap
             Henry 'Спасибо за подарок'
             play sound present volume 1.3
-            hide present_close
-            show present_open at top with dissolve
+            show present_close:
+                ypos -500
+            with moveintop
+            show present_open:
+                xpos 600
+                ypos 107
+            with moveintop
             play sound spider_legs volume 1.45
-            show spiders at top with dissolve
-            show spiders at topright with easeinright
-            show spiders2 at top with dissolve
-            show spiders2 at topleft with easeinleft
-            show spiders3 at top with dissolve
-            show spiders2 at left with easeinbottom
+            show spiders: #####3
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders:
+                linear 0.5 xpos 47 ypos 717
+            with Pause(0.5)
+            show spiders2:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders2:
+                linear 0.5 xpos 38 ypos 923
+            with Pause(0.5)
+            show spiders3:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders3:
+                linear 0.5 xpos 300 ypos 600
+            with Pause(0.5)
+            show spiders4:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders4:
+                linear 0.5 xpos 54 ypos 334
+            with Pause(0.5)
+            show spiders5:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders5:
+                linear 0.5 xpos 31 ypos 23
+            with Pause(0.5)
             stop sound fadeout 1.0
             play sound krik2
             show henry at leap
             Henry 'ААААААААААА'
             stop sound fadeout 1.0
             Henry 'Пауки!'
+            show henry at offscreenleft with moveinleft
+            show henry_sword at offscreenleft
+            play sound sword
+            show henry_sword at left with moveinleft
+            with Pause(0.5)
+            play sound death
+            show spiders:
+                ypos 1500
+            with moveintop
+            play sound sword
+            show henry_sword:
+                linear 0.5 xalign 0.39635 yalign 0.4759
+            with Pause(0.5)
+            play sound death
+            show spiders2:
+                ypos 1500
+            with moveintop
+            show spiders3:
+                ypos 1500
+            with moveintop
+            play sound sword
+            show henry_sword:
+                linear 0.5 xpos 0.253125 ypos 0.5
+            with Pause(0.5)
+            play sound death
+            show spiders4:
+                ypos 1500
+            with moveintop
+            show spiders5:
+                ypos 1500
+            with moveintop
+            show henry_sword at left with moveinleft
+            show henry_sword at offscreenleft with moveinleft
+            show henry at left with moveinright
             play sound hmmm8 volume 1.3
             show troll_average at leap
             troll 'Ах ты...'
