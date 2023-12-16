@@ -1,32 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 69, in script call
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-  File "game/script.rpy", line 294, in script
-    with pause(0.5)
-  File "game/script.rpy", line 294, in <module>
-    with pause(0.5)
-NameError: name 'pause' is not defined
+  File "game/script.rpy", line 70, in script call
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+  File "game/script.rpy", line 537, in script
+    play siund gasp
+  File "renpy/common/000statements.rpy", line 123, in execute_play_music
+    renpy.music.play(_audio_eval(p["file"]),
+Exception: Audio channel 'siund' is unknown.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 69, in script call
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-  File "game/script.rpy", line 294, in script
-    with pause(0.5)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1671, in execute
-    trans = renpy.python.py_eval(self.expr)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\python.py", line 1153, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\python.py", line 1146, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 294, in <module>
-    with pause(0.5)
-NameError: name 'pause' is not defined
+  File "game/script.rpy", line 70, in script call
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+  File "game/script.rpy", line 537, in script
+    play siund gasp
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 2259, in execute
+    self.call("execute")
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 2241, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\statements.py", line 342, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 123, in execute_play_music
+    renpy.music.play(_audio_eval(p["file"]),
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\audio\music.py", line 103, in play
+    c = get_channel(channel)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\audio\audio.py", line 947, in get_channel
+    raise Exception("Audio channel %r is unknown." % name)
+Exception: Audio channel 'siund' is unknown.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.1.3.23091805
 IT princess_name_game 3.0
-Fri Dec 15 22:50:05 2023
+Sat Dec 16 23:39:43 2023
