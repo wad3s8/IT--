@@ -59,7 +59,7 @@ transform migga_running:
 
 # Начало игры
 label start:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
     call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
@@ -119,10 +119,10 @@ label scene3_sleep:
     play sound krik1
     scene scene3 with dissolve
     window hide
-    show henry at right with moveinleft
+    show henry at offscreenleft
     show henry:
-        xalign 2.5
-    with moveinright
+        xalign 1.5
+    with moveinleft
     Henry 'ААААААААААААААААА'
     stop sound fadeout 1.0
     return

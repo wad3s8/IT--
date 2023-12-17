@@ -1,36 +1,46 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 70, in script call
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-  File "game/script.rpy", line 537, in script
-    play siund gasp
-  File "renpy/common/000statements.rpy", line 123, in execute_play_music
-    renpy.music.play(_audio_eval(p["file"]),
-Exception: Audio channel 'siund' is unknown.
+  File "game/script.rpy", line 64, in script call
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+  File "game/script.rpy", line 125, in script
+    with MoveTransition(2.0, enter = moveinleft)
+Exception: MoveTransition can only be applied to one or all layers, not AdjustTimes.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 70, in script call
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-  File "game/script.rpy", line 537, in script
-    play siund gasp
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 2259, in execute
-    self.call("execute")
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 2241, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\statements.py", line 342, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 123, in execute_play_music
-    renpy.music.play(_audio_eval(p["file"]),
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\audio\music.py", line 103, in play
-    c = get_channel(channel)
-  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\audio\audio.py", line 947, in get_channel
-    raise Exception("Audio channel %r is unknown." % name)
-Exception: Audio channel 'siund' is unknown.
+  File "game/script.rpy", line 64, in script call
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+  File "game/script.rpy", line 125, in script
+    with MoveTransition(2.0, enter = moveinleft)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\ast.py", line 1678, in execute
+    renpy.exports.with_statement(trans, paired=paired)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\exports.py", line 1758, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 2978, in do_with
+    return self.interact(trans_pause=True,
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3582, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, pause=pause, pause_start=pause_start, pause_modal=pause_modal, **kwargs) # type: ignore
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3976, in interact_core
+    trans = instantiate_transition(None, old_root, layers_root)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\core.py", line 3922, in instantiate_transition
+    trans = self.ongoing_transition[layer](
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 677, in MoveTransition
+    rv = merge_slide(old_widget, new_widget, merge_slide)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 534, in merge_slide
+    d = merge_slide(old.layers[layer], new.layers[layer], merge_slide)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 662, in merge_slide
+    entering(new_sle)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 590, in entering
+    move = MoveInterpolate(delay, renpy.store.At(new_d, enter), new_d, False, enter_time_warp)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\defaultstore.py", line 345, in At
+    rv = i(rv)
+  File "C:\Users\alexe\OneDrive\Рабочий стол\Ren'Py\renpy-8.1.3-sdk\renpy\display\movetransition.py", line 498, in MoveTransition
+    raise Exception("MoveTransition can only be applied to one or all layers, not %s." % type(old_widget).__name__)
+Exception: MoveTransition can only be applied to one or all layers, not AdjustTimes.
 
 Windows-10-10.0.22631 AMD64
 Ren'Py 8.1.3.23091805
 IT princess_name_game 3.0
-Sat Dec 16 23:39:43 2023
+Sun Dec 17 21:04:06 2023
