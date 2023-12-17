@@ -59,14 +59,14 @@ transform migga_running:
 
 # Начало игры
 label start:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
     call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
     call scene10_megastore from _call_scene10_megastore # Разговор с магом
     call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
