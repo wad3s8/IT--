@@ -18,15 +18,11 @@ define non = Character('???', color = '#E74C3C')
 define n = Character(None, kind = nvl)
 
 # TODO
-# 210 строчка, Генри лупит пауков
-# использовать координаты для изображений
 # испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
 # вместо hide использовать выход за пределы экрана
-# переход сцены 8 на 9 с заглушкой
 # выбор молота и меча для сражения с пауками
 # сделать выбор без реплики
 # использовать window hide
-# with config.exit_transition
 # MoveTransition(2.0, leave = moveinright)
 # linear .5 xpos 710 ypos 107
 
@@ -59,9 +55,9 @@ transform migga_running:
 
 # Начало игры
 label start:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
     call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
@@ -130,7 +126,7 @@ label scene3_sleep:
 label scene4_new_country:
     play music birds_sing fadein 1.0
     scene scene4 with dissolve
-    show henry at center with moveinbottom
+    show henry at center with moveintop
     play sound hmmm6
     show henry at leap
     Henry 'Куда я попал? Где я очутился?'
@@ -196,7 +192,9 @@ label scene7_cave:
     play sound chest
     show henry at center with easeinright
     show henry at left with easeinleft
-    hide chest_close
+    show chest_close:
+        ypos -1500
+    with moveintop
     show chest_open at top with dissolve
     show sword at topleft with zoomin
     show hammer at topright with zoomin
@@ -215,9 +213,16 @@ label scene7_cave:
     dragon 'Это что-то из твоего мира?'
     show henry at leap
     Henry 'Да, это языки программирования'
-    hide sword
-    hide hammer
-    hide chest_open
+    window hide
+    show sword:
+        ypos -1500
+    with moveintop
+    show hammer:
+        ypos -1500
+    with moveintop
+    show chest_open:
+        ypos -1500
+    with moveintop
     return
 
 label scene8_fairy_forest:
@@ -244,12 +249,14 @@ label scene8_fairy_forest:
     dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
     dragon 'Я предлагаю поторопиться, тролли очень опасны'
     play sound thunder volume 2.0
-    show troll_mini at truecenter
+    show troll_mini at truecenter with zoomin
     show henry at leap
     Henry 'Что это такое?'
     show dragon at leap
     dragon 'Похоже на звук приближения тролля'
-    hide troll_mini
+    show troll_mini:
+        ypos 1700
+    with moveintop
     show troll at truecenter with zoomin
     show troll at leap
     play sound hmmm9 volume 1.5
@@ -259,8 +266,12 @@ label scene8_fairy_forest:
     Henry 'Здравствуйте, извините нас, пожалуйста, мы уже уходим'
     show troll at leap
     troll 'Какие мы вежливые. Этот подарок тебе'
-    hide dragon with easeinbottom
-    hide troll
+    show dragon:
+        xalign 2.0
+    with moveinright
+    show troll:
+        ypos 2500
+    with moveinbottom
     show troll_average at right with moveinbottom
     show present_close:
         xpos 710
@@ -374,7 +385,9 @@ label scene8_fairy_forest:
             show dragon at leap
             dragon 'Бежим!!!'
         'Проигнорировать предложение':
-            hide present_close
+            show present_close:
+                ypos -1000
+            with moveintop
             play sound hmmm2
             show henry at leap
             Henry 'Извините, но я откажусь, нам нужно идти'
@@ -411,6 +424,7 @@ label scene9_gnoms:
     Henry 'Где мы сейчас находимся?'
     show dragon at leap
     dragon 'Мы попали в долину, которая называется Энчастия'
+    window hide
     play sound gaeti_run volume 1.5
     show gnom1_mini:
         xalign 0.5
@@ -454,22 +468,30 @@ label scene9_gnoms:
     play sound hmmm9
     show gnom4 at leap
     gnoms 'Что ты здесь забыл?'
-    hide gnom5
+    window hide
+    show gnom5:
+        ypos 1500
+    with moveinbottom
     show gnom3:
         xalign 0.18
         yalign 0.47
     with moveinbottom
-    hide gnom3_mini
+    show gnom3_mini:
+        ypos 1500
+    with moveinbottom
     show gnom5_mini:
         xalign 0.3
         yalign 0.5
     with zoomin
-    hide gnom6
+    show gnom6:
+        ypos 1500
     show gnom1:
         xalign 0.714
         yalign 0.616
     with moveinbottom
-    hide gnom1_mini
+    show gnom1_mini:
+        ypos 1500
+    with moveinbottom
     show gnom6_mini:
         xalign 0.5
         yalign 0.64
@@ -502,6 +524,7 @@ label scene9_gnoms:
             play sound hmmm4
             show henry at leap
             Henry 'Извините, мне нужно идти'
+            window hide
             show henry:
                 xalign 1.25
                 yalign 1.25
@@ -511,6 +534,7 @@ label scene9_gnoms:
                 yalign 1.45
             with moveinright
         'Взять себя в руки и бежать':
+            window hide
             show henry:
                 xalign 1.25
                 yalign 1.25
@@ -564,8 +588,8 @@ label scene10_megastore:
     stop music fadeout 1.0
     play sound door_bell
     scene scene10_1 with dissolve
-    show henry at left with moveinbottom
-    show dragon at right with moveinbottom
+    show henry at left with moveinright
+    show dragon at right with moveinright
     show mag at center with moveinbottom
     play sound hmmm9
     show mag at leap
@@ -573,6 +597,7 @@ label scene10_megastore:
     play sound hmmm4
     show henry at leap
     Henry 'Здравствуйте, мне нужно попасть в мой мир'
+    window hide
     show dragon:
         xalign 1.5
     with moveinright
@@ -592,11 +617,18 @@ label scene10_megastore:
     $ first_choose = False
     $ second_choose = False
     $ third_choose = False
+    $ correct_choose = False
     window hide
     call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
-    scene scene10_1 with dissolve
-    show henry at left with moveinbottom
-    show dragon at right with moveinbottom
+    if correct_choose:
+        show mag:
+            xalign 2.0
+        with moveinright
+        show dragon at right with moveinright
+    else:
+        scene scene10_1 with dissolve
+        show henry at left with moveinbottom
+        show dragon at right with moveinbottom
     play sound hmmm6
     show henry at leap
     Henry 'Да, трудно в этом мире, что же мне делать?'
@@ -744,6 +776,7 @@ menu choose_scene10:
         Henry 'В IT у меня был бы удобный график работы'
         $ third_choose = True
         if first_choose & second_choose & third_choose == True:
+            $ correct_choose = True
             return
         else:
             scene scene10_1 with dissolve
@@ -768,6 +801,7 @@ label scene11_coldun:
     show koldun at leap
     koldun 'Я давно подозревал, что есть другие миры'
     koldun 'Однако я не могу тебя туда отправить, но могу показать кое-что другое'
+    window hide
     show dragon:
         xalign 1.5
     with moveinright
@@ -946,6 +980,7 @@ menu choose_scene11:
         show zerkalo3:
             xalign 0.62
             yalign 0.51
+        with moveinbottom
         show henry at left with moveinbottom
         show koldun at right with moveinbottom
         call choose_scene11 from _call_choose_scene11_4
