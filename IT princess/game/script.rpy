@@ -60,8 +60,8 @@ transform migga_running:
 # Начало игры
 label start:
     # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
     call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
     call scene5_forest from _call_scene5_forest # Встреча с дракончиком
     call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
