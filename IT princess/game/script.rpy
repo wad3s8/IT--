@@ -19,7 +19,6 @@ define n = Character(None, kind = nvl)
 
 # TODO
 # испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
-# вместо hide использовать выход за пределы экрана
 # выбор молота и меча для сражения с пауками
 # сделать выбор без реплики
 # использовать window hide
@@ -213,21 +212,50 @@ label scene7_cave:
     dragon 'Это что-то из твоего мира?'
     show henry at leap
     Henry 'Да, это языки программирования'
-    window hide
-    show sword:
-        ypos -1500
-    with moveintop
-    show hammer:
-        ypos -1500
-    with moveintop
-    show chest_open:
-        ypos -1500
-    with moveintop
+    show dragon at leap
+    dragon 'Что ты из этого выберешь?'
+    $ weapon = 'null'
+    menu:
+        'Меч':
+            $ weapon = 'sword'
+            show henry at leap
+            Henry 'Я выберу меч'
+            window hide
+            show sword:
+                ypos -1500
+            with moveintop
+            show hammer:
+                ypos -1500
+            with moveintop
+            show chest_open:
+                ypos -1500
+            with moveintop
+            show henry at offscreenleft with moveinleft
+            show henry_sword at left with moveinleft
+        'Молот':
+            $ weapon = 'hammer'
+            show henry at leap
+            Henry 'Я выберу молот'
+            window hide
+            show sword:
+                ypos -1500
+            with moveintop
+            show hammer:
+                ypos -1500
+            with moveintop
+            show chest_open:
+                ypos -1500
+            with moveintop
+            show henry at offscreenleft with moveinleft
+            show henry_hammer at left with moveinleft
     return
 
 label scene8_fairy_forest:
     play sound hmmm1
-    show henry at leap
+    if weapon=='sword':
+        show henry_sword at leap
+    if weapon=='hammer':
+        show henry_hammer at leap
     Henry 'Куда мы идём дальше?'
     show dragon at leap
     dragon 'Давай пойдём к магу Алистеру, он поможет нам'
@@ -338,18 +366,29 @@ label scene8_fairy_forest:
             stop sound fadeout 1.0
             Henry 'Пауки!'
             show henry at offscreenleft with moveinleft
-            show henry_sword at offscreenleft
+            if weapon=='sword':
+                show henry_sword at offscreenleft
+            if weapon=='hammer':
+                show henry_hammer at offscreenleft
             play sound sword
-            show henry_sword at left with moveinleft
+            if weapon=='sword':
+                show henry_sword at left with moveinleft
+            if weapon=='hammer':
+                show henry_hammer at left with moveinleft
             with Pause(0.5)
             play sound death
             show spiders:
                 ypos 1500
             with moveintop
             play sound sword
-            show henry_sword:
-                linear 0.5 xalign 0.39635 yalign 0.4759
-            with Pause(0.5)
+            if weapon=='sword':
+                show henry_sword:
+                    linear 0.5 xalign 0.39635 yalign 0.4759
+                with Pause(0.5)
+            if weapon=='hammer':
+                show henry_hammer:
+                    linear 0.5 xalign 0.39635 yalign 0.4759
+                with Pause(0.5)
             play sound death
             show spiders2:
                 ypos 1500
@@ -358,9 +397,14 @@ label scene8_fairy_forest:
                 ypos 1500
             with moveintop
             play sound sword
-            show henry_sword:
-                linear 0.5 xpos 0.253125 ypos 0.5
-            with Pause(0.5)
+            if weapon=='sword':
+                show henry_sword:
+                    linear 0.5 xpos 0.253125 ypos 0.5
+                with Pause(0.5)
+            if weapon=='hammer':
+                show henry_hammer:
+                    linear 0.5 xpos 0.253125 ypos 0.5
+                with Pause(0.5)
             play sound death
             show spiders4:
                 ypos 1500
@@ -368,8 +412,12 @@ label scene8_fairy_forest:
             show spiders5:
                 ypos 1500
             with moveintop
-            show henry_sword at left with moveinleft
-            show henry_sword at offscreenleft with moveinleft
+            if weapon=='sword':
+                show henry_sword at left with moveinleft
+                show henry_sword at offscreenleft with moveinleft
+            if weapon=='hammer':
+                show henry_hammer at left with moveinleft
+                show henry_hammer at offscreenleft with moveinleft
             show henry at left with moveinright
             play sound hmmm8 volume 1.3
             show troll_average at leap
