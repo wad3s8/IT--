@@ -1,6 +1,6 @@
 ﻿# Инициализация персонажей
 define teacher = Character('Учитель', color = '#FF0000')
-define Henry = Character('Генри', color = '#1F618D')
+# define Character = Character('Генри', color = '#1F618D')
 define Maks = Character('Макс', color = '#797D7F')
 define Izabella = Character('Изабелла')
 define dragon = Character('Спайнкндс', color = '#2471A3')
@@ -53,6 +53,13 @@ transform migga_running:
 # Начало игры
 label start:
     call scene0_settings # Настройки игры
+    if sex=='male':
+        call start_male # Мужская ветвь
+    if sex=='female':
+        call start_female # Женская ветвь
+    return
+
+label start_male:
     call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
     call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
@@ -69,6 +76,29 @@ label start:
         call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
+label start_female:
+    play music peremena fadein 1.0
+    scene scene1 with dissolve
+    show henry at left with moveinbottom
+    show maks at right with moveinbottom
+    play sound hmmm1
+    show maks at leap
+    Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
+    play sound hmmm3
+    show henry at leap
+    Character 'Если честно, я ещё не решил, чем хочу заниматься'
+    show maks at leap
+    Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
+    play sound surprise1
+    show henry at leap
+    Character 'А это интересно, но в этой сфере столько направлений и специальностей...'
+    stop music
+    play sound bell
+    show maks at leap
+    Maks 'Ладно, что-то мы заболтались, пошли на урок'
+    stop sound fadeout 1.0
+    stop music fadeout 1.0
+    return
 
 label scene0_settings:
     play music scene0 fadein 1.0
@@ -106,12 +136,12 @@ label scene1_school:
     Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
     play sound hmmm3
     show henry at leap
-    Henry 'Если честно, я ещё не решил, чем хочу заниматься'
+    Character 'Если честно, я ещё не решил, чем хочу заниматься'
     show maks at leap
     Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
     play sound surprise1
     show henry at leap
-    Henry 'А это интересно, но в этой сфере столько направлений и специальностей...'
+    Character 'А это интересно, но в этой сфере столько направлений и специальностей...'
     stop music
     play sound bell
     show maks at leap
@@ -144,7 +174,7 @@ label scene3_sleep:
     show henry:
         xalign 1.5
     with moveinleft
-    Henry 'ААААААААААААААААА'
+    Character 'ААААААААААААААААА'
     stop sound fadeout 1.0
     return
 
@@ -154,8 +184,8 @@ label scene4_new_country:
     show henry at center with moveintop
     play sound hmmm6
     show henry at leap
-    Henry 'Куда я попал? Где я очутился?'
-    Henry 'Что мне делать?'
+    Character 'Куда я попал? Где я очутился?'
+    Character 'Что мне делать?'
     stop sound fadeout 1.0
     return
 
@@ -164,21 +194,21 @@ label scene5_forest:
     show henry at center with moveinbottom
     play sound hmmm11
     show henry at leap
-    Henry 'Хммммм...'
-    Henry 'Что это за синий свет в лесу?'
-    Henry 'Нужно пойти поверить'
+    Character 'Хммммм...'
+    Character 'Что это за синий свет в лесу?'
+    Character 'Нужно пойти поверить'
     show henry at left with easeinleft
     show dragon_in_chains at topright with moveinbottom
     play sound hmmm4
     show henry at leap
-    Henry 'Это же дракон, он попал в ловушку, нужно ему помочь'
+    Character 'Это же дракон, он попал в ловушку, нужно ему помочь'
     show henry at center with easeinright
     play sound chain1
     show henry at left with easeinleft
     hide dragon_in_chains with easeinbottom
     show dragon at right with moveinbottom
     show henry at leap
-    Henry 'Кто ты такой?'
+    Character 'Кто ты такой?'
     play sound hmmm2
     show dragon at leap
     non 'Спасибо за помощь. Меня зовут Спайндикс'
@@ -195,7 +225,7 @@ label scene6_wizard_forest:
     stop sound fadeout 1.0
     play sound hmmm9
     show henry at leap
-    Henry 'Ты знаешь, где его можно достать?'
+    Character 'Ты знаешь, где его можно достать?'
     play sound hmmm2
     show dragon at leap
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
@@ -211,9 +241,9 @@ label scene7_cave:
     show dragon at right with moveinbottom
     play sound hmmm10 volume 0.6
     show henry at leap
-    Henry 'Смотри!'
-    Henry 'Это же сундук'
-    Henry 'Давай откроем его'
+    Character 'Смотри!'
+    Character 'Это же сундук'
+    Character 'Давай откроем его'
     play sound chest
     show henry at center with easeinright
     show henry at left with easeinleft
@@ -224,20 +254,20 @@ label scene7_cave:
     show sword at topleft with zoomin
     show hammer at topright with zoomin
     show henry at leap
-    Henry 'Что это за слова на мече и молоте?'
+    Character 'Что это за слова на мече и молоте?'
     stop sound fadeout 1.0
     show dragon at leap
     dragon 'Я не владею этими знаниями'
     play sound surprise1
     show henry at leap
-    Henry 'Кажется, я понимаю, что здесь написано'
-    Henry 'Из этого я точно знаю Python, C#'
+    Character 'Кажется, я понимаю, что здесь написано'
+    Character 'Из этого я точно знаю Python, C#'
     stop sound fadeout 1.0
     play sound hmmm11
     show dragon at leap
     dragon 'Это что-то из твоего мира?'
     show henry at leap
-    Henry 'Да, это языки программирования'
+    Character 'Да, это языки программирования'
     show dragon at leap
     dragon 'Что ты из этого выберешь?'
     $ weapon = 'null'
@@ -245,7 +275,7 @@ label scene7_cave:
         'Меч':
             $ weapon = 'sword'
             show henry at leap
-            Henry 'Я выберу меч'
+            Character 'Я выберу меч'
             window hide
             show sword:
                 ypos -1500
@@ -261,7 +291,7 @@ label scene7_cave:
         'Молот':
             $ weapon = 'hammer'
             show henry at leap
-            Henry 'Я выберу молот'
+            Character 'Я выберу молот'
             window hide
             show sword:
                 ypos -1500
@@ -282,7 +312,7 @@ label scene8_fairy_forest:
         show henry_sword at leap
     if weapon=='hammer':
         show henry_hammer at leap
-    Henry 'Куда мы идём дальше?'
+    Character 'Куда мы идём дальше?'
     show dragon at leap
     dragon 'Давай пойдём к магу Алистеру, он поможет нам'
     stop music fadeout 1.0
@@ -292,11 +322,11 @@ label scene8_fairy_forest:
     show dragon at right with moveinbottom
     play sound hmmm7
     show henry at leap
-    Henry 'Что это за чудесный лес?'
+    Character 'Что это за чудесный лес?'
     show dragon at leap
     dragon 'Это лес Мальдонии — место, где живут феи'
     show henry at leap
-    Henry 'Как выглядят феи? И где же они все?'
+    Character 'Как выглядят феи? И где же они все?'
     play sound hmmm1
     show dragon at leap
     dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
@@ -305,7 +335,7 @@ label scene8_fairy_forest:
     play sound thunder volume 2.0
     show troll_mini at truecenter with zoomin
     show henry at leap
-    Henry 'Что это такое?'
+    Character 'Что это такое?'
     show dragon at leap
     dragon 'Похоже на звук приближения тролля'
     show troll_mini:
@@ -317,7 +347,7 @@ label scene8_fairy_forest:
     troll 'Кто вы такие? Что вы забыли здесь?'
     play sound hmmm4
     show henry at leap
-    Henry 'Здравствуйте, извините нас, пожалуйста, мы уже уходим'
+    Character 'Здравствуйте, извините нас, пожалуйста, мы уже уходим'
     show troll at leap
     troll 'Какие мы вежливые. Этот подарок тебе'
     show dragon:
@@ -332,7 +362,7 @@ label scene8_fairy_forest:
         ypos 107
     with moveintop
     show henry at leap
-    Henry 'Что это за коробка? Что внутри?'
+    Character 'Что это за коробка? Что внутри?'
     show troll_average at leap
     troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
     menu:
@@ -340,7 +370,7 @@ label scene8_fairy_forest:
         'Принять подарок от тролля':
             play sound hmmm3
             show henry at leap
-            Henry 'Спасибо за подарок'
+            Character 'Спасибо за подарок'
             play sound present volume 1.3
             show present_close:
                 ypos -500
@@ -388,9 +418,9 @@ label scene8_fairy_forest:
             stop sound fadeout 1.0
             play sound krik2
             show henry at leap
-            Henry 'ААААААААААА'
+            Character 'ААААААААААА'
             stop sound fadeout 1.0
-            Henry 'Пауки!'
+            Character 'Пауки!'
             show henry at offscreenleft with moveinleft
             if weapon=='sword':
                 show henry_sword at offscreenleft
@@ -453,7 +483,7 @@ label scene8_fairy_forest:
             show troll_average at center with easeinleft
             play sound krik2
             show henry at leap
-            Henry 'АААААААААА'
+            Character 'АААААААААА'
             stop sound fadeout 1.0
             show dragon at right with moveinbottom
             show dragon at leap
@@ -464,14 +494,14 @@ label scene8_fairy_forest:
             with moveintop
             play sound hmmm2
             show henry at leap
-            Henry 'Извините, но я откажусь, нам нужно идти'
+            Character 'Извините, но я откажусь, нам нужно идти'
             show troll_average at center with easeinleft
             play sound hmmm9 volume 1.5
             show troll_average at leap
             troll 'Нет! Ты не уйдёшь!'
             play sound krik2
             show henry at leap
-            Henry 'АААААААААА'
+            Character 'АААААААААА'
             stop sound fadeout 1.0
             show dragon at right with moveinbottom
             dragon 'Бежим!!!'
@@ -487,15 +517,15 @@ label scene9_gnoms:
     dragon 'Вроде бы убежали'
     play sound gasp
     show henry at leap
-    Henry 'Да, это было опасно'
-    Henry 'Слушай, я понял, нельзя сдаваться и думать о провале перед своими экзаменами'
+    Character 'Да, это было опасно'
+    Character 'Слушай, я понял, нельзя сдаваться и думать о провале перед своими экзаменами'
     play sound hmmm2
     show dragon at leap
     dragon 'Это ты о чём?'
     play sound hmmm7
     show henry at leap
-    Henry 'Да так...'
-    Henry 'Где мы сейчас находимся?'
+    Character 'Да так...'
+    Character 'Где мы сейчас находимся?'
     show dragon at leap
     dragon 'Мы попали в долину, которая называется Энчастия'
     window hide
@@ -522,17 +552,17 @@ label scene9_gnoms:
         yalign 0.616
     with moveinbottom
     show henry at leap
-    Henry 'А что это за существа бегут к нам?'
+    Character 'А что это за существа бегут к нам?'
     stop sound fadeout 1.0
     show dragon at leap
     dragon 'Гаети. Это маленькие существа, которые здесь обитают'
     show henry at leap
-    Henry 'А они опасные?'
+    Character 'А они опасные?'
     show dragon at leap
     dragon 'Да, они будут сильно давить на тебя и заставлять пойти с ними'
     play sound hmmm12
     show henry at leap
-    Henry 'Здравствуйте, дорогие жители'
+    Character 'Здравствуйте, дорогие жители'
     play sound hmmm9
     show gnom5 at leap
     gnoms 'Кто ты такой?'
@@ -578,14 +608,14 @@ label scene9_gnoms:
     gnoms 'Ты должен пойти с нами'
     play sound hmmm7
     show henry at leap
-    Henry 'Что же делать?'
+    Character 'Что же делать?'
     menu:
-        Henry 'Что мне выбрать?'
+        Character 'Что мне выбрать?'
         'Попробовать ответить на все вопросы Гаети':
             play sound hmmm1
             show henry at leap
-            Henry 'Меня зовут Генри, я не из вашего мира'
-            Henry 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
+            Character 'Меня зовут Генри, я не из вашего мира'
+            Character 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
             play sound hmmm9
             show gnom1 at leap
             gnoms 'Пошли с нами'
@@ -597,7 +627,7 @@ label scene9_gnoms:
             gnoms 'Ты идёшь с нами'
             play sound hmmm4
             show henry at leap
-            Henry 'Извините, мне нужно идти'
+            Character 'Извините, мне нужно идти'
             window hide
             show henry:
                 xalign 1.25
@@ -622,29 +652,29 @@ label scene9_gnoms:
     show dragon at right with moveinleft
     play sound hmmm2
     show henry at leap
-    Henry 'Знаешь, в моем мире все устроено немного не так...'
-    Henry 'И Гаети мне кое-кого напомнили'
+    Character 'Знаешь, в моем мире все устроено немного не так...'
+    Character 'И Гаети мне кое-кого напомнили'
     show dragon at leap
     dragon 'Кого они тебе напомнили?'
     play sound hmmm1
     show henry at leap
-    Henry 'Они напоминают мне моих родителей и учителей'
-    Henry 'Мне также все твердят : «выбрал вуз?», «поспи», «поешь уже», «сдай ЕГЭ», «поступи на бюджет», «иди выбирай вуз»'
+    Character 'Они напоминают мне моих родителей и учителей'
+    Character 'Мне также все твердят : «выбрал вуз?», «поспи», «поешь уже», «сдай ЕГЭ», «поступи на бюджет», «иди выбирай вуз»'
     show dragon at leap
     dragon 'Да, действительно, сходство с Гаети есть'
     play sound gasp
     show henry at leap
-    Henry 'От этого иногда устаешь и это тебя даже немного раздражает'
+    Character 'От этого иногда устаешь и это тебя даже немного раздражает'
     show dragon at leap
     dragon 'Может они иногда правы?'
     play sound surprise1
     show henry at leap
-    Henry 'Хм... Знаешь, может быть, родители иногда правы, они же желают нам добра, поэтому, когда они говорят “иди отдохни” или “поешь”, нужно слушать их'
-    Henry 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, могут произойти выгорание'
+    Character 'Хм... Знаешь, может быть, родители иногда правы, они же желают нам добра, поэтому, когда они говорят “иди отдохни” или “поешь”, нужно слушать их'
+    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, могут произойти выгорание'
     show dragon at leap
     dragon 'То есть учиться в вашем мире не нужно?'
     show henry at leap
-    Henry 'Конечно нужно, но нужно знать меру во всём'
+    Character 'Конечно нужно, но нужно знать меру во всём'
     stop music fadeout 1.0
     return
 
@@ -658,7 +688,7 @@ label scene10_megastore:
     dragon 'Вот мы и пришли'
     dragon 'Вот там лавка Алистера'
     show henry at leap
-    Henry 'Давай зайдём'
+    Character 'Давай зайдём'
     stop music fadeout 1.0
     play sound door_bell
     scene scene10_1 with dissolve
@@ -670,7 +700,7 @@ label scene10_megastore:
     mag 'Приветствую вас, что вы хотели в моей лавке?'
     play sound hmmm4
     show henry at leap
-    Henry 'Здравствуйте, мне нужно попасть в мой мир'
+    Character 'Здравствуйте, мне нужно попасть в мой мир'
     window hide
     show dragon:
         xalign 1.5
@@ -680,12 +710,12 @@ label scene10_megastore:
     show mag at leap
     mag 'Ой, с этим я тебе помочь не могу'
     show henry at leap
-    Henry 'Что же мне тогда делать? Как здесь выжить?'
+    Character 'Что же мне тогда делать? Как здесь выжить?'
     show mag at leap
     mag 'Ты бы мог пригодиться в этом мире'
     play sound hmmm12
     show henry at leap
-    Henry 'Что же ты можешь мне предложить?'
+    Character 'Что же ты можешь мне предложить?'
     show mag at leap
     mag 'Есть несколько вариантов'
     $ first_choose = False
@@ -705,7 +735,7 @@ label scene10_megastore:
         show dragon at right with moveinbottom
     play sound hmmm6
     show henry at leap
-    Henry 'Да, трудно в этом мире, что же мне делать?'
+    Character 'Да, трудно в этом мире, что же мне делать?'
     stop sound fadeout 1.0
     play sound hmmm2
     show dragon at leap
@@ -735,7 +765,7 @@ menu choose_scene10:
         with zoomin
         play sound hmmm10
         show henry at leap
-        Henry 'И как же мне к ним подойти?'
+        Character 'И как же мне к ним подойти?'
         show mag at leap
         mag 'Ты должен показать единорогу силу'
         window hide
@@ -771,7 +801,7 @@ menu choose_scene10:
         show henry at left with moveinleft
         play sound gasp
         show henry at leap
-        Henry 'Да, к ЕГЭ мне было готовиться легче'
+        Character 'Да, к ЕГЭ мне было готовиться легче'
         stop music fadeout 1.0
         $ first_choose = True
         if first_choose & second_choose & third_choose == True:
@@ -812,17 +842,17 @@ menu choose_scene10:
         general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
         play sound hmmm4
         show henry at leap
-        Henry 'Нее...'
-        Henry 'Это не для меня'
+        Character 'Нее...'
+        Character 'Это не для меня'
         play sound hmmm8
         show henry at leap
-        Henry 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+        Character 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
         stop sound fadeout 1.0
         play sound hmmm9
         show general at leap
         general 'Что это ты бормочешь?'
         show henry at leap
-        Henry 'Да так... Мысли вслух'
+        Character 'Да так... Мысли вслух'
         stop music fadeout 1.0
         $ second_choose = True
         if first_choose & second_choose & third_choose == True:
@@ -846,8 +876,8 @@ menu choose_scene10:
         mag 'Также нужно будет рисковать своей жизнью, чтобы доставать необходимые ингредиенты для зелий'
         play sound hmmm7
         show henry at leap
-        Henry 'Извини, но такое мне тоже не подходит'
-        Henry 'В IT у меня был бы удобный график работы'
+        Character 'Извини, но такое мне тоже не подходит'
+        Character 'В IT у меня был бы удобный график работы'
         $ third_choose = True
         if first_choose & second_choose & third_choose == True:
             $ correct_choose = True
@@ -870,7 +900,7 @@ label scene11_coldun:
     koldun 'Давно у меня не было гостей, зачем пожаловали?'
     play sound hmmm3
     show henry at leap
-    Henry 'Мне нужно попасть в свой мир'
+    Character 'Мне нужно попасть в свой мир'
     play sound hmmm1
     show koldun at leap
     koldun 'Я давно подозревал, что есть другие миры'
@@ -936,9 +966,9 @@ menu choose_scene11:
         with moveinleft
         play sound krik2
         show henry at leap
-        Henry 'ААААА'
+        Character 'ААААА'
         stop sound fadeout 1.0
-        Henry 'Они летают'
+        Character 'Они летают'
         window hide
         show henry:
             xalign 1.5
@@ -997,7 +1027,7 @@ menu choose_scene11:
         scene scene11_2 with dissolve
         show henry at left with moveinbottom
         show henry at leap
-        Henry 'Сколько же тут книг?'
+        Character 'Сколько же тут книг?'
         window hide
         play sound book volume 1.5
         show book1:
@@ -1024,7 +1054,7 @@ menu choose_scene11:
         show henry at left with moveinleft
         play sound gasp
         show henry at leap
-        Henry 'Они кружат мне голову'
+        Character 'Они кружат мне голову'
         window hide
         show book1:
             xalign 0.2
@@ -1065,8 +1095,8 @@ menu choose_scene11:
         show henry at left with moveinbottom
         play sound hmmm1
         show henry at leap
-        Henry 'Может я смогу написать какую-нибудь программу на компьютере?'
-        Henry 'backend-разработчик, кто это такой?'
+        Character 'Может я смогу написать какую-нибудь программу на компьютере?'
+        Character 'backend-разработчик, кто это такой?'
         show macbook:
             xalign 0.9
             yalign 0.51296
@@ -1076,17 +1106,17 @@ menu choose_scene11:
         computer 'Специалист, который занимается серверной частью сайтов, мобильных и десктопных приложений и игр'
         play sound hmmm12
         show henry at leap
-        Henry 'А чем же он занимается?'
+        Character 'А чем же он занимается?'
         play sound windows1
         show macbook at leap
         computer 'Он создает базы данных и управляет ими, проводит интеграции с внешними сервисами и занимается всем, что находится «под капотом» сайта'
         show henry at leap
-        Henry 'Как же интересно, но какие плюсы у этой профессии?'
+        Character 'Как же интересно, но какие плюсы у этой профессии?'
         play sound windows2
         show macbook at leap
         computer 'Востребованность профессии, работа из любой точки планеты, возможность выбирать направление, перспективы, высокая зарплата'
         show henry at leap
-        Henry 'А где же этому можно научиться ?'
+        Character 'А где же этому можно научиться ?'
         play sound windows3
         show macbook at leap
         computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
@@ -1095,7 +1125,7 @@ menu choose_scene11:
 label scene12_hagen:
     play sound steps
     show henry at leap
-    Henry 'Кто-то идёт, чьи это шаги?'
+    Character 'Кто-то идёт, чьи это шаги?'
     show macbook:
         xalign 2.0
     with moveinright
@@ -1106,18 +1136,18 @@ label scene12_hagen:
     hagen 'Что ты здесь забыл?'
     play sound hmmm2
     show henry at leap
-    Henry 'Извините, я просто изучаю профессию, используя ваш компьютер'
+    Character 'Извините, я просто изучаю профессию, используя ваш компьютер'
     show hagen at leap
     hagen 'Это мое измерение и моя ветка времени, здесь всё решаю я'
     show henry at leap
-    Henry 'А вы не могли бы отправить меня домой?'
+    Character 'А вы не могли бы отправить меня домой?'
     play sound hmmm8
     show hagen at leap
     hagen 'Пока ты в моем мире, ты будешь работать на меня'
     hagen 'Познакомся с коллегами они введу тебя в курс дела'
     play sound hmmm12
     show henry at leap
-    Henry 'Хорошо , а куда мне идти?'
+    Character 'Хорошо , а куда мне идти?'
     show hagen at leap
     hagen 'Прямо по коридору и направо'
     stop music fadeout 1.0
@@ -1126,7 +1156,7 @@ label scene12_hagen:
     show henry at left with moveinleft
     play sound hmmm3
     show henry at leap
-    Henry 'Интересно получится ли у меня работать здесь?'
+    Character 'Интересно получится ли у меня работать здесь?'
     show henry:
         xalign 1.5
     with MoveTransition(2.0, leave = moveinright)
@@ -1145,37 +1175,37 @@ label scene12_hagen:
     riobs 'Приветствую тебя, как тебя зовут?'
     play sound hmmm1
     show henry at leap
-    Henry 'Привет, меня зовут Генри'
+    Character 'Привет, меня зовут Генри'
     show riobs at leap
     riobs 'Мы сейчас работаем над одним проектом'
     play sound whmm1
     show hinki at leap
     hinki 'Я не думаю, что ты можешь нам чем-нибудь помочь'
     show henry at leap
-    Henry 'Я бы мог попробовать себя в роли Backend — разработчика'
+    Character 'Я бы мог попробовать себя в роли Backend — разработчика'
     play sound hihi
     show hinki at leap
     hinki 'Ха-ха-ха, ты хоть знаешь, что такое веб-сервер?'
     play sound hmmm6
     show henry at leap
-    Henry 'Сервер, принимающий HTTP-запросы от клиентов, обычно веб-браузеров, и выдающий им HTTP-ответы, как правило, вместе с HTML-страницей, изображением, файлом, медиа-потоком или другими данными'
+    Character 'Сервер, принимающий HTTP-запросы от клиентов, обычно веб-браузеров, и выдающий им HTTP-ответы, как правило, вместе с HTML-страницей, изображением, файлом, медиа-потоком или другими данными'
     play sound whmm2
     show hinki at leap
     hinki 'У нас даже уборщик знает, что это такое. Знаешь ли ты что такое HTTP?'
     play sound hmmm1
     show henry at leap
-    Henry 'Это протокол, который использует для передачи содержимого TCP, поэтому HTTP считается надежным протоколом для обмена содержимым. Также HTTP — самый популярный протокол'
+    Character 'Это протокол, который использует для передачи содержимого TCP, поэтому HTTP считается надежным протоколом для обмена содержимым. Также HTTP — самый популярный протокол'
     show henry at leap
-    Henry 'Сам не знаю, как мне удалось это запомнить'
+    Character 'Сам не знаю, как мне удалось это запомнить'
     play sound whmm3
     show hinki at leap
     hinki 'Ладно, может ты что-то знаешь. У меня есть последний вопрос'
     hinki 'Как веб-страницы взаимодействуют с серверами?'
     play sound hmmm5
     show henry at leap
-    Henry 'Веб-браузеры взаимодействуют с веб-серверами при помощи протокола передачи гипертекста (HTTP). При взаимодействии, браузер отправляет на сервер HTTP-запрос'
+    Character 'Веб-браузеры взаимодействуют с веб-серверами при помощи протокола передачи гипертекста (HTTP). При взаимодействии, браузер отправляет на сервер HTTP-запрос'
     show henry at leap
-    Henry 'А также, необходимо знать, что путь (URL), который определяет целевой сервер и ресурс (например, HTML-файл, конкретная точка данных на сервере или запускаемый инструмент)'
+    Character 'А также, необходимо знать, что путь (URL), который определяет целевой сервер и ресурс (например, HTML-файл, конкретная точка данных на сервере или запускаемый инструмент)'
     show riobs at leap
     riobs 'Хинки, ну отцепись от парнишки. Я думаю, он уже доказал, что может писать проект с нами'
     play sound whmm4
@@ -1196,7 +1226,7 @@ label scene12_hagen:
     show hinki at leap
     hinki 'Ты что-нибудь понимаешь?'
     show henry at leap
-    Henry 'Я примерно понял, что нужно сделать'
+    Character 'Я примерно понял, что нужно сделать'
     show riobs at leap
     riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
     show riobs at leap
@@ -1226,7 +1256,7 @@ label scene12_hagen:
     hinki 'Здесь ты можешь отдохнуть'
     play sound hmmm4
     show henry at leap
-    Henry 'Спасибо, что проводила'
+    Character 'Спасибо, что проводила'
     play sound whmm8
     show hinki at leap
     hinki 'Не обольщайся, меня просто попросил мой коллега'
@@ -1235,7 +1265,7 @@ label scene12_hagen:
     with moveinright
     $ the_end = False
     menu:
-        Henry 'Может мне и вправду поспать или подумать над проектом?'
+        Character 'Может мне и вправду поспать или подумать над проектом?'
         'Поспать':
             play sound end fadein 1.0
             $ the_end = True
@@ -1250,11 +1280,11 @@ label scene12_hagen:
             show henry at center with moveinright
             play sound gasp
             show henry at leap
-            Henry 'Меня так заинтересовал проект, может подумать над ним?'
-            Henry 'Хотя я сегодня очень сильно устал'
-            Henry 'Необходимо набраться сил перед завтрашним днём'
+            Character 'Меня так заинтересовал проект, может подумать над ним?'
+            Character 'Хотя я сегодня очень сильно устал'
+            Character 'Необходимо набраться сил перед завтрашним днём'
             show henry at leap
-            Henry 'Пойду спать'
+            Character 'Пойду спать'
     return
 
 label scene13_end:
@@ -1267,7 +1297,7 @@ label scene13_end:
     scene bg black with Fade(2,0,0)
     scene scene2 with Dissolve(1)
     play sound hmmm9
-    Henry 'Ладно, пошли давай'
+    Character 'Ладно, пошли давай'
     play music peremena fadein 1.0
     scene scene1 with dissolve
     show henry at left with moveinbottom
@@ -1277,9 +1307,9 @@ label scene13_end:
     Maks 'Ты видел, что в УрФУ проходит День открытых дверей, пойдём?'
     play sound hmmm1
     show henry at leap
-    Henry 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
+    Character 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
     show henry at leap
-    Henry 'Я поступлю на программную инженерию и стану backend-разработчиком'
+    Character 'Я поступлю на программную инженерию и стану backend-разработчиком'
     stop music fadeout 0.5
     play sound end fadein 1.0
     scene bg black with dissolve
