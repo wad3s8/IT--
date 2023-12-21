@@ -16,16 +16,14 @@ define hinki = Character('Хинки', color = '#28B463')
 define riobs = Character('Риобс', color = '#1E8449')
 define non = Character('???', color = '#E74C3C')
 define n = Character(None, kind = nvl)
+define Bella = Character('Изабелла', color = '#7B241C')
+define Character = Character('[name]', color = '#1F618D')
 
 # TODO
 # испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
 # выбор молота и меча для сражения с пауками
 # сделать выбор без реплики
-# использовать window hide
-# MoveTransition(2.0, leave = moveinright)
-# linear .5 xpos 710 ypos 107
 
-# Объявление переменных
 
 # Растягивание персонажа
 transform leap(z=1.05, t=.5):
@@ -54,6 +52,7 @@ transform migga_running:
 
 # Начало игры
 label start:
+    call scene0_settings # Настройки игры
     call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
     call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
@@ -68,6 +67,33 @@ label start:
     call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     if not the_end:
         call scene13_end from _call_scene13_end # Разговор обо сне с другом
+    return
+
+
+label scene0_settings:
+    play music scene0 fadein 1.0
+    show scene0 with dissolve
+    'Настройте игру под себя'
+    show bella at left with moveinbottom
+    show henry at right with moveinbottom
+    'Выберите пол персонажа'
+    menu:
+        'Женский':
+            $ sex = 'female'
+            play sound hihi
+            show bella at leap
+        'Мужской':
+            $ sex = 'male'
+            play sound hmmm5
+            show henry at leap
+    $ name = renpy.input('Введите имя для своего персонажа:')
+    $ name = name.strip()
+    if name=='':
+        if sex=='male':
+            $ name = 'Генри'
+        else:
+            $ name = 'Изабелла'
+    stop music fadeout 1.0
     return
 
 label scene1_school:
