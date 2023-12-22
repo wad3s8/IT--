@@ -81,8 +81,9 @@ label start_female:
     # call fscene2_class
     # call fscene3_sleep
     # call fscene4_new_country
-    call fscene5_forest
+    # call fscene5_forest
     call fscene6_wizard_forest
+    call fscene7_cave
     return
 
 label scene0_settings:
@@ -326,6 +327,79 @@ label scene6_wizard_forest:
     dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
     stop sound fadeout 1.0
     stop music fadeout 1.0
+    return
+
+label fscene7_cave:
+    play music water_down fadein 1.0 volume 0.8
+    scene scene7 with dissolve
+    show chest_close at top with moveinbottom
+    show bella at left with moveinbottom
+    show dragon at right with moveinbottom
+    play sound whmm16
+    show bella at leap
+    Character 'Смотри!'
+    Character 'Это же сундук'
+    Character 'Давай откроем его'
+    play sound chest
+    show bella at center with easeinright
+    show bella at left with easeinleft
+    show chest_close:
+        ypos -1500
+    with moveintop
+    show chest_open at top with dissolve
+    show sword at topleft with zoomin
+    show hammer at topright with zoomin
+    show bella at leap
+    Character 'Что это за слова на мече и молоте?'
+    stop sound fadeout 1.0
+    show dragon at leap
+    dragon 'Я не владею этими знаниями'
+    play sound whmm17
+    show bella at leap
+    Character 'Кажется, я понимаю, что здесь написано'
+    Character 'Из этого я точно знаю Python, C#'
+    stop sound fadeout 1.0
+    play sound hmmm11
+    show dragon at leap
+    dragon 'Это что-то из твоего мира?'
+    show bella at leap
+    Character 'Да, это языки программирования'
+    show dragon at leap
+    dragon 'Что ты из этого выберешь?'
+    $ weapon = 'null'
+    menu:
+        'Меч':
+            $ weapon = 'sword'
+            show bella at leap
+            Character 'Я выберу меч'
+            window hide
+            show sword:
+                ypos -1500
+            with moveintop
+            show hammer:
+                ypos -1500
+            with moveintop
+            show chest_open:
+                ypos -1500
+            with moveintop
+            show bella at offscreenleft with moveinleft
+            show bella_sword at left with moveinleft
+        'Молот':
+            $ weapon = 'hammer'
+            show bella at leap
+            Character 'Я выберу молот'
+            window hide
+            show sword:
+                ypos -1500
+            with moveintop
+            show hammer:
+                ypos -1500
+            with moveintop
+            show chest_open:
+                ypos -1500
+            with moveintop
+            show bella at offscreenleft with moveinleft
+            show bella_hammer at left with moveinleft
     return
 
 label scene7_cave:
