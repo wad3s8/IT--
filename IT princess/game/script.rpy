@@ -77,11 +77,12 @@ label start_male:
     return
 
 label start_female:
-    call fscene1_school
-    call fscene2_class
-    call fscene3_sleep
-    call fscene4_new_country
+    # call fscene1_school
+    # call fscene2_class
+    # call fscene3_sleep
+    # call fscene4_new_country
     call fscene5_forest
+    call fscene6_wizard_forest
     return
 
 label scene0_settings:
@@ -289,6 +290,24 @@ label scene5_forest:
     show dragon at leap
     non 'Спасибо за помощь. Меня зовут Спайндикс'
     dragon 'Я помогу тебе разобраться в этом мире'
+    return
+
+label fscene6_wizard_forest:
+    scene scene6 with dissolve
+    show bella at left with moveinbottom
+    show dragon at right with moveinbottom
+    play sound hmmm5
+    show dragon at leap
+    dragon 'Чтобы выжить в этой стране, необходимо найти оружие'
+    stop sound fadeout 1.0
+    play sound whmm10
+    show bella at leap
+    Character 'Ты знаешь, где его можно достать?'
+    play sound hmmm2
+    show dragon at leap
+    dragon 'К счастью, здесь недалеко есть пещера, в которой может быть что-нибудь полезное'
+    stop sound fadeout 1.0
+    stop music fadeout 1.0
     return
 
 label scene6_wizard_forest:
