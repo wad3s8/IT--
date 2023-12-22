@@ -77,27 +77,10 @@ label start_male:
     return
 
 label start_female:
-    play music peremena fadein 1.0
-    scene scene1 with dissolve
-    show henry at left with moveinbottom
-    show maks at right with moveinbottom
-    play sound hmmm1
-    show maks at leap
-    Maks 'Слушай, а чем бы ты хотел заниматься всю жизнь?'
-    play sound hmmm3
-    show henry at leap
-    Character 'Если честно, я ещё не решил, чем хочу заниматься'
-    show maks at leap
-    Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
-    play sound surprise1
-    show henry at leap
-    Character 'А это интересно, но в этой сфере столько направлений и специальностей...'
-    stop music
-    play sound bell
-    show maks at leap
-    Maks 'Ладно, что-то мы заболтались, пошли на урок'
-    stop sound fadeout 1.0
-    stop music fadeout 1.0
+    call fscene1_school
+    call fscene2_class
+    call fscene3_sleep
+    call fscene4_new_country
     return
 
 label scene0_settings:
@@ -126,6 +109,30 @@ label scene0_settings:
     stop music fadeout 1.0
     return
 
+label fscene1_school:
+    play music peremena fadein 1.0
+    scene scene1 with dissolve
+    show bella at left with moveinbottom
+    show maks at right with moveinbottom
+    play sound hmmm1
+    show maks at leap
+    Maks 'Слушай, а чем бы ты хотела заниматься всю жизнь?'
+    play sound whmm3
+    show bella at leap
+    Character 'Если честно, я ещё не решила, чем хочу заниматься'
+    show maks at leap
+    Maks 'Я бы хотел связать свою жизнь с информационными технологиями'
+    play sound whmm4
+    show bella at leap
+    Character 'А это интересно, но в этой сфере столько направлений и специальностей...'
+    stop music
+    play sound bell
+    show maks at leap
+    Maks 'Ладно, что-то мы заболтались, пошли на урок'
+    stop sound fadeout 1.0
+    stop music fadeout 1.0
+    return
+
 label scene1_school:
     play music peremena fadein 1.0
     scene scene1 with dissolve
@@ -150,11 +157,26 @@ label scene1_school:
     stop music fadeout 1.0
     return
 
+label fscene2_class:
+    scene scene2 with dissolve
+    show teacher at center with moveinbottom
+    show teacher at leap
+    play sound whmm1
+    teacher '"Отец мой Андрей Петрович Гринёв в молодости своей..." - монотонно начал читать учитель'
+    play sound wgasp
+    scene bg black with Fade(2,0,0)
+    scene scene2_blur with Dissolve(1) # блюр 10
+    scene bg black with Fade(2,0,0)
+    scene scene2_blur with Dissolve(1)
+    '[name], не выспавшись, уже начала засыпать на задней парте'
+    stop sound fadeout 1.0
+    return
+
 label scene2_class:
     scene scene2 with dissolve
     show teacher at center with moveinbottom
     show teacher at leap
-    play sound hmmm9
+    play sound whmm1
     teacher '"Отец мой Андрей Петрович Гринёв в молодости своей..." - монотонно начал читать учитель'
     play sound yawn1
     scene bg black with Fade(2,0,0)
@@ -162,7 +184,19 @@ label scene2_class:
     play sound yawn1
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
-    'Генри, не выспавшись, уже начал засыпать на задней парте'
+    '[name], не выспавшись, уже начал засыпать на задней парте'
+    stop sound fadeout 1.0
+    return
+
+label fscene3_sleep:
+    play sound wkrik1
+    scene scene3 with dissolve
+    window hide
+    show bella at offscreenleft
+    show bella:
+        xalign 1.5
+    with moveinleft
+    Character 'ААААААААААААААААА'
     stop sound fadeout 1.0
     return
 
@@ -175,6 +209,17 @@ label scene3_sleep:
         xalign 1.5
     with moveinleft
     Character 'ААААААААААААААААА'
+    stop sound fadeout 1.0
+    return
+
+label fscene4_new_country:
+    play music birds_sing fadein 1.0
+    scene scene4 with dissolve
+    show bella at center with moveintop
+    play sound whmm15
+    show bella at leap
+    Character 'Куда я попала? Где я очутилась?'
+    Character 'Что мне делать?'
     stop sound fadeout 1.0
     return
 
