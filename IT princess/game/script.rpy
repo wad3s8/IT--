@@ -82,8 +82,9 @@ label start_female:
     # call fscene3_sleep
     # call fscene4_new_country
     # call fscene5_forest
-    call fscene6_wizard_forest
+    # call fscene6_wizard_forest
     call fscene7_cave
+    call fscene8_fairy_forest
     return
 
 label scene0_settings:
@@ -475,6 +476,210 @@ label scene7_cave:
             show henry_hammer at left with moveinleft
     return
 
+label fscene8_fairy_forest:
+    play sound whmm16
+    if weapon=='sword':
+        show bella_sword at leap
+    if weapon=='hammer':
+        show bella_hammer at leap
+    Character 'Куда мы идём дальше?'
+    show dragon at leap
+    dragon 'Давай пойдём к магу Алистеру, он поможет нам'
+    stop music fadeout 1.0
+    play music river fadein 1.0 volume 0.35
+    scene scene8 with dissolve
+    show bella at left with moveinbottom
+    show dragon at right with moveinbottom
+    play sound whmm17
+    show bella at leap
+    Character 'Что это за чудесный лес?'
+    show dragon at leap
+    dragon 'Это лес Мальдонии — место, где живут феи'
+    show bella at leap
+    Character 'Как выглядят феи? И где же они все?'
+    play sound hmmm1
+    show dragon at leap
+    dragon 'Фея в переводе с Дотракийского языка переводится как мечта'
+    dragon 'К сожалению, их здесь осталось мало, так как их всех похищают тролли'
+    dragon 'Я предлагаю поторопиться, тролли очень опасны'
+    play sound thunder volume 2.0
+    show troll_mini at truecenter with zoomin
+    show bella at leap
+    Character 'Что это такое?'
+    show dragon at leap
+    dragon 'Похоже на звук приближения тролля'
+    show troll_mini:
+        ypos 1700
+    with moveintop
+    show troll at truecenter with zoomin
+    show troll at leap
+    play sound hmmm9 volume 1.5
+    troll 'Кто вы такие? Что вы забыли здесь?'
+    play sound whmm1
+    show bella at leap
+    Character 'Здравствуйте, извините нас, пожалуйста, мы уже уходим'
+    show troll at leap
+    troll 'Какие мы вежливые. Этот подарок тебе'
+    show dragon:
+        xalign 2.0
+    with moveinright
+    show troll:
+        ypos 2500
+    with moveinbottom
+    show troll_average at right with moveinbottom
+    show present_close:
+        xpos 710
+        ypos 107
+    with moveintop
+    show bella at leap
+    Character 'Что это за коробка? Что внутри?'
+    show troll_average at leap
+    troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
+    menu:
+        'Как поступит [name]?'
+        'Принять подарок от тролля':
+            play sound whmm18
+            show bella at leap
+            Character 'Спасибо за подарок'
+            play sound present volume 1.3
+            show present_close:
+                ypos -500
+            with moveintop
+            show present_open:
+                xpos 600
+                ypos 107
+            with moveintop
+            play sound spider_legs volume 1.45
+            show spiders: #####3
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders:
+                linear 0.5 xpos 47 ypos 717
+            with Pause(0.5)
+            show spiders2:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders2:
+                linear 0.5 xpos 38 ypos 923
+            with Pause(0.5)
+            show spiders3:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders3:
+                linear 0.5 xpos 300 ypos 600
+            with Pause(0.5)
+            show spiders4:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders4:
+                linear 0.5 xpos 54 ypos 334
+            with Pause(0.5)
+            show spiders5:
+                xpos 800
+                ypos 107
+            with dissolve
+            show spiders5:
+                linear 0.5 xpos 31 ypos 23
+            with Pause(0.5)
+            stop sound fadeout 1.0
+            play sound wkrik1
+            show bella at leap
+            Character 'ААААААААААА'
+            stop sound fadeout 1.0
+            Character 'Пауки!'
+            show bella at offscreenleft with moveinleft
+            if weapon=='sword':
+                show bella_sword at offscreenleft
+            if weapon=='hammer':
+                show bella_hammer at offscreenleft
+            play sound sword
+            if weapon=='sword':
+                show bella_sword at left with moveinleft
+            if weapon=='hammer':
+                show bella_hammer at left with moveinleft
+            with Pause(0.5)
+            play sound death
+            show spiders:
+                ypos 1500
+            with moveintop
+            play sound sword
+            if weapon=='sword':
+                show bella_sword:
+                    linear 0.5 xalign 0.39635 yalign 0.4759
+                with Pause(0.5)
+            if weapon=='hammer':
+                show bella_hammer:
+                    linear 0.5 xalign 0.39635 yalign 0.4759
+                with Pause(0.5)
+            play sound death
+            show spiders2:
+                ypos 1500
+            with moveintop
+            show spiders3:
+                ypos 1500
+            with moveintop
+            play sound sword
+            if weapon=='sword':
+                show bella_sword:
+                    linear 0.5 xpos 0.253125 ypos 0.5
+                with Pause(0.5)
+            if weapon=='hammer':
+                show bella_hammer:
+                    linear 0.5 xpos 0.253125 ypos 0.5
+                with Pause(0.5)
+            play sound death
+            show spiders4:
+                ypos 1500
+            with moveintop
+            show spiders5:
+                ypos 1500
+            with moveintop
+            if weapon=='sword':
+                show bella_sword at left with moveinleft
+                show bella_sword at offscreenleft with moveinleft
+            if weapon=='hammer':
+                show bella_hammer at left with moveinleft
+                show bella_hammer at offscreenleft with moveinleft
+            show bella at left with moveinright
+            play sound hmmm8 volume 1.3
+            show troll_average at leap
+            troll 'Ах ты...'
+            troll 'Не трожь моих пауков! А не то...'
+            show present_open:
+                yalign 2.0
+            with moveinbottom
+            show troll_average at center with easeinleft
+            play sound wkrik1
+            show bella at leap
+            Character 'АААААААААА'
+            stop sound fadeout 1.0
+            show dragon at right with moveinbottom
+            show dragon at leap
+            dragon 'Бежим!!!'
+        'Проигнорировать предложение':
+            show present_close:
+                ypos -1000
+            with moveintop
+            play sound whmm19
+            show bella at leap
+            Character 'Извините, но я откажусь, нам нужно идти'
+            show troll_average at center with easeinleft
+            play sound hmmm9 volume 1.5
+            show troll_average at leap
+            troll 'Нет! Ты не уйдёшь!'
+            play sound wkrik1
+            show bella at leap
+            Character 'АААААААААА'
+            stop sound fadeout 1.0
+            show dragon at right with moveinbottom
+            dragon 'Бежим!!!'
+    stop music fadeout 1.0
+    return
+
 label scene8_fairy_forest:
     play sound hmmm1
     if weapon=='sword':
@@ -535,7 +740,7 @@ label scene8_fairy_forest:
     show troll_average at leap
     troll 'Этот подарок даст тебе постоянные слезы и истерики, а также ты будешь плохо управлять своими эмоциями'
     menu:
-        'Как поступить Генри?'
+        'Как поступить [name]?'
         'Принять подарок от тролля':
             play sound hmmm3
             show henry at leap
@@ -648,7 +853,9 @@ label scene8_fairy_forest:
             show troll_average at leap
             troll 'Ах ты...'
             troll 'Не трожь моих пауков! А не то...'
-            hide present_open
+            show present_open:
+                yalign 2.0
+            with moveinbottom
             show troll_average at center with easeinleft
             play sound krik2
             show henry at leap
