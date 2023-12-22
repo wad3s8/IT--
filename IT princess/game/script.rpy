@@ -81,6 +81,7 @@ label start_female:
     call fscene2_class
     call fscene3_sleep
     call fscene4_new_country
+    call fscene5_forest
     return
 
 label scene0_settings:
@@ -234,6 +235,34 @@ label scene4_new_country:
     stop sound fadeout 1.0
     return
 
+label fscene5_forest:
+    scene scene5 with dissolve
+    show bella at center with moveinbottom
+    play sound whmm17
+    show bella at leap
+    Character 'Хммммм...'
+    Character 'Что это за синий свет в лесу?'
+    Character 'Нужно пойти поверить'
+    show bella at left with easeinleft
+    show dragon_in_chains at topright with moveinbottom
+    play sound whmm10
+    show bella at leap
+    Character 'Это же дракон, он попал в ловушку, нужно ему помочь'
+    show bella at center with easeinright
+    play sound chain1
+    show bella at left with easeinleft
+    show dragon_in_chains:
+        yalign 2.7
+    with moveinbottom
+    show dragon at right with moveinbottom
+    show bella at leap
+    Character 'Кто ты такой?'
+    play sound hmmm2
+    show dragon at leap
+    non 'Спасибо за помощь. Меня зовут Спайндикс'
+    dragon 'Я помогу тебе разобраться в этом мире'
+    return
+
 label scene5_forest:
     scene scene5 with dissolve
     show henry at center with moveinbottom
@@ -250,7 +279,9 @@ label scene5_forest:
     show henry at center with easeinright
     play sound chain1
     show henry at left with easeinleft
-    hide dragon_in_chains with easeinbottom
+    show dragon_in_chains:
+        yalign 2.7
+    with moveinbottom
     show dragon at right with moveinbottom
     show henry at leap
     Character 'Кто ты такой?'
