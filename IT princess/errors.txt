@@ -2,47 +2,9 @@
 errors listed below, and try again.
 
 
-The label _call_choose_scene10 is defined twice, at File "game/script.rpy", line 1274:
-    call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
-and File "game/script.rpy", line 1339:
-    call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
-
-
-The label _call_choose_scene10_1 is defined twice, at File "game/script.rpy", line 1365:
-            call choose_scene10 from _call_choose_scene10_1
-and File "game/script.rpy", line 1511:
-            call choose_scene10 from _call_choose_scene10_1
-
-
-The label _call_choose_scene10_2 is defined twice, at File "game/script.rpy", line 1426:
-            call choose_scene10 from _call_choose_scene10_2
-and File "game/script.rpy", line 1572:
-            call choose_scene10 from _call_choose_scene10_2
-
-
-The label _call_choose_scene10_3 is defined twice, at File "game/script.rpy", line 1433:
-            call choose_scene10 from _call_choose_scene10_3
-and File "game/script.rpy", line 1579:
-            call choose_scene10 from _call_choose_scene10_3
-
-
-The label _call_choose_scene10_4 is defined twice, at File "game/script.rpy", line 1477:
-            call choose_scene10 from _call_choose_scene10_4
-and File "game/script.rpy", line 1623:
-            call choose_scene10 from _call_choose_scene10_4
-
-
-The label _call_choose_scene10_5 is defined twice, at File "game/script.rpy", line 1484:
-            call choose_scene10 from _call_choose_scene10_5
-and File "game/script.rpy", line 1630:
-            call choose_scene10 from _call_choose_scene10_5
-
-
-The label _call_choose_scene10_6 is defined twice, at File "game/script.rpy", line 1502:
-            call choose_scene10 from _call_choose_scene10_6
-and File "game/script.rpy", line 1648:
-            call choose_scene10 from _call_choose_scene10_6
-
+File "game/script.rpy", line 2422: end of line expected.
+    scene end1 with dissolve, Pause(300)
+                            ^
 
 Ren'Py Version: Ren'Py 8.1.3.23091805
-Sat Dec 23 20:07:32 2023
+Sat Dec 23 21:22:03 2023
