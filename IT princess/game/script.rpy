@@ -1260,7 +1260,7 @@ label fscene10_megastore:
     show bella at leap
     Character 'Что же мне тогда делать? Как здесь выжить?'
     show mag at leap
-    mag 'Ты бы мог пригодиться в этом мире'
+    mag 'Ты бы могла пригодиться в этом мире'
     play sound whmm18
     show bella at leap
     Character 'Что же ты можешь мне предложить?'
@@ -1271,7 +1271,7 @@ label fscene10_megastore:
     $ third_choose = False
     $ correct_choose = False
     window hide
-    call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
+    call fchoose_scene10 # Сцена выбора цикличная
     if correct_choose:
         show mag:
             xalign 2.0
@@ -1362,7 +1362,7 @@ menu fchoose_scene10:
             play sound hmmm9
             show mag at leap
             mag 'Ты уже спрашивала меня про это'
-            call choose_scene10 from _call_choose_scene10_1
+            call fchoose_scene10
             return
         play music birds_sing fadein 1.0
         scene scene10_2 with dissolve
@@ -1423,14 +1423,14 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10 from _call_choose_scene10_2
+            call fchoose_scene10
             return
     'Ты можешь состоять в армии короля':
         if second_choose:
             play sound hmmm9
             show mag at leap
             mag 'Ты уже спрашивала меня про это'
-            call choose_scene10 from _call_choose_scene10_3
+            call fchoose_scene10
             return
         play music hero fadein 1.0
         scene scene10_3 with dissolve
@@ -1459,7 +1459,7 @@ menu fchoose_scene10:
         Character 'Это не для меня'
         play sound whmm14
         show bella at leap
-        Character 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+        Character 'А вот если бы я пошла в IT, то могла бы работать удалённо и жить в Дубае'
         stop sound fadeout 1.0
         play sound hmmm9
         show general at leap
@@ -1474,14 +1474,14 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10 from _call_choose_scene10_4
+            call fchoose_scene10
             return
     'Ты можешь стать моим учеником':
         if third_choose:
             show mag at leap
             play sound hmmm9
             mag 'Ты уже спрашивала меня про это'
-            call choose_scene10 from _call_choose_scene10_5
+            call fchoose_scene10
             return
         play sound hmmm8
         show mag at leap
@@ -1499,7 +1499,7 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call choose_scene10 from _call_choose_scene10_6
+            call fchoose_scene10
             return
 
 menu choose_scene10:
