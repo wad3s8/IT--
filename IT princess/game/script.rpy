@@ -77,18 +77,20 @@ label start_male:
     return
 
 label start_female:
-    # call fscene1_school
-    # call fscene2_class
-    # call fscene3_sleep
-    # call fscene4_new_country
-    # call fscene5_forest
-    # call fscene6_wizard_forest
-    # call fscene7_cave
-    # call fscene8_fairy_forest
-    # call fscene9_gnoms
-    # call fscene10_megastore
-    # call fscene11_coldun
-    # call fscene12_hagen
+    call fscene1_school
+    call fscene2_class
+    call fscene3_sleep
+    call fscene4_new_country
+    call fscene5_forest
+    call fscene6_wizard_forest
+    call fscene7_cave
+    call fscene8_fairy_forest
+    call fscene9_gnoms
+    call fscene10_megastore
+    call fscene11_coldun
+    call fscene12_hagen
+    if not the_end:
+        call fscene13_end
     return
 
 label scene0_settings:
@@ -2446,13 +2448,45 @@ label scene12_hagen:
             Character 'Пойду спать'
     return
 
+label fscene13_end:
+    show scene2_blur with dissolve
+    scene bg black with Fade(2,0,0)
+    scene scene2_blur with Dissolve(1)
+    play sound pshhh
+    Maks 'Пшшш... [name]!'
+    Maks '[name], вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
+    scene bg black with Fade(2,0,0)
+    scene scene2 with Dissolve(1)
+    play sound whmm6
+    Character 'Ладно, пошли давай'
+    play music peremena fadein 1.0
+    scene scene1 with dissolve
+    show bella at left with moveinbottom
+    show maks at right with moveinbottom
+    play sound hmmm8
+    show maks at leap
+    Maks 'Ты видела, что в УрФУ проходит День открытых дверей, пойдём?'
+    play sound whmm5
+    show bella at leap
+    Character 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
+    show bella at leap
+    Character 'Я поступлю на программную инженерию и стану backend-разработчиком'
+    stop music fadeout 0.5
+    play sound end fadein 1.0
+    scene bg black with dissolve
+    window hide
+    n '''КОНЕЦ!!!'''
+    nvl clear
+    stop sound fadeout 1.0
+    return
+
 label scene13_end:
     show scene2_blur with dissolve
     scene bg black with Fade(2,0,0)
     scene scene2_blur with Dissolve(1)
     play sound pshhh
-    Maks 'Пшшш... Генри!'
-    Maks 'Генри, вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
+    Maks 'Пшшш... [name]!'
+    Maks '[name], вставай, если Юлия Владимировна увидит, что ты спишь, то ты будешь спать у директора'
     scene bg black with Fade(2,0,0)
     scene scene2 with Dissolve(1)
     play sound hmmm9
