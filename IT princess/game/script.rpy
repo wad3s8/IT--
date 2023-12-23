@@ -65,17 +65,17 @@ label start_male:
     return
 
 label start_female:
-    # call fscene1_school from _call_fscene1_school
-    # call fscene2_class from _call_fscene2_class
-    # call fscene3_sleep from _call_fscene3_sleep
-    # call fscene4_new_country from _call_fscene4_new_country
-    # call fscene5_forest from _call_fscene5_forest
-    # call fscene6_wizard_forest from _call_fscene6_wizard_forest
-    # call fscene7_cave from _call_fscene7_cave
-    # call fscene8_fairy_forest from _call_fscene8_fairy_forest
-    # call fscene9_gnoms from _call_fscene9_gnoms
-    # call fscene10_megastore from _call_fscene10_megastore
-    # call fscene11_coldun from _call_fscene11_coldun
+    call fscene1_school from _call_fscene1_school
+    call fscene2_class from _call_fscene2_class
+    call fscene3_sleep from _call_fscene3_sleep
+    call fscene4_new_country from _call_fscene4_new_country
+    call fscene5_forest from _call_fscene5_forest
+    call fscene6_wizard_forest from _call_fscene6_wizard_forest
+    call fscene7_cave from _call_fscene7_cave
+    call fscene8_fairy_forest from _call_fscene8_fairy_forest
+    call fscene9_gnoms from _call_fscene9_gnoms
+    call fscene10_megastore from _call_fscene10_megastore
+    call fscene11_coldun from _call_fscene11_coldun
     call fscene12_hagen from _call_fscene12_hagen
     if not the_end:
         call fscene13_end from _call_fscene13_end
