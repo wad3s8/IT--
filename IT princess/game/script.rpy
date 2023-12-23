@@ -85,6 +85,7 @@ label start_female:
     # call fscene6_wizard_forest
     call fscene7_cave
     call fscene8_fairy_forest
+    call fscene9_gnoms
     return
 
 label scene0_settings:
@@ -884,6 +885,176 @@ label scene8_fairy_forest:
     stop music fadeout 1.0
     return
 
+label fscene9_gnoms:
+    play music birds_sing fadein 1.0
+    scene scene9 with dissolve
+    show bella at left with moveinbottom
+    show dragon at right with moveinbottom
+    show dragon at leap
+    dragon 'Вроде бы убежали'
+    play sound whmm14
+    show bella at leap
+    Character 'Да, это было опасно'
+    Character 'Слушай, я поняла, нельзя сдаваться и думать о провале перед своими экзаменами'
+    play sound hmmm2
+    show dragon at leap
+    dragon 'Это ты о чём?'
+    play sound whmm17
+    show bella at leap
+    Character 'Да так...'
+    Character 'Где мы сейчас находимся?'
+    show dragon at leap
+    dragon 'Мы попали в долину, которая называется Энчастия'
+    window hide
+    play sound gaeti_run volume 1.5
+    show gnom1_mini:
+        xalign 0.5
+        yalign 0.64
+    with zoomin
+    show gnom2_mini:
+        xalign 0.4
+        yalign 0.6
+    with zoomin
+    show gnom3_mini:
+        xalign 0.3
+        yalign 0.5
+    with zoomin
+    show gnom4 at left with moveinbottom
+    show gnom5:
+        xalign 0.18
+        yalign 0.47
+    with moveinbottom
+    show gnom6:
+        xalign 0.714
+        yalign 0.616
+    with moveinbottom
+    show bella at leap
+    Character 'А что это за существа бегут к нам?'
+    stop sound fadeout 1.0
+    show dragon at leap
+    dragon 'Гаети. Это маленькие существа, которые здесь обитают'
+    show bella at leap
+    Character 'А они опасные?'
+    show dragon at leap
+    dragon 'Да, они будут сильно давить на тебя и заставлять пойти с ними'
+    play sound whmm18
+    show bella at leap
+    Character 'Здравствуйте, дорогие жители'
+    play sound hmmm9
+    show gnom5 at leap
+    gnoms 'Кто ты такая?'
+    play sound hmmm9
+    show gnom6 at leap
+    gnoms 'Ты не похожа на здешних жителей'
+    play sound hmmm9
+    show gnom4 at leap
+    gnoms 'Что ты здесь забыла?'
+    window hide
+    show gnom5:
+        ypos 1500
+    with moveinbottom
+    show gnom3:
+        xalign 0.18
+        yalign 0.47
+    with moveinbottom
+    show gnom3_mini:
+        ypos 1500
+    with moveinbottom
+    show gnom5_mini:
+        xalign 0.3
+        yalign 0.5
+    with zoomin
+    show gnom6:
+        ypos 1500
+    show gnom1:
+        xalign 0.714
+        yalign 0.616
+    with moveinbottom
+    show gnom1_mini:
+        ypos 1500
+    with moveinbottom
+    show gnom6_mini:
+        xalign 0.5
+        yalign 0.64
+    with zoomin
+    play sound hmmm9
+    show gnom3 at leap
+    gnoms 'Ты хочешь пойти с нами?'
+    play sound hmmm9
+    show gnom1 at leap
+    gnoms 'Ты должна пойти с нами'
+    play sound whmm19
+    show bella at leap
+    Character 'Что же делать?'
+    menu:
+        Character 'Что мне выбрать?'
+        'Попробовать ответить на все вопросы Гаети':
+            play sound whmm10
+            show bella at leap
+            Character 'Меня зовут [name], я не из вашего мира'
+            Character 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
+            play sound hmmm9
+            show gnom1 at leap
+            gnoms 'Пошли с нами'
+            play sound hmmm9
+            show gnom3 at leap
+            gnoms 'Тебе точно нужно идти с нами'
+            play sound hmmm9
+            show gnom4 at leap
+            gnoms 'Ты идёшь с нами'
+            play sound whmm11
+            show bella at leap
+            Character 'Извините, мне нужно идти'
+            window hide
+            show bella:
+                xalign 1.25
+                yalign 1.25
+            with moveinright
+            show dragon:
+                xalign 1.45
+                yalign 1.45
+            with moveinright
+        'Взять себя в руки и бежать':
+            window hide
+            show bella:
+                xalign 1.25
+                yalign 1.25
+            with moveinright
+            show dragon:
+                xalign 1.45
+                yalign 1.45
+            with moveinright
+    scene scene9_1 with pushleft
+    show bella at left with moveinleft
+    show dragon at right with moveinleft
+    play sound whmm12
+    show bella at leap
+    Character 'Знаешь, в моем мире все устроено немного не так...'
+    Character 'И Гаети мне кое-кого напомнили'
+    show dragon at leap
+    dragon 'Кого они тебе напомнили?'
+    play sound whmm13
+    show bella at leap
+    Character 'Они напоминают мне моих родителей и учителей'
+    Character 'Мне также все твердят : «выбрал вуз?», «поспи», «поешь уже», «сдай ЕГЭ», «поступи на бюджет», «иди выбирай вуз»'
+    show dragon at leap
+    dragon 'Да, действительно, сходство с Гаети есть'
+    play sound whmm14
+    show bella at leap
+    Character 'От этого иногда устаешь и это тебя даже немного раздражает'
+    show dragon at leap
+    dragon 'Может они иногда правы?'
+    play sound whmm4
+    show bella at leap
+    Character 'Хм... Знаешь, может быть, родители иногда правы, они же желают нам добра, поэтому, когда они говорят “иди отдохни” или “поешь”, нужно слушать их'
+    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, могут произойти выгорание'
+    show dragon at leap
+    dragon 'То есть учиться в вашем мире не нужно?'
+    show bella at leap
+    Character 'Конечно нужно, но нужно знать меру во всём'
+    stop music fadeout 1.0
+    return
+
 label scene9_gnoms:
     play music birds_sing fadein 1.0
     scene scene9 with dissolve
@@ -990,7 +1161,7 @@ label scene9_gnoms:
         'Попробовать ответить на все вопросы Гаети':
             play sound hmmm1
             show henry at leap
-            Character 'Меня зовут Генри, я не из вашего мира'
+            Character 'Меня зовут [name], я не из вашего мира'
             Character 'Я иду на поиски мага Алистера, чтобы он помог мне вернутся домой'
             play sound hmmm9
             show gnom1 at leap
