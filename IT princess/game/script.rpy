@@ -1,14 +1,11 @@
 ﻿# Инициализация персонажей
 define teacher = Character('Учитель', color = '#FF0000')
-# define Character = Character('Генри', color = '#1F618D')
 define Maks = Character('Макс', color = '#797D7F')
-define Izabella = Character('Изабелла')
 define dragon = Character('Спайнкндс', color = '#2471A3')
 define troll = Character('Тролль', color = '#1E8449')
 define gnoms = Character('Гаети', color = '#117A65')
 define mag = Character('Алистер', color ='#F39C12')
 define koldun = Character('Азазелло', color = '#922B21')
-define autor = Character('Автор')
 define general = Character('Главнокомандующий', color = '#2C3E50')
 define computer = Character('Компьютер', color = '#1A5276')
 define hagen = Character('Хаген', color = '#5DADE2')
@@ -18,12 +15,6 @@ define non = Character('???', color = '#E74C3C')
 define n = Character(None, kind = nvl)
 define Bella = Character('Изабелла', color = '#7B241C')
 define Character = Character('[name]', color = '#1F618D')
-
-# TODO
-# испольовать для перехода сцен ComposeTransition(dissolve, before=moveoutleft, after = moveinright)
-# выбор молота и меча для сражения с пауками
-# сделать выбор без реплики
-
 
 # Растягивание персонажа
 transform leap(z=1.05, t=.5):
@@ -44,19 +35,16 @@ transform migga_running:
     linear 0.1 pos(0,0)
     repeat
 
-#1080*1920
-#Вы указали: 500x1000 (c соблюдением пропорций)
-#Получилось: 284x1000, 172.39 Кб
 # shift+D режим разработчика
 # прозрачность 15 textbox
 
 # Начало игры
 label start:
-    call scene0_settings # Настройки игры
+    call scene0_settings from _call_scene0_settings # Настройки игры
     if sex=='male':
-        call start_male # Мужская ветвь
+        call start_male from _call_start_male # Мужская ветвь
     if sex=='female':
-        call start_female # Женская ветвь
+        call start_female from _call_start_female # Женская ветвь
     return
 
 label start_male:
@@ -77,20 +65,20 @@ label start_male:
     return
 
 label start_female:
-    call fscene1_school
-    call fscene2_class
-    call fscene3_sleep
-    call fscene4_new_country
-    call fscene5_forest
-    call fscene6_wizard_forest
-    call fscene7_cave
-    call fscene8_fairy_forest
-    call fscene9_gnoms
-    call fscene10_megastore
-    call fscene11_coldun
-    call fscene12_hagen
+    call fscene1_school from _call_fscene1_school
+    call fscene2_class from _call_fscene2_class
+    call fscene3_sleep from _call_fscene3_sleep
+    call fscene4_new_country from _call_fscene4_new_country
+    call fscene5_forest from _call_fscene5_forest
+    call fscene6_wizard_forest from _call_fscene6_wizard_forest
+    call fscene7_cave from _call_fscene7_cave
+    call fscene8_fairy_forest from _call_fscene8_fairy_forest
+    call fscene9_gnoms from _call_fscene9_gnoms
+    call fscene10_megastore from _call_fscene10_megastore
+    call fscene11_coldun from _call_fscene11_coldun
+    call fscene12_hagen from _call_fscene12_hagen
     if not the_end:
-        call fscene13_end
+        call fscene13_end from _call_fscene13_end
     return
 
 label scene0_settings:
@@ -1275,7 +1263,7 @@ label fscene10_megastore:
     $ third_choose = False
     $ correct_choose = False
     window hide
-    call fchoose_scene10 # Сцена выбора цикличная
+    call fchoose_scene10 from _call_fchoose_scene10 # Сцена выбора цикличная
     if correct_choose:
         show mag:
             xalign 2.0
@@ -1366,7 +1354,7 @@ menu fchoose_scene10:
             play sound hmmm9
             show mag at leap
             mag 'Ты уже спрашивала меня про это'
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_1
             return
         play music birds_sing fadein 1.0
         scene scene10_2 with dissolve
@@ -1427,14 +1415,14 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_2
             return
     'Ты можешь состоять в армии короля':
         if second_choose:
             play sound hmmm9
             show mag at leap
             mag 'Ты уже спрашивала меня про это'
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_3
             return
         play music hero fadein 1.0
         scene scene10_3 with dissolve
@@ -1478,14 +1466,14 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_4
             return
     'Ты можешь стать моим учеником':
         if third_choose:
             show mag at leap
             play sound hmmm9
             mag 'Ты уже спрашивала меня про это'
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_5
             return
         play sound hmmm8
         show mag at leap
@@ -1503,7 +1491,7 @@ menu fchoose_scene10:
             scene scene10_1 with dissolve
             show bella at left with moveinbottom
             show mag at right with moveinbottom
-            call fchoose_scene10
+            call fchoose_scene10 from _call_fchoose_scene10_6
             return
 
 menu choose_scene10:
@@ -1691,7 +1679,7 @@ label fscene11_coldun:
     $ first_zerkalo = False
     $ second_zerkalo = False
     stop music fadeout 1.0
-    call fchoose_scene11
+    call fchoose_scene11 from _call_fchoose_scene11
     return
 
 label scene11_coldun:
@@ -1742,7 +1730,7 @@ menu fchoose_scene11:
             play sound hmmm9
             show koldun at leap
             koldun 'Ты уже смотрела, что там'
-            call fchoose_scene11
+            call fchoose_scene11 from _call_fchoose_scene11_1
             return
         $ first_zerkalo = True
         play music hospital
@@ -1819,14 +1807,14 @@ menu fchoose_scene11:
         show bella at left with moveinbottom
         show koldun at right with moveinbottom
         stop music fadeout 1.0
-        call fchoose_scene11
+        call fchoose_scene11 from _call_fchoose_scene11_2
         return
     'Зеркало 2':
         if second_zerkalo:
             play sound hmmm9
             show koldun at leap
             koldun 'Ты уже смотрела, что здесь'
-            call fchoose_scene11
+            call fchoose_scene11 from _call_fchoose_scene11_3
             return
         $ second_zerkalo = True
         scene scene11_2 with dissolve
@@ -1892,7 +1880,7 @@ menu fchoose_scene11:
         with moveinbottom
         show bella at left with moveinbottom
         show koldun at right with moveinbottom
-        call fchoose_scene11
+        call fchoose_scene11 from _call_fchoose_scene11_4
         return
     'Зеркало 3':
         scene scene11_3 with dissolve
