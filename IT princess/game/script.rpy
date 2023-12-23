@@ -48,34 +48,34 @@ label start:
     return
 
 label start_male:
-    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
     call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     if not the_end:
         call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
 label start_female:
-    call fscene1_school from _call_fscene1_school
-    call fscene2_class from _call_fscene2_class
-    call fscene3_sleep from _call_fscene3_sleep
-    call fscene4_new_country from _call_fscene4_new_country
-    call fscene5_forest from _call_fscene5_forest
-    call fscene6_wizard_forest from _call_fscene6_wizard_forest
-    call fscene7_cave from _call_fscene7_cave
-    call fscene8_fairy_forest from _call_fscene8_fairy_forest
-    call fscene9_gnoms from _call_fscene9_gnoms
-    call fscene10_megastore from _call_fscene10_megastore
-    call fscene11_coldun from _call_fscene11_coldun
+    # call fscene1_school from _call_fscene1_school
+    # call fscene2_class from _call_fscene2_class
+    # call fscene3_sleep from _call_fscene3_sleep
+    # call fscene4_new_country from _call_fscene4_new_country
+    # call fscene5_forest from _call_fscene5_forest
+    # call fscene6_wizard_forest from _call_fscene6_wizard_forest
+    # call fscene7_cave from _call_fscene7_cave
+    # call fscene8_fairy_forest from _call_fscene8_fairy_forest
+    # call fscene9_gnoms from _call_fscene9_gnoms
+    # call fscene10_megastore from _call_fscene10_megastore
+    # call fscene11_coldun from _call_fscene11_coldun
     call fscene12_hagen from _call_fscene12_hagen
     if not the_end:
         call fscene13_end from _call_fscene13_end
@@ -239,7 +239,7 @@ label fscene5_forest:
     show bella at leap
     Character 'Хммммм...'
     Character 'Что это за синий свет в лесу?'
-    Character 'Нужно пойти поверить'
+    Character 'Нужно пойти проверить'
     show bella at left with easeinleft
     show dragon_in_chains at topright with moveinbottom
     play sound whmm10
@@ -267,7 +267,7 @@ label scene5_forest:
     show henry at leap
     Character 'Хммммм...'
     Character 'Что это за синий свет в лесу?'
-    Character 'Нужно пойти поверить'
+    Character 'Нужно пойти проверить'
     show henry at left with easeinleft
     show dragon_in_chains at topright with moveinbottom
     play sound hmmm4
@@ -2128,7 +2128,7 @@ label fscene12_hagen:
     play sound hmmm8
     show hagen at leap
     hagen 'Пока ты в моем мире, ты будешь работать на меня'
-    hagen 'Познакомся с коллегами они введу тебя в курс дела'
+    hagen 'Познакомься с коллегами они введут тебя в курс дела'
     play sound whmm16
     show bella at leap
     Character 'Хорошо , а куда мне идти?'
@@ -2221,7 +2221,10 @@ label fscene12_hagen:
     play sound koridor fadein 1.0
     scene scene12 with dissolve
     show bella at left with moveinleft
-    show hinki at left with moveinleft
+    show hinki:
+        xalign 0.4
+        yalign 1.0
+    with moveinleft
     play sound whmm7
     show hinki at leap
     hinki 'Идём за мной'
@@ -2295,7 +2298,7 @@ label scene12_hagen:
     play sound hmmm8
     show hagen at leap
     hagen 'Пока ты в моем мире, ты будешь работать на меня'
-    hagen 'Познакомся с коллегами они введу тебя в курс дела'
+    hagen 'Познакомься с коллегами они введут тебя в курс дела'
     play sound hmmm12
     show henry at leap
     Character 'Хорошо , а куда мне идти?'
@@ -2388,7 +2391,10 @@ label scene12_hagen:
     play sound koridor fadein 1.0
     scene scene12 with dissolve
     show henry at left with moveinleft
-    show hinki at left with moveinleft
+    show hinki:
+        xalign 0.4
+        yalign 1.0
+    with moveinleft
     play sound whmm7
     show hinki at leap
     hinki 'Идём за мной'
