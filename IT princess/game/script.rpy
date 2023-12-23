@@ -83,9 +83,10 @@ label start_female:
     # call fscene4_new_country
     # call fscene5_forest
     # call fscene6_wizard_forest
-    call fscene7_cave
-    call fscene8_fairy_forest
+    # call fscene7_cave
+    # call fscene8_fairy_forest
     call fscene9_gnoms
+    call fscene10_megastore
     return
 
 label scene0_settings:
@@ -1225,6 +1226,71 @@ label scene9_gnoms:
     stop music fadeout 1.0
     return
 
+label fscene10_megastore:
+    play music bazar fadein 1.0
+    scene scene10 with dissolve
+    show dragon at right with moveinbottom
+    show bella at left with moveinbottom
+    play sound hmmm4
+    show dragon at leap
+    dragon 'Вот мы и пришли'
+    dragon 'Вот там лавка Алистера'
+    show bella at leap
+    Character 'Давай зайдём'
+    stop music fadeout 1.0
+    play sound door_bell
+    scene scene10_1 with dissolve
+    show bella at left with moveinright
+    show dragon at right with moveinright
+    show mag at center with moveinbottom
+    play sound hmmm9
+    show mag at leap
+    mag 'Приветствую вас, что вы хотели в моей лавке?'
+    play sound whmm5
+    show bella at leap
+    Character 'Здравствуйте, мне нужно попасть в мой мир'
+    window hide
+    show dragon:
+        xalign 1.5
+    with moveinright
+    show mag at right with moveinright
+    play sound hmmm8
+    show mag at leap
+    mag 'Ой, с этим я тебе помочь не могу'
+    show bella at leap
+    Character 'Что же мне тогда делать? Как здесь выжить?'
+    show mag at leap
+    mag 'Ты бы мог пригодиться в этом мире'
+    play sound whmm18
+    show bella at leap
+    Character 'Что же ты можешь мне предложить?'
+    show mag at leap
+    mag 'Есть несколько вариантов'
+    $ first_choose = False
+    $ second_choose = False
+    $ third_choose = False
+    $ correct_choose = False
+    window hide
+    call choose_scene10 from _call_choose_scene10 # Сцена выбора цикличная
+    if correct_choose:
+        show mag:
+            xalign 2.0
+        with moveinright
+        show dragon at right with moveinright
+    else:
+        scene scene10_1 with dissolve
+        show bella at left with moveinbottom
+        show dragon at right with moveinbottom
+    play sound whmm19
+    show bella at leap
+    Character 'Да, трудно в этом мире, что же мне делать?'
+    stop sound fadeout 1.0
+    play sound hmmm2
+    show dragon at leap
+    dragon 'У меня есть ещё одно предложение'
+    dragon 'Мы можем отправиться на гору Нан Курнир, там живёт один колдун. Но сразу скажу, он немного сумасшедший'
+    return
+
 label scene10_megastore:
     play music bazar fadein 1.0
     scene scene10 with dissolve
@@ -1289,6 +1355,152 @@ label scene10_megastore:
     dragon 'У меня есть ещё одно предложение'
     dragon 'Мы можем отправиться на гору Нан Курнир, там живёт один колдун. Но сразу скажу, он немного сумасшедший'
     return
+
+menu fchoose_scene10:
+    'Ты можешь пасти единорогов':
+        if first_choose:
+            play sound hmmm9
+            show mag at leap
+            mag 'Ты уже спрашивала меня про это'
+            call choose_scene10 from _call_choose_scene10_1
+            return
+        play music birds_sing fadein 1.0
+        scene scene10_2 with dissolve
+        show bella at left with moveinbottom
+        show mag at right with moveinbottom
+        show unicorn_mini_zerkalo:
+            xalign 0.3
+            yalign 0.5889
+        with zoomin
+        show unicorn:
+            xalign 0.423
+            yalign 0.43
+        with zoomin
+        play sound whmm16
+        show bella at leap
+        Character 'И как же мне к ним подойти?'
+        show mag at leap
+        mag 'Ты должна показать единорогу силу'
+        window hide
+        show bella:
+            xalign 1.5
+        with moveinright
+        show bella_mini:
+            xalign 0.55
+            yalign 0.43
+        with moveinright
+        play sound horse
+        show unicorn:
+            xalign 0.3
+        with easeinleft
+        show bella_mini:
+            xalign 0.4
+        with moveinleft
+        hide unicorn
+        show unicorn_zerkalo:
+            xalign 0.3
+            yalign 0.43
+        with dissolve
+        show unicorn_zerkalo:
+            xalign 1.5
+        with moveinright
+        stop sound fadeout 1.0
+        show unicorn_mini_zerkalo:
+            xalign 1.5
+        with moveinright
+        show bella_mini:
+            xalign 1.5
+        with moveinright
+        show bella at left with moveinleft
+        play sound whmm10
+        show bella at leap
+        Character 'Да, к ЕГЭ мне было готовиться легче'
+        stop music fadeout 1.0
+        $ first_choose = True
+        if first_choose & second_choose & third_choose == True:
+            return
+        else:
+            scene scene10_1 with dissolve
+            show bella at left with moveinbottom
+            show mag at right with moveinbottom
+            call choose_scene10 from _call_choose_scene10_2
+            return
+    'Ты можешь состоять в армии короля':
+        if second_choose:
+            play sound hmmm9
+            show mag at leap
+            mag 'Ты уже спрашивала меня про это'
+            call choose_scene10 from _call_choose_scene10_3
+            return
+        play music hero fadein 1.0
+        scene scene10_3 with dissolve
+        show bella at left with moveinbottom
+        show mag at right with moveinbottom
+        show general at center with moveinbottom
+        play sound hmmm9
+        show mag at leap
+        mag 'Ты можешь состоять в армии короля'
+        play sound krik3
+        show general at leap
+        general 'Бойцы, вы должны быть готовы ко всему'
+        general 'Недавно нам объявили войну Марийцы'
+        show mag:
+            xalign 1.8
+        with moveinright
+        show general at right with moveinright
+        play sound hmmm9
+        show general at leap
+        general 'С этого момента вы будете жить в замке'
+        general 'Итак, ваше первое задание на сегодня...'
+        general 'Нужно подняться на гору Нан Куринир, добежать до края острова и принести мне волос единорога'
+        play sound whmm12
+        show bella at leap
+        Character 'Нее...'
+        Character 'Это не для меня'
+        play sound whmm14
+        show bella at leap
+        Character 'А вот если бы я пошёл в IT, то мог бы работать удалённо и жить в Дубае'
+        stop sound fadeout 1.0
+        play sound hmmm9
+        show general at leap
+        general 'Что это ты бормочешь?'
+        show bella at leap
+        Character 'Да так... Мысли вслух'
+        stop music fadeout 1.0
+        $ second_choose = True
+        if first_choose & second_choose & third_choose == True:
+            return
+        else:
+            scene scene10_1 with dissolve
+            show bella at left with moveinbottom
+            show mag at right with moveinbottom
+            call choose_scene10 from _call_choose_scene10_4
+            return
+    'Ты можешь стать моим учеником':
+        if third_choose:
+            show mag at leap
+            play sound hmmm9
+            mag 'Ты уже спрашивала меня про это'
+            call choose_scene10 from _call_choose_scene10_5
+            return
+        play sound hmmm8
+        show mag at leap
+        mag 'Тебе нужно будет днём и ночью выполнять мои поручения'
+        mag 'Также нужно будет рисковать своей жизнью, чтобы доставать необходимые ингредиенты для зелий'
+        play sound whmm17
+        show bella at leap
+        Character 'Извини, но такое мне тоже не подходит'
+        Character 'В IT у меня был бы удобный график работы'
+        $ third_choose = True
+        if first_choose & second_choose & third_choose == True:
+            $ correct_choose = True
+            return
+        else:
+            scene scene10_1 with dissolve
+            show bella at left with moveinbottom
+            show mag at right with moveinbottom
+            call choose_scene10 from _call_choose_scene10_6
+            return
 
 menu choose_scene10:
     'Ты можешь пасти единорогов':
