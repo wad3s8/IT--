@@ -1,7 +1,7 @@
 ﻿# Инициализация персонажей
 define teacher = Character('Учитель', color = '#FF0000')
 define Maks = Character('Макс', color = '#797D7F')
-define dragon = Character('Спайнкндс', color = '#2471A3')
+define dragon = Character('Спайндикс', color = '#2471A3')
 define troll = Character('Тролль', color = '#1E8449')
 define gnoms = Character('Гаети', color = '#117A65')
 define mag = Character('Алистер', color ='#F39C12')
@@ -2465,10 +2465,12 @@ label fscene13_end:
     Character 'Я поступлю на программную инженерию и стану backend-разработчиком'
     stop music fadeout 0.5
     play sound end fadein 1.0
-    scene bg black with dissolve
-    window hide
-    n '''КОНЕЦ!!!'''
-    nvl clear
+    scene end2 with dissolve
+    pause 300
+    # scene bg black with dissolve
+    # window hide
+    # n '''КОНЕЦ!!!'''
+    # nvl clear
     stop sound fadeout 1.0
     return
 
@@ -2497,9 +2499,11 @@ label scene13_end:
     Character 'Я поступлю на программную инженерию и стану backend-разработчиком'
     stop music fadeout 0.5
     play sound end fadein 1.0
-    scene bg black with dissolve
-    window hide
-    n '''КОНЕЦ!!!'''
-    nvl clear
+    scene end2 with dissolve
+    pause 300
+    # scene bg black with dissolve
+    # window hide
+    # n '''КОНЕЦ!!!'''
+    # nvl clear
     stop sound fadeout 1.0
     return
