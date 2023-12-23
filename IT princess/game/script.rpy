@@ -87,7 +87,8 @@ label start_female:
     # call fscene8_fairy_forest
     # call fscene9_gnoms
     # call fscene10_megastore
-    call fscene11_coldun
+    # call fscene11_coldun
+    # call fscene12_hagen
     return
 
 label scene0_settings:
@@ -2115,6 +2116,171 @@ menu choose_scene11:
         computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
         return
 
+label fscene12_hagen:
+    play sound steps
+    show bella at leap
+    Character 'Кто-то идёт, чьи это шаги?'
+    show macbook:
+        xalign 2.0
+    with moveinright
+    stop sound fadeout 1.0
+    show hagen at right with moveinbottom
+    play sound hmmm9
+    show hagen at leap
+    hagen 'Что ты здесь забыла?'
+    play sound whmm14
+    show bella at leap
+    Character 'Извините, я просто изучаю профессию, используя ваш компьютер'
+    show hagen at leap
+    hagen 'Это мое измерение и моя ветка времени, здесь всё решаю я'
+    show bella at leap
+    Character 'А вы не могли бы отправить меня домой?'
+    play sound hmmm8
+    show hagen at leap
+    hagen 'Пока ты в моем мире, ты будешь работать на меня'
+    hagen 'Познакомся с коллегами они введу тебя в курс дела'
+    play sound whmm16
+    show bella at leap
+    Character 'Хорошо , а куда мне идти?'
+    show hagen at leap
+    hagen 'Прямо по коридору и направо'
+    stop music fadeout 1.0
+    play music koridor fadein 1.0
+    scene scene12 with dissolve
+    show bella at left with moveinleft
+    play sound whmm17
+    show bella at leap
+    Character 'Интересно получится ли у меня работать здесь?'
+    show bella:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    stop music fadeout 1.0
+    scene scene12_1 with dissolve
+    show bella at left with moveinleft
+    show hinki at right with moveinbottom
+    play sound hihi
+    show hinki at leap
+    hinki 'Ой, а кто это у нас тут? Что ты здесь забыла?'
+    show riobs at center with moveinbottom
+    play sound hmmm8
+    show riobs at leap
+    riobs 'Хинки, будь помягче с новенькой'
+    show riobs at leap
+    riobs 'Приветствую тебя, как тебя зовут?'
+    play sound whmm18
+    show bella at leap
+    Character 'Привет, меня зовут [name]'
+    show riobs at leap
+    riobs 'Мы сейчас работаем над одним проектом'
+    play sound whmm1
+    show hinki at leap
+    hinki 'Я не думаю, что ты можешь нам чем-нибудь помочь'
+    show bella at leap
+    Character 'Я бы могла попробовать себя в роли Backend — разработчика'
+    play sound hihi
+    show hinki at leap
+    hinki 'Ха-ха-ха, ты хоть знаешь, что такое веб-сервер?'
+    play sound whmm19
+    show bella at leap
+    Character 'Сервер, принимающий HTTP-запросы от клиентов, обычно веб-браузеров, и выдающий им HTTP-ответы, как правило, вместе с HTML-страницей, изображением, файлом, медиа-потоком или другими данными'
+    play sound whmm2
+    show hinki at leap
+    hinki 'У нас даже уборщик знает, что это такое. Знаешь ли ты что такое HTTP?'
+    play sound whmm12
+    show bella at leap
+    Character 'Это протокол, который использует для передачи содержимого TCP, поэтому HTTP считается надежным протоколом для обмена содержимым. Также HTTP — самый популярный протокол'
+    show bella at leap
+    Character 'Сама не знаю, как мне удалось это запомнить'
+    play sound whmm3
+    show hinki at leap
+    hinki 'Ладно, может ты что-то знаешь. У меня есть последний вопрос'
+    hinki 'Как веб-страницы взаимодействуют с серверами?'
+    play sound whmm11
+    show bella at leap
+    Character 'Веб-браузеры взаимодействуют с веб-серверами при помощи протокола передачи гипертекста (HTTP). При взаимодействии, браузер отправляет на сервер HTTP-запрос'
+    show bella at leap
+    Character 'А также, необходимо знать, что путь (URL), который определяет целевой сервер и ресурс (например, HTML-файл, конкретная точка данных на сервере или запускаемый инструмент)'
+    show riobs at leap
+    riobs 'Хинки, ну отцепись от девчонки. Я думаю, она уже доказала, что может писать проект с нами'
+    play sound whmm4
+    show hinki at leap
+    hinki 'Хм... Ладно, пусть попробует'
+    play sound hmmm11
+    show riobs at leap
+    riobs 'Итак, мы работаем над проектом “Gold Ball”. Заказчик проводил городские оффлайн-турниры по киберфутболу'
+    show riobs at leap
+    riobs 'Чтобы охватить игроков по всей стране и масштабировать проект на СНГ, клиент заказал разработку веб-сервиса для автоматизации проведения соревнований'
+    show hinki at leap
+    hinki 'Проведя анализ, мы спроектировали механику турниров, логику распределения игроков по турнирной сетке, статистику и систему рейтинга'
+    show hinki at leap
+    hinki 'Оценив полученные данные, приняли решение в пользу фреймворка Ruby on Rails'
+    show hinki at leap
+    hinki 'Он подходит, чтобы реализовать описанный функционал, а его шаблонизатор хорошо справляется с типовыми страницами турниров и матчей'
+    play sound whmm5
+    show hinki at leap
+    hinki 'Ты что-нибудь понимаешь?'
+    show bella at leap
+    Character 'Я примерно поняла, что нужно сделать'
+    show riobs at leap
+    riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
+    show riobs at leap
+    riobs 'Хинки, ты можешь показать комнату, где будет жить [name]?'
+    play sound whmm6
+    show hinki at leap
+    hinki 'Неохотно, но соглашусь'
+    play sound koridor fadein 1.0
+    scene scene12 with dissolve
+    show bella at left with moveinleft
+    show hinki at left with moveinleft
+    play sound whmm7
+    show hinki at leap
+    hinki 'Идём за мной'
+    window hide
+    show hinki:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    show bella:
+        xalign 1.5
+    with MoveTransition(2.0, leave = moveinright)
+    stop sound fadeout 1.0
+    scene scene12_2 with dissolve
+    show bella at left with moveinleft
+    show hinki at center with moveinleft
+    show hinki at leap
+    hinki 'Здесь ты можешь отдохнуть'
+    play sound whmm16
+    show bella at leap
+    Character 'Спасибо, что проводила'
+    play sound whmm8
+    show hinki at leap
+    hinki 'Не обольщайся, меня просто попросил мой коллега'
+    show hinki:
+        xalign 1.5
+    with moveinright
+    $ the_end = False
+    menu:
+        Character 'Может мне и вправду поспать или подумать над проектом?'
+        'Поспать':
+            play sound end fadein 1.0
+            $ the_end = True
+            scene bg black with dissolve
+            window hide
+            n '''[name] проснулась во время урока,
+            не помня свои приключения'''
+            nvl clear
+            n '''КОНЕЦ!!!'''
+            stop sound fadeout 1.0
+        'Подумать над проектом':
+            show bella at center with moveinright
+            play sound wgasp
+            show bella at leap
+            Character 'Меня так заинтересовал проект, может подумать над ним?'
+            Character 'Хотя я сегодня очень сильно устала'
+            Character 'Необходимо набраться сил перед завтрашним днём'
+            show bella at leap
+            Character 'Пойду спать'
+    return
+
 label scene12_hagen:
     play sound steps
     show henry at leap
@@ -2159,16 +2325,16 @@ label scene12_hagen:
     show hinki at right with moveinbottom
     play sound hihi
     show hinki at leap
-    hinki 'Ой, а кто это у нас тут ? Что ты здесь забыл?'
+    hinki 'Ой, а кто это у нас тут? Что ты здесь забыл?'
     show riobs at center with moveinbottom
     play sound hmmm8
     show riobs at leap
-    riobs ' Хинки, будь помягче с новеньким'
+    riobs 'Хинки, будь помягче с новеньким'
     show riobs at leap
     riobs 'Приветствую тебя, как тебя зовут?'
     play sound hmmm1
     show henry at leap
-    Character 'Привет, меня зовут Генри'
+    Character 'Привет, меня зовут [name]'
     show riobs at leap
     riobs 'Мы сейчас работаем над одним проектом'
     play sound whmm1
@@ -2223,7 +2389,7 @@ label scene12_hagen:
     show riobs at leap
     riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
     show riobs at leap
-    riobs 'Хинки, ты можешь показать комнату Генри?'
+    riobs 'Хинки, ты можешь показать комнату, где будет жить [name]?'
     play sound whmm6
     show hinki at leap
     hinki 'Неохотно, но соглашусь'
@@ -2264,7 +2430,7 @@ label scene12_hagen:
             $ the_end = True
             scene bg black with dissolve
             window hide
-            n '''Генри проснулся во время урока,
+            n '''[name] проснулся во время урока,
             не помня свои приключения'''
             nvl clear
             n '''КОНЕЦ!!!'''
