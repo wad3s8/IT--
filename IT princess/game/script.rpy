@@ -85,8 +85,9 @@ label start_female:
     # call fscene6_wizard_forest
     # call fscene7_cave
     # call fscene8_fairy_forest
-    call fscene9_gnoms
-    call fscene10_megastore
+    # call fscene9_gnoms
+    # call fscene10_megastore
+    call fscene11_coldun
     return
 
 label scene0_settings:
@@ -1648,6 +1649,48 @@ menu choose_scene10:
             call choose_scene10 from _call_choose_scene10_6
             return
 
+label fscene11_coldun:
+    play music water_down fadein 1.0
+    scene scene11 with dissolve
+    show bella at left with moveinbottom
+    show dragon at right with moveinbottom
+    show koldun at center with moveinbottom
+    play sound hmmm9
+    show koldun at leap
+    koldun 'Давно у меня не было гостей, зачем пожаловали?'
+    play sound whmm18
+    show bella at leap
+    Character 'Мне нужно попасть в свой мир'
+    play sound hmmm1
+    show koldun at leap
+    koldun 'Я давно подозревал, что есть другие миры'
+    koldun 'Однако я не могу тебя туда отправить, но могу показать кое-что другое'
+    window hide
+    show dragon:
+        xalign 1.5
+    with moveinright
+    play sound magic
+    show koldun at right with moveinright
+    show zerkalo1:
+        xalign 0.2
+        yalign 0.51
+    with moveinbottom
+    show zerkalo2:
+        xalign 0.41
+        yalign 0.51
+    with moveinbottom
+    show zerkalo3:
+        xalign 0.62
+        yalign 0.51
+    with moveinbottom
+    koldun 'Перед тобой три зеркала, выбирай понравившееся'
+    window hide
+    $ first_zerkalo = False
+    $ second_zerkalo = False
+    stop music fadeout 1.0
+    call fchoose_scene11
+    return
+
 label scene11_coldun:
     play music water_down fadein 1.0
     scene scene11 with dissolve
@@ -1689,6 +1732,197 @@ label scene11_coldun:
     stop music fadeout 1.0
     call choose_scene11 from _call_choose_scene11
     return
+
+menu fchoose_scene11:
+    'Зеркало 1':
+        if first_zerkalo:
+            play sound hmmm9
+            show koldun at leap
+            koldun 'Ты уже смотрела, что там'
+            call fchoose_scene11
+            return
+        $ first_zerkalo = True
+        play music hospital
+        scene scene11_1 with dissolve
+        show bella at left with moveinbottom
+        show syringe1left:
+            xalign 0.78385
+            yalign 0.14259
+        with zoomin
+        show syringe2left:
+            xalign 0.6392
+            yalign 0.38
+        with zoomin
+        show syringe3left:
+            xalign 0.82
+            yalign 0.514
+        with zoomin
+        show syringe1left:
+            xalign 0.2
+        with moveinleft
+        show syringe2left:
+            xalign 0.2
+        with moveinleft
+        show syringe3left:
+            xalign 0.2
+        with moveinleft
+        play sound wkrik1
+        show bella at leap
+        Character 'ААААА'
+        stop sound fadeout 1.0
+        Character 'Они летают'
+        window hide
+        show bella:
+            xalign 1.5
+        with moveinright
+        hide syringe1left
+        hide syringe2left
+        hide syringe3left
+        show syringe1right:
+            xalign 0.2
+            yalign 0.14259
+        with zoomin
+        show syringe2right:
+            xalign 0.2
+            yalign 0.38
+        with zoomin
+        show syringe3right:
+            xalign 0.2
+            yalign 0.514
+        with zoomin
+        show syringe1right:
+            xalign 1.5
+        with moveinright
+        show syringe2right:
+            xalign 1.5
+        with moveinright
+        show syringe3right:
+            xalign 1.5
+        with moveinright
+        stop music fadeout 1.0
+        scene scene11 with dissolve
+        play music water_down fadein 1.0
+        show zerkalo1:
+            xalign 0.2
+            yalign 0.51
+        with moveinbottom
+        show zerkalo2:
+            xalign 0.41
+            yalign 0.51
+        with moveinbottom
+        show zerkalo3:
+            xalign 0.62
+            yalign 0.51
+        show bella at left with moveinbottom
+        show koldun at right with moveinbottom
+        stop music fadeout 1.0
+        call fchoose_scene11
+        return
+    'Зеркало 2':
+        if second_zerkalo:
+            play sound hmmm9
+            show koldun at leap
+            koldun 'Ты уже смотрела, что здесь'
+            call fchoose_scene11
+            return
+        $ second_zerkalo = True
+        scene scene11_2 with dissolve
+        show bella at left with moveinbottom
+        show bella at leap
+        Character 'Сколько же тут книг?'
+        window hide
+        play sound book volume 1.5
+        show book1:
+            xalign 0.64696
+            yalign 0,174
+        with zoomin
+        show book2:
+            xalign 0.74
+            yalign 0.497
+        with zoomin
+        show book1:
+            xalign 0.2
+        with moveinleft
+        show book2:
+            xalign 0.2
+        with moveinleft
+        show bella at right with moveinright
+        show book1:
+            xalign 0.8
+        with moveinright
+        show book2:
+            xalign 0.8
+        with moveinright
+        show bella at left with moveinleft
+        play sound whmm14
+        show bella at leap
+        Character 'Они кружат мне голову'
+        window hide
+        show book1:
+            xalign 0.2
+        with moveinleft
+        show book2:
+            xalign 0.2
+        with moveinleft
+        show bella:
+            xalign 1.5
+        with moveinright
+        show book1:
+            xalign 1.5
+        with moveinright
+        show book2:
+            xalign 1.5
+        with moveinright
+        play music water_down fadein 1.0
+        scene scene11 with dissolve
+        show zerkalo1:
+            xalign 0.2
+            yalign 0.51
+        with moveinbottom
+        show zerkalo2:
+            xalign 0.41
+            yalign 0.51
+        with moveinbottom
+        show zerkalo3:
+            xalign 0.62
+            yalign 0.51
+        with moveinbottom
+        show bella at left with moveinbottom
+        show koldun at right with moveinbottom
+        call fchoose_scene11
+        return
+    'Зеркало 3':
+        scene scene11_3 with dissolve
+        play music computer_work fadein 1.0
+        show bella at left with moveinbottom
+        play sound whmm11
+        show bella at leap
+        Character 'Может я смогу написать какую-нибудь программу на компьютере?'
+        Character 'backend-разработчик, кто это такой?'
+        show macbook:
+            xalign 0.9
+            yalign 0.51296
+        with moveinbottom
+        play sound keyboard volume 1.5
+        show macbook at leap
+        computer 'Специалист, который занимается серверной частью сайтов, мобильных и десктопных приложений и игр'
+        play sound whmm10
+        show bella at leap
+        Character 'А чем же он занимается?'
+        play sound windows1
+        show macbook at leap
+        computer 'Он создает базы данных и управляет ими, проводит интеграции с внешними сервисами и занимается всем, что находится «под капотом» сайта'
+        show bella at leap
+        Character 'Как же интересно, но какие плюсы у этой профессии?'
+        play sound windows2
+        show macbook at leap
+        computer 'Востребованность профессии, работа из любой точки планеты, возможность выбирать направление, перспективы, высокая зарплата'
+        show bella at leap
+        Character 'А где же этому можно научиться ?'
+        play sound windows3
+        show macbook at leap
+        computer 'Программная инженерия — это направление подготовки программистов, готовых к индустриальному производству программного обеспечения для информационно-вычислительных систем различного назначения'
+        return
 
 menu choose_scene11:
     'Зеркало 1':
