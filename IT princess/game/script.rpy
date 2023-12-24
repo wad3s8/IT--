@@ -38,6 +38,9 @@ transform migga_running:
 # shift+D режим разработчика
 # прозрачность 15 textbox
 
+
+
+
 # Начало игры
 label start:
     call scene0_settings from _call_scene0_settings # Настройки игры
@@ -48,34 +51,34 @@ label start:
     return
 
 label start_male:
-    # call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
-    # call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
-    # call scene3_sleep from _call_scene3_sleep # Генри летит спать
-    # call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
-    # call scene5_forest from _call_scene5_forest # Встреча с дракончиком
-    # call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
-    # call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
-    # call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
-    # call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
-    # call scene10_megastore from _call_scene10_megastore # Разговор с магом
-    # call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
+    call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
+    call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
+    call scene3_sleep from _call_scene3_sleep # Генри летит спать
+    call scene4_new_country from _call_scene4_new_country # Генри впервые в новом мире
+    call scene5_forest from _call_scene5_forest # Встреча с дракончиком
+    call scene6_wizard_forest from _call_scene6_wizard_forest # Разговор с дракончиком об оружии
+    call scene7_cave from _call_scene7_cave # Генри находит мечи и молот
+    call scene8_fairy_forest from _call_scene8_fairy_forest # Встреча с троллем
+    call scene9_gnoms from _call_scene9_gnoms # Встреча с гномами
+    call scene10_megastore from _call_scene10_megastore # Разговор с магом
+    call scene11_coldun from _call_scene11_coldun # Встреча с колдуном
     call scene12_hagen from _call_scene12_hagen # Встреча с Хагеном
     if not the_end:
         call scene13_end from _call_scene13_end # Разговор обо сне с другом
     return
 
 label start_female:
-    # call fscene1_school from _call_fscene1_school
-    # call fscene2_class from _call_fscene2_class
-    # call fscene3_sleep from _call_fscene3_sleep
-    # call fscene4_new_country from _call_fscene4_new_country
-    # call fscene5_forest from _call_fscene5_forest
-    # call fscene6_wizard_forest from _call_fscene6_wizard_forest
-    # call fscene7_cave from _call_fscene7_cave
-    # call fscene8_fairy_forest from _call_fscene8_fairy_forest
-    # call fscene9_gnoms from _call_fscene9_gnoms
-    # call fscene10_megastore from _call_fscene10_megastore
-    # call fscene11_coldun from _call_fscene11_coldun
+    call fscene1_school from _call_fscene1_school
+    call fscene2_class from _call_fscene2_class
+    call fscene3_sleep from _call_fscene3_sleep
+    call fscene4_new_country from _call_fscene4_new_country
+    call fscene5_forest from _call_fscene5_forest
+    call fscene6_wizard_forest from _call_fscene6_wizard_forest
+    call fscene7_cave from _call_fscene7_cave
+    call fscene8_fairy_forest from _call_fscene8_fairy_forest
+    call fscene9_gnoms from _call_fscene9_gnoms
+    call fscene10_megastore from _call_fscene10_megastore
+    call fscene11_coldun from _call_fscene11_coldun
     call fscene12_hagen from _call_fscene12_hagen
     if not the_end:
         call fscene13_end from _call_fscene13_end
@@ -1040,7 +1043,7 @@ label fscene9_gnoms:
     play sound whmm4
     show bella at leap
     Character 'Хм... Знаешь, может быть, родители иногда правы, они же желают нам добра, поэтому, когда они говорят “иди отдохни” или “поешь”, нужно слушать их'
-    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, могут произойти выгорание'
+    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, может произойти выгорание'
     show dragon at leap
     dragon 'То есть учиться в вашем мире не нужно?'
     show bella at leap
@@ -1210,7 +1213,7 @@ label scene9_gnoms:
     play sound surprise1
     show henry at leap
     Character 'Хм... Знаешь, может быть, родители иногда правы, они же желают нам добра, поэтому, когда они говорят “иди отдохни” или “поешь”, нужно слушать их'
-    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, могут произойти выгорание'
+    Character 'Ведь нашему мозгу нужно отдыхать, менять активность. Если ты будешь постоянно учиться, может произойти выгорание'
     show dragon at leap
     dragon 'То есть учиться в вашем мире не нужно?'
     show henry at leap
@@ -2140,7 +2143,7 @@ label fscene12_hagen:
     show bella at left with moveinleft
     play sound whmm17
     show bella at leap
-    Character 'Интересно получится ли у меня работать здесь?'
+    Character 'Интересно, получится ли у меня работать здесь?'
     show bella:
         xalign 1.5
     with MoveTransition(2.0, leave = moveinright)
@@ -2212,7 +2215,7 @@ label fscene12_hagen:
     show bella at leap
     Character 'Я примерно поняла, что нужно сделать'
     show riobs at leap
-    riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должен будешь что-нибудь предложить'
+    riobs 'Хорошо, можешь переосмыслить эту информацию. Завтра ты должна будешь что-нибудь предложить'
     show riobs at leap
     riobs 'Хинки, ты можешь показать комнату, где будет жить [name]?'
     play sound whmm6
@@ -2310,7 +2313,7 @@ label scene12_hagen:
     show henry at left with moveinleft
     play sound hmmm3
     show henry at leap
-    Character 'Интересно получится ли у меня работать здесь?'
+    Character 'Интересно, получится ли у меня работать здесь?'
     show henry:
         xalign 1.5
     with MoveTransition(2.0, leave = moveinright)
@@ -2466,7 +2469,7 @@ label fscene13_end:
     Maks 'Ты видела, что в УрФУ проходит День открытых дверей, пойдём?'
     play sound whmm5
     show bella at leap
-    Character 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определился с  профессией и направлением'
+    Character 'Разумеется, мне нужно узнать всё о поступлении, ведь я уже определилась с  профессией и направлением'
     show bella at leap
     Character 'Я поступлю на программную инженерию и стану backend-разработчиком'
     stop music fadeout 0.5
