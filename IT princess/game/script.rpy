@@ -51,6 +51,7 @@ label start:
     return
 
 label start_male:
+    call intro
     call scene1_school from _call_scene1_school # Диалог в школе (сцена 1)
     call scene2_class from _call_scene2_class # Сцена с учителем и засыпание Генри
     call scene3_sleep from _call_scene3_sleep # Генри летит спать
@@ -68,6 +69,7 @@ label start_male:
     return
 
 label start_female:
+    call intro
     call fscene1_school from _call_fscene1_school
     call fscene2_class from _call_fscene2_class
     call fscene3_sleep from _call_fscene3_sleep
@@ -83,6 +85,7 @@ label start_female:
     if not the_end:
         call fscene13_end from _call_fscene13_end
     return
+
 
 label scene0_settings:
     play music scene0 fadein 1.0
@@ -108,6 +111,13 @@ label scene0_settings:
         else:
             $ name = 'Изабелла'
     stop music fadeout 1.0
+    return
+
+label intro:
+    scene intro with dissolve
+    'Вы когда-нибудь задумывались, как один урок может изменить вашу жизнь?'
+    'Представьте, каждый день вы встаете, завтракаете, собираетесь в школу. Всё обыденно, но в один момент вы погружаетесь в другой мир.'
+    'Что же тогда делать?'
     return
 
 label fscene1_school:
