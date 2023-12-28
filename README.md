@@ -1,3 +1,5 @@
+# [СКАЧАТЬ игру здесь (тык)](https://github.com/wad3s8/IT-princess/releases/tag/v5.0)
+
 # Вы попали в логово команды "IT-принцессы" 👋
 
 ## Состав команды:
@@ -25,6 +27,7 @@
 **Артефакты Дизайнера:**
 
 - [Ссылка на Figma](https://www.figma.com/file/Qb41A1Y5qGybLkAUCGJpu4/Untitled?type=design&node-id=0%3A1&mode=design&t=sFEffb8tSKU9GZup-1)
+- [гугл диск с фонами](https://drive.google.com/drive/folders/1FQJGEm0_34WyT5ez6H8tpRG3-x7U4nVq?usp=sharing)
 
 **Артефакты Аналитика:**
 
