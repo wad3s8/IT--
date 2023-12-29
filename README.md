@@ -30,7 +30,7 @@
 
 **Артефакты Аналитика:**
 
-- [Ссылка на гугл док с аналитикой](https://drive.google.com/drive/u/0/folders/1s_UTrjJ-hGtEAP5SPT2keIVIMp211tK8?sjid=12131241335020278399-EU).
+- [Ссылка на гугл док с аналитикой](https://docs.google.com/document/d/1iUUFlZE-9RGSp4Y7Cq6LHp8cvRB8kGbopwMoy5XWLw8/edit#heading=h.txnqimy4pfs0).
 
 <p align="center">Made with</p>
 <p align="center">❤️</p>
